@@ -13,9 +13,11 @@ import CoreData
 class SecondViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     // MARK: Outlets
+    @IBOutlet var titleTextField: UITextField!
     @IBOutlet var imgLeft: UIImageView!
     @IBOutlet var imgCenter: UIImageView!
     @IBOutlet var imgRight: UIImageView!
+    @IBOutlet var descriptionTextField: UITextField!
     
     // MARK: Extra Variables
     var imagePicked = 1
@@ -35,12 +37,13 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
     
     @IBAction func saveBtn(_ sender: Any) {
         
-        
-        // now let's test Parse with new userUUID
+        // now let's create Parse Object that we'd like to save.
         let haircut = PFObject(className: "Haircut")
         haircut["userUUID"] = userUUID
-        haircut["text"] = "test haircut profile 1"
+        haircut["Title"] = titleTextField.text
+        haircut["Description"] = descriptionTextField.text
         
+        // Save in Parse.
         haircut.saveInBackground { (success, error) in
             if (success) {
                 print("Save successful")
@@ -53,7 +56,6 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
             }
         }
 
-        
     }
     
     // MARK: Image Pickers
