@@ -98,6 +98,9 @@
                                 <rect key="frame" x="170" y="533" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveBtn:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="O8U-fM-dVV"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5c-Dh-z3t">
                                 <rect key="frame" x="39" y="256" width="53" height="30"/>

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import CoreData
 
 class SecondViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -16,11 +18,10 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
     @IBOutlet var imgRight: UIImageView!
     
     // MARK: Extra Variables
-
     var imagePicked = 1
+    var userUUID = ""
 
     // MARK: User Interactions
-    
     @IBAction func chooseImg(_ sender: UIButton) {
         // the sender.tag will be passed to imagePickerController to change the correct imageView.
         imagePicked = sender.tag
@@ -32,7 +33,29 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
         self.present(imagePickerController, animated: true, completion: nil)
     }
     
+    @IBAction func saveBtn(_ sender: Any) {
+        
+        
+        // now let's test Parse with new userUUID
+        let haircut = PFObject(className: "Haircut")
+        haircut["userUUID"] = userUUID
+        haircut["text"] = "test haircut profile 1"
+        
+        haircut.saveInBackground { (success, error) in
+            if (success) {
+                print("Save successful")
+                if let ojID = haircut.objectId {
+                    print(ojID)
+                }
+                
+            } else {
+                print("Save failed")
+            }
+        }
 
+        
+    }
+    
     // MARK: Image Pickers
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -57,6 +80,59 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext // we can use context to access CoreData
+        
+        // core data retrieval
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserRecords")
+        request.returnsObjectsAsFaults = false // by default, when request is run, instead of returning actual data, it'll return faults. we usually want this set to false.
+        
+        do { // this person is an existing user... let's just retrieve the stored userUUID.
+            
+            let results = try context.fetch(request)
+            if results.count > 0 {
+                // we already have a UserRecord
+                for result in results as! [NSManagedObject] {
+                    
+                    print(result)
+                    if let userID = result.value(forKey: "userID") as? String {
+                        print(userID)
+                        userUUID = userID
+                    }
+                }
+                
+            } else { // this person is a brand new user!
+                // let's create a UserRecord
+                print("No results, so this is a new user")
+                
+                let newUser = NSEntityDescription.insertNewObject(forEntityName: "UserRecords", into: context)
+                
+                // generate random UUID
+                let uuid = UUID().uuidString
+                newUser.setValue(uuid, forKey: "userID")
+                userUUID = uuid
+                
+                // generate current date
+                let date = NSDate()
+                newUser.setValue(date, forKey: "dateCreated")
+                
+                // save new userRecord
+                do {
+                    print("Saved")
+                    try context.save()
+                    
+                } catch {
+                    print("There was an error")
+                }
+                
+            }
+            
+        } catch {
+            print("Couldn't fetch results")
+        }
+        
+
     }
 
     override func didReceiveMemoryWarning() {
