@@ -22,7 +22,7 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
     // MARK: User Interactions
     
     @IBAction func chooseImg(_ sender: UIButton) {
-        print(sender.tag)
+        // the sender.tag will be passed to imagePickerController to change the correct imageView.
         imagePicked = sender.tag
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
