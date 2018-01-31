@@ -11,10 +11,14 @@ import Parse
 import CoreData
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+   
+    // MARK: Extra Variables
+    var userUUID = ""
+    var haircuts = [String: String]()
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 1
+        return 4
         
     }
     
@@ -31,21 +35,81 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        /*
-        var gameScore = PFObject(className:"GameScore")
-        gameScore["score"] = 1337
-        gameScore["playerName"] = "Sean Plott"
-        gameScore["cheatMode"] = false
-        gameScore.saveInBackground {
-            (success: Bool, error: Error?) in
-            if (success) {
-                print("Success!")
-            } else {
-                print("Failed!")
+        // CoreData code
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext // we can use context to access CoreData
+        
+        // core data retrieval
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserRecords")
+        request.returnsObjectsAsFaults = false
+        // by default, when request is run, instead of returning actual data, it'll return faults. we usually want this set to false.
+        
+        do { // this person is an existing user... let's just retrieve the stored userUUID.
+            
+            let results = try context.fetch(request)
+            if results.count > 0 {
+                // we already have a UserRecord
+                for result in results as! [NSManagedObject] {
+                    
+                    print(result)
+                    if let userID = result.value(forKey: "userID") as? String {
+                        print(userID)
+                        userUUID = userID
+                    }
+                }
+                
+            } else { // this person is a brand new user!
+                // let's create a UserRecord
+                print("No results, so this is a new user")
+                
+                let newUser = NSEntityDescription.insertNewObject(forEntityName: "UserRecords", into: context)
+                
+                // generate random UUID
+                let uuid = UUID().uuidString
+                newUser.setValue(uuid, forKey: "userID")
+                userUUID = uuid
+                
+                // generate current date
+                let date = NSDate()
+                newUser.setValue(date, forKey: "dateCreated")
+                
+                // save new userRecord
+                do {
+                    print("Saved")
+                    try context.save()
+                    
+                } catch {
+                    print("There was an error")
+                }
+                
             }
+            
+        } catch {
+            print("Couldn't fetch results")
         }
-        */
-    }
+        
+        // retrieve user's Haircuts from Parse Server using userUUID.
+        let query = PFQuery(className:"Haircut")
+        query.whereKey("userUUID", equalTo: userUUID)
+        query.findObjectsInBackground { (objects, error) in
+            
+            if error != nil {
+                // print error
+                print("Error: \(error!.localizedDescription)")
+            } else {
+                // success
+                print("Successfully retrieved \(objects!.count) haircuts!")
+                
+                if let objects = objects {
+                    for object in objects {
+                        print(object)
+                    }
+                } else {}
+            }
+            
+        } // end findObjectsInBackground
+        
+    } // end viewDidLoad
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -139,30 +139,8 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
                     }
                 }
                 
-            } else { // this person is a brand new user!
-                // let's create a UserRecord
-                print("No results, so this is a new user")
-                
-                let newUser = NSEntityDescription.insertNewObject(forEntityName: "UserRecords", into: context)
-                
-                // generate random UUID
-                let uuid = UUID().uuidString
-                newUser.setValue(uuid, forKey: "userID")
-                userUUID = uuid
-                
-                // generate current date
-                let date = NSDate()
-                newUser.setValue(date, forKey: "dateCreated")
-                
-                // save new userRecord
-                do {
-                    print("Saved")
-                    try context.save()
-                    
-                } catch {
-                    print("There was an error")
-                }
-                
+            } else { // something went very wrong... This should never happen because if a user hits FirstViewController, they should have a stored userUUID...
+                print("Something terrible has happened.")
             }
             
         } catch {
