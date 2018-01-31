@@ -18,16 +18,34 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet var table: UITableView!
     
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print(arrayHaircuts.count)
-        return arrayHaircuts.count
+    
+    // MARK: Helper Functions
+
+    func loadHaircutViews(_ haircuts: [PFObject]) {
         
+        for haircut in haircuts {
+            arrayHaircuts.append(haircut)
+        }
+        table.reloadData()
+        
+    }
+
+    // MARK: Table View Functions
+
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayHaircuts.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+        //let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyHaircutsFeedTableViewCell
+        cell.haircutTitle.text = arrayHaircuts[indexPath.row]["title"] as? String
+        //print(arrayHaircuts[indexPath.row]["description"])
+        cell.haircutDescription.text = arrayHaircuts[indexPath.row]["description"] as? String
+        cell.haircutImage.image = UIImage(named: "museum.jpg")
         
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = arrayHaircuts[indexPath.row]["userUUID"] as! String
+        
         return cell
     }
 
@@ -36,6 +54,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return 1
     }
     
+    // MARK: viewDidLoad()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -114,16 +134,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     } // end viewDidLoad
 
-    func loadHaircutViews(_ haircuts: [PFObject]) {
-        
-        for haircut in haircuts {
-          //  print(haircut)
-            arrayHaircuts.append(haircut as! PFObject)
-        }
-        table.reloadData()
-
-        
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
