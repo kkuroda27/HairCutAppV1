@@ -14,22 +14,27 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
    
     // MARK: Extra Variables
     var userUUID = ""
-    var haircuts = [String: String]()
+    var arrayHaircuts = [PFObject]()
+    
+    @IBOutlet var table: UITableView!
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 4
+        //print(arrayHaircuts.count)
+        return arrayHaircuts.count
         
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = "Test"
-        
+        cell.textLabel?.text = arrayHaircuts[indexPath.row]["userUUID"] as! String
         return cell
     }
 
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +58,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     
                     print(result)
                     if let userID = result.value(forKey: "userID") as? String {
-                        print(userID)
                         userUUID = userID
                     }
                 }
@@ -101,9 +105,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 print("Successfully retrieved \(objects!.count) haircuts!")
                 
                 if let objects = objects {
-                    for object in objects {
-                        print(object)
-                    }
+                    self.loadHaircutViews(objects)
+                
                 } else {}
             }
             
@@ -111,6 +114,17 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     } // end viewDidLoad
 
+    func loadHaircutViews(_ haircuts: [PFObject]) {
+        
+        for haircut in haircuts {
+          //  print(haircut)
+            arrayHaircuts.append(haircut as! PFObject)
+        }
+        table.reloadData()
+
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
