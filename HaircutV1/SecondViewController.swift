@@ -40,8 +40,44 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
         // now let's create Parse Object that we'd like to save.
         let haircut = PFObject(className: "Haircut")
         haircut["userUUID"] = userUUID
-        haircut["Title"] = titleTextField.text
-        haircut["Description"] = descriptionTextField.text
+        haircut["title"] = titleTextField.text
+        haircut["description"] = descriptionTextField.text
+        
+        // if FRONT image exists, convert it and set PFObject
+        if let imageData = imgLeft.image {
+            guard let imageDataPNG = UIImagePNGRepresentation(imageData) else {
+                print("PNG Conversion failed")
+                return
+            }
+            let imageFile = PFFile(name: "imageFront.png", data: imageDataPNG)
+            haircut["frontImage"] = imageFile
+        } else {
+            print("Front image does not exist")
+        }
+
+        // if SIDE image exists, convert it and set PFObject
+        if let imageData = imgCenter.image {
+            guard let imageDataPNG = UIImagePNGRepresentation(imageData) else {
+                print("PNG Conversion failed")
+                return
+            }
+            let imageFile = PFFile(name: "imageSide.png", data: imageDataPNG)
+            haircut["sideImage"] = imageFile
+        } else {
+            print("Side image does not exist")
+        }
+        
+        // if BACK image exists, convert it and set PFObject
+        if let imageData = imgRight.image {
+            guard let imageDataPNG = UIImagePNGRepresentation(imageData) else {
+                print("PNG Conversion failed")
+                return
+            }
+            let imageFile = PFFile(name: "imageBack.png", data: imageDataPNG)
+            haircut["backImage"] = imageFile
+        } else {
+            print("Back image does not exist")
+        }
         
         // Save in Parse.
         haircut.saveInBackground { (success, error) in
@@ -50,7 +86,6 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
                 if let ojID = haircut.objectId {
                     print(ojID)
                 }
-                
             } else {
                 print("Save failed")
             }
@@ -60,7 +95,7 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
     
     // MARK: Image Pickers
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+   @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             switch imagePicked {
