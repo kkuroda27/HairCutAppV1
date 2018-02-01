@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import CoreData
+import os.log
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
@@ -72,6 +73,44 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? "") {
+            
+        case "AddItem": // if the user is adding a new haircut, you don't need to change the appearnce of the screen.
+            os_log("Adding a new haircut.", log: OSLog.default, type: .debug)
+        
+        case "showDetail":
+            guard let mealDetailViewController = segue.destination as? SecondViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedMealCell = sender as? MyHaircutsFeedTableViewCell else {
+                fatalError("Unexpected sender: \(String(describing: sender))")
+            }
+            
+            guard let indexPath = table.indexPath(for: selectedMealCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedMeal = arrayHaircuts[indexPath.row]
+            mealDetailViewController.haircut = selectedMeal
+            
+        default:
+            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
+            
+        
+        }
+
+    }
+    
+    
     
     // MARK: viewDidLoad()
 

@@ -12,6 +12,9 @@ import CoreData
 
 class SecondViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    // for segue preparation
+    var haircut = PFObject(className: "Haircut")
+
     // MARK: Outlets
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var imgLeft: UIImageView!
@@ -47,6 +50,7 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
         dismiss(animated: true, completion: nil)
         
     }
+    
     // MARK: Extra Variables
     var imagePicked = 1
     var userUUID = ""
@@ -141,10 +145,15 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
         self.dismiss(animated: true, completion: nil)
     }
     
-    
+
+    // MARK: viewDidLoad
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        print("HIII")
+        print(haircut)
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext // we can use context to access CoreData
@@ -159,10 +168,9 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
             if results.count > 0 {
                 // we already have a UserRecord
                 for result in results as! [NSManagedObject] {
-                    
+                    print("User Record found!")
                     print(result)
                     if let userID = result.value(forKey: "userID") as? String {
-                        print(userID)
                         userUUID = userID
                     }
                 }
