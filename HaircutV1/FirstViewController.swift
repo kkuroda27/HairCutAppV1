@@ -79,7 +79,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        super.prepare(for: segue, sender: sender)
+        //super.prepare(for: segue, sender: sender)
         
         switch(segue.identifier ?? "") {
             
@@ -87,20 +87,20 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             os_log("Adding a new haircut.", log: OSLog.default, type: .debug)
         
         case "showDetail":
-            guard let mealDetailViewController = segue.destination as? SecondViewController else {
+            guard let haircutDetailViewController = segue.destination as? SecondViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
-            guard let selectedMealCell = sender as? MyHaircutsFeedTableViewCell else {
+            guard let selectedHaircutCell = sender as? MyHaircutsFeedTableViewCell else {
                 fatalError("Unexpected sender: \(String(describing: sender))")
             }
             
-            guard let indexPath = table.indexPath(for: selectedMealCell) else {
+            guard let indexPath = table.indexPath(for: selectedHaircutCell) else {
                 fatalError("The selected cell is not being displayed by the table")
             }
             
-            let selectedMeal = arrayHaircuts[indexPath.row]
-            mealDetailViewController.haircut = selectedMeal
+            let selectedHaircut = arrayHaircuts[indexPath.row]
+            haircutDetailViewController.haircut = selectedHaircut
             
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
