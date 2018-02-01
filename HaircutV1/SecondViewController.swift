@@ -19,6 +19,11 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
     @IBOutlet var imgRight: UIImageView!
     @IBOutlet var descriptionTextField: UITextField!
     
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
     // MARK: Extra Variables
     var imagePicked = 1
     var userUUID = ""
