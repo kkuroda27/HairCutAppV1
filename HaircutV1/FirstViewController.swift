@@ -41,9 +41,28 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         //let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyHaircutsFeedTableViewCell
         cell.haircutTitle.text = arrayHaircuts[indexPath.row]["title"] as? String
-        //print(arrayHaircuts[indexPath.row]["description"])
         cell.haircutDescription.text = arrayHaircuts[indexPath.row]["description"] as? String
-        cell.haircutImage.image = UIImage(named: "museum.jpg")
+        
+        if arrayHaircuts[indexPath.row]["frontImage"] != nil {
+            let tempImage = arrayHaircuts[indexPath.row]["frontImage"] as! PFFile
+            tempImage.getDataInBackground { (data, error) in
+                
+                if let imageData = data {
+                    
+                    if let imageToDisplay = UIImage(data: imageData) {
+                        
+                        cell.haircutImage.image = imageToDisplay
+                        
+                    }
+                    
+                }
+                
+            }
+        } else {
+            print("Image on row \(indexPath.row) has no image!")
+        }
+        
+        //cell.haircutImage.image = UIImage(named: "museum.jpg")
         
         
         return cell
