@@ -79,11 +79,11 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        //super.prepare(for: segue, sender: sender)
+        super.prepare(for: segue, sender: sender)
         
         switch(segue.identifier ?? "") {
             
-        case "AddItem": // if the user is adding a new haircut, you don't need to change the appearnce of the screen.
+        case "addItem": // if the user is adding a new haircut, you don't need to change the appearnce of the screen.
             os_log("Adding a new haircut.", log: OSLog.default, type: .debug)
         
         case "showDetail":

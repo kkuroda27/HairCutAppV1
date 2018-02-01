@@ -79,7 +79,7 @@
                     <navigationItem key="navigationItem" title="My Haircuts" id="W2o-EP-d8E">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="C7i-Vx-j8x">
                             <connections>
-                                <segue destination="d8J-43-z2b" kind="presentation" id="aBL-Ui-aIj"/>
+                                <segue destination="d8J-43-z2b" kind="presentation" identifier="addItem" id="aBL-Ui-aIj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -152,9 +152,73 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        print("HIII")
-        print(haircut)
+        // Handle the text field's user input through delegate callbacks.
+        titleTextField.delegate = self as? UITextFieldDelegate
         
+        // set up views if editing an existing Haircut.
+        if haircut.objectId != nil {
+            // We're editing, not creating. let's update view.
+            // update title and textField elements.
+            navigationItem.title = haircut["title"] as? String
+            titleTextField.text = haircut["title"] as? String
+            descriptionTextField.text = haircut["description"] as? String
+
+            if haircut["frontImage"] != nil {
+                let tempImage = haircut["frontImage"] as! PFFile
+                tempImage.getDataInBackground { (data, error) in
+                    if let imageData = data {
+                        if let imageToDisplay = UIImage(data: imageData) {
+                            self.imgLeft.image = imageToDisplay
+                        }
+                    }
+                }
+            } else {
+                print("frontImage doesn't exist!")
+            }
+            
+            if haircut["sideImage"] != nil {
+                let tempImage = haircut["sideImage"] as! PFFile
+                tempImage.getDataInBackground { (data, error) in
+                    if let imageData = data {
+                        if let imageToDisplay = UIImage(data: imageData) {
+                            self.imgCenter.image = imageToDisplay
+                        }
+                    }
+                }
+            } else {
+                print("sideImage doesn't exist!")
+            }
+            
+            if haircut["backImage"] != nil {
+                let tempImage = haircut["backImage"] as! PFFile
+                tempImage.getDataInBackground { (data, error) in
+                    if let imageData = data {
+                        if let imageToDisplay = UIImage(data: imageData) {
+                            self.imgRight.image = imageToDisplay
+                        }
+                    }
+                }
+            } else {
+                print("backImage doesn't exist!")
+            }
+
+            /*
+             @IBOutlet var titleTextField: UITextField!
+             @IBOutlet var imgLeft: UIImageView!
+             @IBOutlet var imgCenter: UIImageView!
+             @IBOutlet var imgRight: UIImageView!
+             @IBOutlet var descriptionTextField: UITextField!
+
+             */
+            
+        } else {
+            // we're creating a new haircut, so do nothing.
+        }
+        
+        // enable the save button only if the text field has a valid meal name.
+        // updateSaveButtonState()
+        
+        // coreData delegates
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext // we can use context to access CoreData
         
