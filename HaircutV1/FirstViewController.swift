@@ -23,14 +23,40 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: Helper Functions
 
     func loadHaircutViews(_ haircuts: [PFObject]) {
-        
+        print("running loadHaircutViews")
+        self.arrayHaircuts.removeAll()
         for haircut in haircuts {
             arrayHaircuts.append(haircut)
         }
         table.reloadData()
-        
+        print("table reloaded!")
     }
 
+    func updateTable() {
+        
+        // retrieve user's Haircuts from Parse Server using userUUID.
+        let query = PFQuery(className:"Haircut")
+        query.whereKey("userUUID", equalTo: userUUID)
+        query.findObjectsInBackground { (objects, error) in
+            
+            if error != nil {
+                // print error
+                print("Error: \(error!.localizedDescription)")
+            } else {
+                // success
+                print("Successfully retrieved \(objects!.count) haircuts!")
+                
+                if let objects = objects {
+                    self.loadHaircutViews(objects)
+                } else {
+                    print("Error occurred in updateTable()")
+                }
+            }
+            
+        } // end findObjectsInBackground
+
+    }
+    
     // MARK: Table View Functions
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -169,28 +195,14 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             print("Couldn't fetch results")
         }
         
-        // retrieve user's Haircuts from Parse Server using userUUID.
-        let query = PFQuery(className:"Haircut")
-        query.whereKey("userUUID", equalTo: userUUID)
-        query.findObjectsInBackground { (objects, error) in
-            
-            if error != nil {
-                // print error
-                print("Error: \(error!.localizedDescription)")
-            } else {
-                // success
-                print("Successfully retrieved \(objects!.count) haircuts!")
-                
-                if let objects = objects {
-                    self.loadHaircutViews(objects)
-                
-                } else {}
-            }
-            
-        } // end findObjectsInBackground
+        updateTable()
         
     } // end viewDidLoad
 
+    override func viewDidAppear(_ animated: Bool) {
+        print("view did appear")
+        updateTable()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

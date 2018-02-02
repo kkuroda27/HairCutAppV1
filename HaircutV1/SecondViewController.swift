@@ -117,6 +117,16 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
                 print("Back image does not exist")
             }
             
+            // spinner + disable activity code.
+            let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+            activityIndicator.center = self.view.center
+            activityIndicator.hidesWhenStopped = true
+            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+            self.view.addSubview(activityIndicator)
+            activityIndicator.startAnimating()
+            UIApplication.shared.beginIgnoringInteractionEvents()
+
+            
             // Save in Parse.
             haircutObject.saveInBackground { (success, error) in
                 if (success) {
@@ -125,7 +135,11 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
                         print(ojID)
                     }
                 } else {
-                    print("Save failed")
+                    print("Save failed while saving new object")
+                    print(error?.localizedDescription as Any)
+                    self.displayAlert(title: "Error!", message: (error?.localizedDescription)!)
+                    activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                 }
             }
 
@@ -182,8 +196,8 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
                             print("Back image does not exist")
                         }
 
+                        // spinner + disable activity code.
                         let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-                        
                         activityIndicator.center = self.view.center
                         activityIndicator.hidesWhenStopped = true
                         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
@@ -191,6 +205,7 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
                         activityIndicator.startAnimating()
                         UIApplication.shared.beginIgnoringInteractionEvents()
 
+                        // save object to Parse
                         object.saveInBackground { (success, error) in
                             if (success) {
                                 print("Save successful")
@@ -199,7 +214,9 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
                                 UIApplication.shared.endIgnoringInteractionEvents()
 
                             } else {
-                                print("Save failed")
+                                print("Save failed while saving editing object")
+                                print(error?.localizedDescription as Any)
+                                self.displayAlert(title: "Error!", message: (error?.localizedDescription)!)
                                 activityIndicator.stopAnimating()
                                 UIApplication.shared.endIgnoringInteractionEvents()
 
