@@ -45,8 +45,6 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
         } else {
             fatalError("The MealViewController is not inside a navigation controller.")
         }
-
-
         
         dismiss(animated: true, completion: nil)
         
@@ -70,7 +68,6 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
     
     @IBAction func saveBtn(_ sender: Any) {
         
-
         // first, we'll check if we're creating a new haircut, or we're editing an existing one.
         if isCreating == true {
             // now let's create Parse Object that we'd like to save.
@@ -133,14 +130,17 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
                     print("Save successful")
                     if let ojID = haircutObject.objectId {
                         print(ojID)
-                    }
+                    } else {}
+                    self.displayAlert(title: "Haircut Saved!", message: "Your NEW haircut has been saved successfully")
+
                 } else {
                     print("Save failed while saving new object")
                     print(error?.localizedDescription as Any)
                     self.displayAlert(title: "Error!", message: (error?.localizedDescription)!)
-                    activityIndicator.stopAnimating()
-                    UIApplication.shared.endIgnoringInteractionEvents()
                 }
+                activityIndicator.stopAnimating()
+                UIApplication.shared.endIgnoringInteractionEvents()
+
             }
 
         } else {
@@ -210,17 +210,19 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
                             if (success) {
                                 print("Save successful")
                                 self.displayAlert(title: "Haircut Saved!", message: "Your haircut has been saved successfully")
-                                activityIndicator.stopAnimating()
-                                UIApplication.shared.endIgnoringInteractionEvents()
 
+
+                                
                             } else {
                                 print("Save failed while saving editing object")
                                 print(error?.localizedDescription as Any)
                                 self.displayAlert(title: "Error!", message: (error?.localizedDescription)!)
-                                activityIndicator.stopAnimating()
-                                UIApplication.shared.endIgnoringInteractionEvents()
 
                             }
+                            activityIndicator.stopAnimating()
+                            UIApplication.shared.endIgnoringInteractionEvents()
+
+                            
                         }
                         
 
@@ -363,6 +365,18 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
             self.dismiss(animated: true, completion: nil)
+            
+            // segue transitions
+            let isPresentingInAddHaircutMode = self.presentingViewController is UINavigationController
+            if isPresentingInAddHaircutMode {
+                self.dismiss(animated: true, completion: nil)
+            } else if let owningNavigationController = self.navigationController{
+                owningNavigationController.popViewController(animated: true)
+            } else {
+                fatalError("The MealViewController is not inside a navigation controller.")
+            }
+            self.dismiss(animated: true, completion: nil)
+
         }))
         
         self.present(alert, animated: true, completion: nil)
