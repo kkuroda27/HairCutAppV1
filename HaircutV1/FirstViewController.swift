@@ -134,7 +134,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 // we already have a UserRecord
                 for result in results as! [NSManagedObject] {
                     
-                    print(result)
                     if let userID = result.value(forKey: "userID") as? String {
                         userUUID = userID
                     }

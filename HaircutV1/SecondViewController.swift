@@ -182,16 +182,31 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
                             print("Back image does not exist")
                         }
 
+                        let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
                         
+                        activityIndicator.center = self.view.center
+                        activityIndicator.hidesWhenStopped = true
+                        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+                        self.view.addSubview(activityIndicator)
+                        activityIndicator.startAnimating()
+                        UIApplication.shared.beginIgnoringInteractionEvents()
+
                         object.saveInBackground { (success, error) in
                             if (success) {
                                 print("Save successful")
                                 self.displayAlert(title: "Haircut Saved!", message: "Your haircut has been saved successfully")
+                                activityIndicator.stopAnimating()
+                                UIApplication.shared.endIgnoringInteractionEvents()
 
                             } else {
                                 print("Save failed")
+                                activityIndicator.stopAnimating()
+                                UIApplication.shared.endIgnoringInteractionEvents()
+
                             }
                         }
+                        
+
                      }
                  }
                 
@@ -309,7 +324,6 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
                 // we already have a UserRecord
                 for result in results as! [NSManagedObject] {
                     print("User Record found!")
-                    print(result)
                     if let userID = result.value(forKey: "userID") as? String {
                         userUUID = userID
                     }
