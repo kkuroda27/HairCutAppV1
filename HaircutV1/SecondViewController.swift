@@ -14,7 +14,8 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
 
     // for segue preparation
     var haircut = PFObject(className: "Haircut")
-
+    var isCreating = true
+    
     // MARK: Outlets
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var imgLeft: UIImageView!
@@ -69,62 +70,143 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
     
     @IBAction func saveBtn(_ sender: Any) {
         
-        // now let's create Parse Object that we'd like to save.
-        let haircut = PFObject(className: "Haircut")
-        haircut["userUUID"] = userUUID
-        haircut["title"] = titleTextField.text
-        haircut["description"] = descriptionTextField.text
-        
-        // if FRONT image exists, convert it and set PFObject
-        if let imageData = imgLeft.image {
-            guard let imageDataPNG = UIImagePNGRepresentation(imageData) else {
-                print("PNG Conversion failed")
-                return
-            }
-            let imageFile = PFFile(name: "imageFront.png", data: imageDataPNG)
-            haircut["frontImage"] = imageFile
-        } else {
-            print("Front image does not exist")
-        }
 
-        // if SIDE image exists, convert it and set PFObject
-        if let imageData = imgCenter.image {
-            guard let imageDataPNG = UIImagePNGRepresentation(imageData) else {
-                print("PNG Conversion failed")
-                return
-            }
-            let imageFile = PFFile(name: "imageSide.png", data: imageDataPNG)
-            haircut["sideImage"] = imageFile
-        } else {
-            print("Side image does not exist")
-        }
-        
-        // if BACK image exists, convert it and set PFObject
-        if let imageData = imgRight.image {
-            guard let imageDataPNG = UIImagePNGRepresentation(imageData) else {
-                print("PNG Conversion failed")
-                return
-            }
-            let imageFile = PFFile(name: "imageBack.png", data: imageDataPNG)
-            haircut["backImage"] = imageFile
-        } else {
-            print("Back image does not exist")
-        }
-        
-        // Save in Parse.
-        haircut.saveInBackground { (success, error) in
-            if (success) {
-                print("Save successful")
-                if let ojID = haircut.objectId {
-                    print(ojID)
+        // first, we'll check if we're creating a new haircut, or we're editing an existing one.
+        if isCreating == true {
+            // now let's create Parse Object that we'd like to save.
+            let haircutObject = PFObject(className: "Haircut")
+
+            print("Creating New Object!")
+            haircutObject["userUUID"] = userUUID
+            haircutObject["title"] = titleTextField.text
+            haircutObject["description"] = descriptionTextField.text
+            
+            // if FRONT image exists, convert it and set PFObject
+            if let imageData = imgLeft.image {
+                guard let imageDataPNG = UIImagePNGRepresentation(imageData) else {
+                    print("PNG Conversion failed")
+                    return
                 }
+                let imageFile = PFFile(name: "imageFront.png", data: imageDataPNG)
+                haircutObject["frontImage"] = imageFile
             } else {
-                print("Save failed")
+                print("Front image does not exist")
+            }
+            
+            // if SIDE image exists, convert it and set PFObject
+            if let imageData = imgCenter.image {
+                guard let imageDataPNG = UIImagePNGRepresentation(imageData) else {
+                    print("PNG Conversion failed")
+                    return
+                }
+                let imageFile = PFFile(name: "imageSide.png", data: imageDataPNG)
+                haircutObject["sideImage"] = imageFile
+            } else {
+                print("Side image does not exist")
+            }
+            
+            // if BACK image exists, convert it and set PFObject
+            if let imageData = imgRight.image {
+                guard let imageDataPNG = UIImagePNGRepresentation(imageData) else {
+                    print("PNG Conversion failed")
+                    return
+                }
+                let imageFile = PFFile(name: "imageBack.png", data: imageDataPNG)
+                haircutObject["backImage"] = imageFile
+            } else {
+                print("Back image does not exist")
+            }
+            
+            // Save in Parse.
+            haircutObject.saveInBackground { (success, error) in
+                if (success) {
+                    print("Save successful")
+                    if let ojID = haircutObject.objectId {
+                        print(ojID)
+                    }
+                } else {
+                    print("Save failed")
+                }
+            }
+
+        } else {
+            print("Editing Existing Object!")
+            if let haircutObjectId = haircut.objectId {
+                
+                 let query = PFQuery(className:"Haircut")
+                 query.getObjectInBackground(withId: haircutObjectId) {
+                 (object, error) -> Void in
+                     if error != nil {
+                        print("Error!")
+                        print(error!)
+                     } else if let object = object {
+                        print("existing object retrieval success")
+
+                        object["userUUID"] = self.userUUID
+                        object["title"] = self.titleTextField.text
+                        object["description"] = self.descriptionTextField.text
+                        
+                        // if FRONT image exists, convert it and set PFObject
+                        if let imageData = self.imgLeft.image {
+                            guard let imageDataPNG = UIImagePNGRepresentation(imageData) else {
+                                print("PNG Conversion failed")
+                                return
+                            }
+                            let imageFile = PFFile(name: "imageFront.png", data: imageDataPNG)
+                            object["frontImage"] = imageFile
+                        } else {
+                            print("Front image does not exist")
+                        }
+                        
+                        // if SIDE image exists, convert it and set PFObject
+                        if let imageData = self.imgCenter.image {
+                            guard let imageDataPNG = UIImagePNGRepresentation(imageData) else {
+                                print("PNG Conversion failed")
+                                return
+                            }
+                            let imageFile = PFFile(name: "imageSide.png", data: imageDataPNG)
+                            object["sideImage"] = imageFile
+                        } else {
+                            print("Side image does not exist")
+                        }
+                        
+                        // if BACK image exists, convert it and set PFObject
+                        if let imageData = self.imgRight.image {
+                            guard let imageDataPNG = UIImagePNGRepresentation(imageData) else {
+                                print("PNG Conversion failed")
+                                return
+                            }
+                            let imageFile = PFFile(name: "imageBack.png", data: imageDataPNG)
+                            object["backImage"] = imageFile
+                        } else {
+                            print("Back image does not exist")
+                        }
+
+                        
+                        object.saveInBackground { (success, error) in
+                            if (success) {
+                                print("Save successful")
+                                self.displayAlert(title: "Haircut Saved!", message: "Your haircut has been saved successfully")
+
+                            } else {
+                                print("Save failed")
+                            }
+                        }
+                     }
+                 }
+                
+
+                
+                
+            } else {
+                print("Something's wrong")
             }
         }
 
+       
+ 
     }
-    
+ 
     // MARK: Image Pickers
 
    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -157,6 +239,7 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
         
         // set up views if editing an existing Haircut.
         if haircut.objectId != nil {
+            isCreating = false
             // We're editing, not creating. let's update view.
             // update title and textField elements.
             navigationItem.title = haircut["title"] as? String
@@ -201,18 +284,11 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
             } else {
                 print("backImage doesn't exist!")
             }
-
-            /*
-             @IBOutlet var titleTextField: UITextField!
-             @IBOutlet var imgLeft: UIImageView!
-             @IBOutlet var imgCenter: UIImageView!
-             @IBOutlet var imgRight: UIImageView!
-             @IBOutlet var descriptionTextField: UITextField!
-
-             */
             
         } else {
             // we're creating a new haircut, so do nothing.
+            isCreating = true
+
         }
         
         // enable the save button only if the text field has a valid meal name.
@@ -249,7 +325,19 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
         
 
     }
+    
+    // MARK: helper functions
+    func displayAlert(title:String, message:String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
