@@ -19,6 +19,43 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet var table: UITableView!
     
+    // MARK: User Functions
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        // spinner + disable activity code.
+        let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        self.view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+
+        
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            if let haircutObjectId = arrayHaircuts[indexPath.row].objectId {
+                print(haircutObjectId)
+                arrayHaircuts[indexPath.row].deleteInBackground(block: { (success, error) in
+                    
+                    if error != nil {
+                        print("error deleting the object")
+                        print(error!.localizedDescription)
+                    } else {
+                        print("deleting successful!")
+                        self.arrayHaircuts.remove(at: indexPath.row)
+                        self.table.reloadData()
+                    }
+                    activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
+
+                })
+            } else {
+                print("Something's wrong")
+            }
+        }
+        
+    }
     
     // MARK: Helper Functions
 
