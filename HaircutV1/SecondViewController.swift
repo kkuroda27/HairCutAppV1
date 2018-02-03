@@ -68,6 +68,15 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
     
     @IBAction func saveBtn(_ sender: Any) {
         
+        // spinner + disable activity code.
+        let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        self.view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+
         // first, we'll check if we're creating a new haircut, or we're editing an existing one.
         if isCreating == true {
             // now let's create Parse Object that we'd like to save.
@@ -114,15 +123,6 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
                 print("Back image does not exist")
             }
             
-            // spinner + disable activity code.
-            let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-            activityIndicator.center = self.view.center
-            activityIndicator.hidesWhenStopped = true
-            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-            self.view.addSubview(activityIndicator)
-            activityIndicator.startAnimating()
-            UIApplication.shared.beginIgnoringInteractionEvents()
-
             
             // Save in Parse.
             haircutObject.saveInBackground { (success, error) in
@@ -195,15 +195,6 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
                         } else {
                             print("Back image does not exist")
                         }
-
-                        // spinner + disable activity code.
-                        let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-                        activityIndicator.center = self.view.center
-                        activityIndicator.hidesWhenStopped = true
-                        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-                        self.view.addSubview(activityIndicator)
-                        activityIndicator.startAnimating()
-                        UIApplication.shared.beginIgnoringInteractionEvents()
 
                         // save object to Parse
                         object.saveInBackground { (success, error) in
