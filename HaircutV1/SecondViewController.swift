@@ -88,41 +88,45 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
             haircutObject["description"] = descriptionTextField.text
             
             // if FRONT image exists, convert it and set PFObject
-            if let imageData = imgLeft.image {
-                guard let imageDataPNG = UIImagePNGRepresentation(imageData) else {
-                    print("PNG Conversion failed")
+            if let imageData = self.imgLeft.image {
+                guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
+                    print("JPEG Conversion failed")
                     return
                 }
-                let imageFile = PFFile(name: "imageFront.png", data: imageDataPNG)
+                let imageFile = PFFile(name: "imageFront.jpg", data: imageDataJPEG)
                 haircutObject["frontImage"] = imageFile
+                
+                var imageSize = Float(imageDataJPEG.count)
+                imageSize = imageSize/(1024*1024)
+                print("image size is \(imageSize)Mb")
             } else {
                 print("Front image does not exist")
             }
             
             // if SIDE image exists, convert it and set PFObject
-            if let imageData = imgCenter.image {
-                guard let imageDataPNG = UIImagePNGRepresentation(imageData) else {
-                    print("PNG Conversion failed")
+            if let imageData = self.imgCenter.image {
+                guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
+                    print("JPEG Conversion failed")
                     return
                 }
-                let imageFile = PFFile(name: "imageSide.png", data: imageDataPNG)
+                let imageFile = PFFile(name: "imageSide.jpg", data: imageDataJPEG)
                 haircutObject["sideImage"] = imageFile
             } else {
                 print("Side image does not exist")
             }
-            
+
             // if BACK image exists, convert it and set PFObject
-            if let imageData = imgRight.image {
-                guard let imageDataPNG = UIImagePNGRepresentation(imageData) else {
-                    print("PNG Conversion failed")
+            if let imageData = self.imgRight.image {
+                guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
+                    print("JPEG Conversion failed")
                     return
                 }
-                let imageFile = PFFile(name: "imageBack.png", data: imageDataPNG)
+                let imageFile = PFFile(name: "imageBack.jpg", data: imageDataJPEG)
                 haircutObject["backImage"] = imageFile
             } else {
                 print("Back image does not exist")
             }
-            
+
             
             // Save in Parse.
             haircutObject.saveInBackground { (success, error) in
@@ -162,35 +166,39 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
                         
                         // if FRONT image exists, convert it and set PFObject
                         if let imageData = self.imgLeft.image {
-                            guard let imageDataPNG = UIImagePNGRepresentation(imageData) else {
-                                print("PNG Conversion failed")
+                            guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
+                                print("JPEG Conversion failed")
                                 return
                             }
-                            let imageFile = PFFile(name: "imageFront.png", data: imageDataPNG)
+                            let imageFile = PFFile(name: "imageFront.jpg", data: imageDataJPEG)
                             object["frontImage"] = imageFile
+                            
+                            var imageSize = Float(imageDataJPEG.count)
+                            imageSize = imageSize/(1024*1024)
+                            print("image size is \(imageSize)Mb")
                         } else {
                             print("Front image does not exist")
                         }
                         
                         // if SIDE image exists, convert it and set PFObject
                         if let imageData = self.imgCenter.image {
-                            guard let imageDataPNG = UIImagePNGRepresentation(imageData) else {
-                                print("PNG Conversion failed")
+                            guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
+                                print("JPEG Conversion failed")
                                 return
                             }
-                            let imageFile = PFFile(name: "imageSide.png", data: imageDataPNG)
+                            let imageFile = PFFile(name: "imageSide.jpg", data: imageDataJPEG)
                             object["sideImage"] = imageFile
                         } else {
                             print("Side image does not exist")
                         }
-                        
+
                         // if BACK image exists, convert it and set PFObject
                         if let imageData = self.imgRight.image {
-                            guard let imageDataPNG = UIImagePNGRepresentation(imageData) else {
-                                print("PNG Conversion failed")
+                            guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
+                                print("JPEG Conversion failed")
                                 return
                             }
-                            let imageFile = PFFile(name: "imageBack.png", data: imageDataPNG)
+                            let imageFile = PFFile(name: "imageBack.jpg", data: imageDataJPEG)
                             object["backImage"] = imageFile
                         } else {
                             print("Back image does not exist")
