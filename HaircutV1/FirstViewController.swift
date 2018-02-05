@@ -120,7 +120,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             dateStyle: .short,
             timeStyle: .short)
         
-        cell.haircutDescription.text = dateLocalized
+        cell.haircutDescription.text = "Created at: \(dateLocalized)"
 
         
         if arrayHaircuts[indexPath.row]["frontImage"] != nil {
