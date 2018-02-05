@@ -21,7 +21,9 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
     @IBOutlet var imgLeft: UIImageView!
     @IBOutlet var imgCenter: UIImageView!
     @IBOutlet var imgRight: UIImageView!
-    @IBOutlet var descriptionTextField: UITextField!
+    
+    @IBOutlet var descriptionTextField: UITextView!
+    
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         
@@ -268,6 +270,12 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
         // Do any additional setup after loading the view, typically from a nib.
         
         // Handle the text field's user input through delegate callbacks.
+
+        descriptionTextField.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
+        descriptionTextField.layer.borderWidth = 1.0;
+        descriptionTextField.layer.cornerRadius = 5.0;
+        
+        
         titleTextField.delegate = self as? UITextFieldDelegate
         
         // set up views if editing an existing Haircut.
