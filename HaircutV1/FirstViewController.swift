@@ -105,7 +105,23 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         //let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyHaircutsFeedTableViewCell
         cell.haircutTitle.text = arrayHaircuts[indexPath.row]["title"] as? String
-        cell.haircutDescription.text = arrayHaircuts[indexPath.row]["description"] as? String
+        
+        // convert from String -> date
+        let stringDate = arrayHaircuts[indexPath.row]["dateCreated"]
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
+        guard let date = dateFormatter1.date(from: stringDate as! String) else {
+            fatalError("ERROR: Date conversion failed due to mismatched format.")
+        }
+        
+        // convert date -> localized date for viewing
+        let dateLocalized = DateFormatter.localizedString(
+            from: date,
+            dateStyle: .short,
+            timeStyle: .short)
+        
+        cell.haircutDescription.text = dateLocalized
+
         
         if arrayHaircuts[indexPath.row]["frontImage"] != nil {
             let tempImage = arrayHaircuts[indexPath.row]["frontImage"] as! PFFile

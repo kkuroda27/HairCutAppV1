@@ -89,6 +89,17 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
             haircutObject["title"] = titleTextField.text
             haircutObject["description"] = descriptionTextField.text
             
+            // convert from date -> String
+            let now = NSDate()
+            print("nowDate = ")
+            print(now)
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
+            let stringDate: String = dateFormatter.string(from: now as Date)
+
+            haircutObject["dateCreated"] = stringDate
+
             // if FRONT image exists, convert it and set PFObject
             if let imageData = self.imgLeft.image {
                 guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
@@ -269,13 +280,44 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // Handle the text field's user input through delegate callbacks.
+        // date code:
+        /*
+        // convert from date -> String
+        let now = NSDate()
+        print("nowDate = ")
+        print(now)
 
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
+        let stringDate: String = dateFormatter.string(from: now as Date)
+        print("stringDate = ")
+        print(stringDate)
+        
+        // convert from String -> date
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
+        guard let date = dateFormatter1.date(from: stringDate) else {
+            fatalError("ERROR: Date conversion failed due to mismatched format.")
+        }
+        print("date = ")
+        print(date)
+        
+        // convert date -> localized date for viewing
+        let dateLocalized = DateFormatter.localizedString(
+            from: date as! Date,
+            dateStyle: .short,
+            timeStyle: .short)
+        
+        print("localizedDate = ")
+        print(dateLocalized)
+        */
+
+        
         descriptionTextField.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
         descriptionTextField.layer.borderWidth = 1.0;
         descriptionTextField.layer.cornerRadius = 5.0;
         
-        
+        // Handle the text field's user input through delegate callbacks.
         titleTextField.delegate = self as? UITextFieldDelegate
         
         // set up views if editing an existing Haircut.
