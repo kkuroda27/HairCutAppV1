@@ -57,6 +57,29 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
     var userUUID = ""
 
     // MARK: User Interactions
+    
+    
+    @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+
+    }
+    
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
+    }
+    
     @IBAction func chooseImg(_ sender: UIButton) {
         // the sender.tag will be passed to imagePickerController to change the correct imageView.
         imagePicked = sender.tag
@@ -276,43 +299,13 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
 
     // MARK: viewDidLoad
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // date code:
-        /*
-        // convert from date -> String
-        let now = NSDate()
-        print("nowDate = ")
-        print(now)
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
-        let stringDate: String = dateFormatter.string(from: now as Date)
-        print("stringDate = ")
-        print(stringDate)
-        
-        // convert from String -> date
-        let dateFormatter1 = DateFormatter()
-        dateFormatter1.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
-        guard let date = dateFormatter1.date(from: stringDate) else {
-            fatalError("ERROR: Date conversion failed due to mismatched format.")
-        }
-        print("date = ")
-        print(date)
-        
-        // convert date -> localized date for viewing
-        let dateLocalized = DateFormatter.localizedString(
-            from: date as! Date,
-            dateStyle: .short,
-            timeStyle: .short)
-        
-        print("localizedDate = ")
-        print(dateLocalized)
-        */
-
-        
         descriptionTextField.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
         descriptionTextField.layer.borderWidth = 1.0;
         descriptionTextField.layer.cornerRadius = 5.0;

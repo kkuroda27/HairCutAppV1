@@ -107,17 +107,29 @@
                                     <action selector="chooseImg:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Jec-eL-hOl"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="frontPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="YL8-2X-FvG">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="frontPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="YL8-2X-FvG">
                                 <rect key="frame" x="16" y="243" width="99" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="M8C-Oc-kXI" appends="YES" id="adm-uv-v1N"/>
+                                </connections>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sidePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="U4q-1Q-Xx7">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sidePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="U4q-1Q-Xx7">
                                 <rect key="frame" x="137" y="243" width="99" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="kID-aa-yR5" appends="YES" id="jR7-4N-VqE"/>
+                                </connections>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="aDb-44-MJQ">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="aDb-44-MJQ">
                                 <rect key="frame" x="259" y="243" width="99" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="LCP-BQ-bXT" appends="YES" id="e8t-Wk-RKC"/>
+                                </connections>
                             </imageView>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGv-NQ-60m">
                                 <rect key="frame" x="160" y="348" width="53" height="30"/>
@@ -220,6 +232,21 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="M8C-Oc-kXI">
+                    <connections>
+                        <action selector="imageTapped:" destination="8rJ-Kc-sve" id="ueb-UD-9YR"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="kID-aa-yR5">
+                    <connections>
+                        <action selector="imageTapped:" destination="8rJ-Kc-sve" id="onb-Ct-zzQ"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="LCP-BQ-bXT">
+                    <connections>
+                        <action selector="imageTapped:" destination="8rJ-Kc-sve" id="R41-tB-VMY"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3544.8000000000002" y="-513.19340329835086"/>
         </scene>
