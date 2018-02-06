@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -99,121 +100,157 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5c-Dh-z3t">
-                                <rect key="frame" x="38" y="348" width="53" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5c-Dh-z3t">
+                                <rect key="frame" x="41.5" y="363" width="53" height="30"/>
                                 <state key="normal" title="Choose"/>
                                 <connections>
                                     <action selector="chooseImg:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Jec-eL-hOl"/>
                                 </connections>
                             </button>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="frontPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="YL8-2X-FvG">
-                                <rect key="frame" x="16" y="243" width="99" height="103"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="M8C-Oc-kXI" appends="YES" id="adm-uv-v1N"/>
-                                </connections>
-                            </imageView>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sidePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="U4q-1Q-Xx7">
-                                <rect key="frame" x="137" y="243" width="99" height="103"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="kID-aa-yR5" appends="YES" id="jR7-4N-VqE"/>
-                                </connections>
-                            </imageView>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="aDb-44-MJQ">
-                                <rect key="frame" x="259" y="243" width="99" height="103"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="LCP-BQ-bXT" appends="YES" id="e8t-Wk-RKC"/>
-                                </connections>
-                            </imageView>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGv-NQ-60m">
-                                <rect key="frame" x="160" y="348" width="53" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGv-NQ-60m">
+                                <rect key="frame" x="161" y="363" width="53" height="30"/>
                                 <state key="normal" title="Choose"/>
                                 <connections>
                                     <action selector="chooseImg:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="2oK-Fr-U5v"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAf-gD-lt6">
-                                <rect key="frame" x="282" y="348" width="53" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAf-gD-lt6">
+                                <rect key="frame" x="281" y="363" width="53" height="30"/>
                                 <state key="normal" title="Choose"/>
                                 <connections>
                                     <action selector="chooseImg:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Z77-ln-ygE"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name your haircut here!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7FC-nY-4tu">
-                                <rect key="frame" x="16" y="107" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1. Name Your Haircut:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uaa-OQ-Cmi">
-                                <rect key="frame" x="16" y="78" width="343" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Name Your Haircut:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uaa-OQ-Cmi">
+                                <rect key="frame" x="16" y="78" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2J3-eu-2nV">
-                                <rect key="frame" x="129" y="565" width="115" height="74"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2J3-eu-2nV">
+                                <rect key="frame" x="157.5" y="593" width="60" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveBtn:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="O8U-fM-dVV"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2. Upload Haircut Pictures:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpa-QG-CxH">
-                                <rect key="frame" x="16" y="177" width="343" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Upload Haircut Pictures:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpa-QG-CxH">
+                                <rect key="frame" x="16" y="176.5" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Front" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tV-U3-xzL">
-                                <rect key="frame" x="45" y="214" width="41" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Side" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HP2-YA-NAs">
-                                <rect key="frame" x="166" y="214" width="34" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Back" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hB-xO-dLF">
-                                <rect key="frame" x="291" y="214" width="38" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3. Enter Haircut Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDW-bl-6hb">
-                                <rect key="frame" x="16" y="425" width="343" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. Enter Haircut Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDW-bl-6hb">
+                                <rect key="frame" x="16" y="418" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LbB-Pz-TuJ">
-                                <rect key="frame" x="16" y="454" width="343" height="117"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LbB-Pz-TuJ">
+                                <rect key="frame" x="16" y="446" width="343" height="124"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Front" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tV-U3-xzL">
+                                <rect key="frame" x="44.5" y="205" width="36" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Side" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HP2-YA-NAs">
+                                <rect key="frame" x="172.5" y="205" width="30" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hB-xO-dLF">
+                                <rect key="frame" x="295.5" y="205" width="33.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="F4X-lt-a8j">
+                                <rect key="frame" x="10" y="243" width="355" height="105"/>
+                                <subviews>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frontPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="YL8-2X-FvG">
+                                        <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="YL8-2X-FvG" secondAttribute="height" multiplier="1:1" id="zcT-gz-WaL"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="M8C-Oc-kXI" appends="YES" id="adm-uv-v1N"/>
+                                        </connections>
+                                    </imageView>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sidePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="U4q-1Q-Xx7">
+                                        <rect key="frame" x="125" y="0.0" width="105" height="105"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="U4q-1Q-Xx7" secondAttribute="height" multiplier="1:1" id="edP-pp-TCn"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="kID-aa-yR5" appends="YES" id="jR7-4N-VqE"/>
+                                        </connections>
+                                    </imageView>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="aDb-44-MJQ">
+                                        <rect key="frame" x="250" y="0.0" width="105" height="105"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="aDb-44-MJQ" secondAttribute="height" multiplier="1:1" id="G3K-3W-XQa"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="LCP-BQ-bXT" appends="YES" id="e8t-Wk-RKC"/>
+                                        </connections>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name your haircut here!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7FC-nY-4tu">
+                                <rect key="frame" x="16" y="106" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="LbB-Pz-TuJ" secondAttribute="trailing" constant="16" id="0Zw-mC-avS"/>
+                            <constraint firstItem="PGv-NQ-60m" firstAttribute="top" secondItem="kAf-gD-lt6" secondAttribute="top" id="1Ot-lp-btT"/>
+                            <constraint firstItem="7FC-nY-4tu" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="16" id="2MV-Vu-yt7"/>
+                            <constraint firstItem="7FC-nY-4tu" firstAttribute="top" secondItem="Uaa-OQ-Cmi" secondAttribute="bottom" constant="8" id="5eP-c3-K4e"/>
+                            <constraint firstItem="PGv-NQ-60m" firstAttribute="top" secondItem="F4X-lt-a8j" secondAttribute="bottom" constant="15" id="6Fc-r6-Dhf"/>
+                            <constraint firstItem="2J3-eu-2nV" firstAttribute="top" secondItem="LbB-Pz-TuJ" secondAttribute="bottom" constant="23" id="AN7-IH-6k2"/>
+                            <constraint firstItem="tDW-bl-6hb" firstAttribute="top" secondItem="PGv-NQ-60m" secondAttribute="bottom" constant="25" id="BKb-aA-bXK"/>
+                            <constraint firstItem="PGv-NQ-60m" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="ERQ-2B-tem"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="tDW-bl-6hb" secondAttribute="trailing" constant="16" id="Eqy-cI-h1U"/>
+                            <constraint firstItem="kAf-gD-lt6" firstAttribute="centerX" secondItem="aDb-44-MJQ" secondAttribute="centerX" constant="-5" id="FjJ-i2-c8e"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="Uaa-OQ-Cmi" secondAttribute="trailing" constant="16" id="Hwj-Hc-jYL"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="Gpa-QG-CxH" secondAttribute="trailing" constant="16" id="Ixe-RJ-aNV"/>
+                            <constraint firstItem="Gpa-QG-CxH" firstAttribute="top" secondItem="7FC-nY-4tu" secondAttribute="bottom" constant="40" id="Kqs-no-VeQ"/>
+                            <constraint firstItem="Uaa-OQ-Cmi" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="14" id="LDS-lx-tro"/>
+                            <constraint firstItem="Uaa-OQ-Cmi" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="16" id="OI7-Ga-lh3"/>
+                            <constraint firstItem="LbB-Pz-TuJ" firstAttribute="top" secondItem="tDW-bl-6hb" secondAttribute="bottom" constant="7.5" id="QUr-Uc-7cR"/>
+                            <constraint firstItem="HP2-YA-NAs" firstAttribute="top" secondItem="7tV-U3-xzL" secondAttribute="top" id="RPY-7B-Qu8"/>
+                            <constraint firstItem="HP2-YA-NAs" firstAttribute="top" secondItem="7hB-xO-dLF" secondAttribute="top" id="Rjp-CP-JMX"/>
+                            <constraint firstItem="LbB-Pz-TuJ" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="16" id="TWg-ap-DJx"/>
+                            <constraint firstItem="7hB-xO-dLF" firstAttribute="centerX" secondItem="aDb-44-MJQ" secondAttribute="centerX" id="WP8-Lx-vdC"/>
+                            <constraint firstItem="HP2-YA-NAs" firstAttribute="centerX" secondItem="U4q-1Q-Xx7" secondAttribute="centerX" id="a00-Tk-R0V"/>
+                            <constraint firstItem="F4X-lt-a8j" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="10" id="bJ9-Dx-EvE"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="7FC-nY-4tu" secondAttribute="trailing" constant="16" id="bfQ-ol-gUG"/>
+                            <constraint firstItem="tDW-bl-6hb" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="16" id="d5g-9C-Rkf"/>
+                            <constraint firstItem="Gpa-QG-CxH" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="16" id="d7G-7e-Jub"/>
+                            <constraint firstItem="M5c-Dh-z3t" firstAttribute="centerX" secondItem="YL8-2X-FvG" secondAttribute="centerX" constant="5.5" id="dg4-Ub-tVw"/>
+                            <constraint firstItem="HP2-YA-NAs" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="gXm-Ig-wAx"/>
+                            <constraint firstItem="2J3-eu-2nV" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="h7l-88-HFq"/>
+                            <constraint firstItem="M5c-Dh-z3t" firstAttribute="top" secondItem="PGv-NQ-60m" secondAttribute="top" id="iJZ-Wx-qvi"/>
+                            <constraint firstItem="PGv-NQ-60m" firstAttribute="centerX" secondItem="U4q-1Q-Xx7" secondAttribute="centerX" id="mL8-fb-RU1"/>
+                            <constraint firstItem="HP2-YA-NAs" firstAttribute="top" secondItem="Gpa-QG-CxH" secondAttribute="bottom" constant="8" id="ozi-Az-0WY"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="2J3-eu-2nV" secondAttribute="bottom" constant="28" id="swv-XB-rc3"/>
+                            <constraint firstItem="7tV-U3-xzL" firstAttribute="centerX" secondItem="YL8-2X-FvG" secondAttribute="centerX" id="vYZ-mf-76O"/>
+                            <constraint firstItem="F4X-lt-a8j" firstAttribute="top" secondItem="HP2-YA-NAs" secondAttribute="bottom" constant="20" id="ySD-ER-rOh"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="F4X-lt-a8j" secondAttribute="trailing" constant="10" id="z91-cT-aXv"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create New Haircut" id="4UL-7f-fpc">
