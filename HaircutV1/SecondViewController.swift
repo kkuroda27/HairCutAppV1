@@ -84,9 +84,13 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
         let newImageView = UIImageView(image: imageView.image)
+        
+        newImageView.autoresizingMask = [.flexibleTopMargin, .flexibleHeight, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin, .flexibleWidth]
+        
+        newImageView.contentMode = UIViewContentMode.scaleAspectFit
         newImageView.frame = UIScreen.main.bounds
         newImageView.backgroundColor = .black
-        newImageView.contentMode = .scaleAspectFit
+        //newImageView.contentMode = .scaleToFill
         newImageView.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
         newImageView.addGestureRecognizer(tap)
