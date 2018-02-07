@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import CoreData
 
-class SecondViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class SecondViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
 
     // for segue preparation
     var haircut = PFObject(className: "Haircut")
@@ -58,6 +58,28 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
 
     // MARK: User Interactions
     
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        print("shouldChangeTextIn")
+        if(text == "\n"){
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    // runs when return button is pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("textFieldShouldReturn")
+
+        textField.resignFirstResponder() // shut down the keyboard associated with the textField being edited.
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // this runs whenever the user touches the main area of the app (not the keyboard).
+        print("touchesBegan")
+        self.view.endEditing(true)
+    }
     
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
@@ -311,7 +333,9 @@ class SecondViewController: UIViewController, UINavigationControllerDelegate, UI
         descriptionTextField.layer.cornerRadius = 5.0;
         
         // Handle the text field's user input through delegate callbacks.
-        titleTextField.delegate = self as? UITextFieldDelegate
+        titleTextField.delegate = self
+        descriptionTextField.delegate = self
+        
         
         // set up views if editing an existing Haircut.
         if haircut.objectId != nil {
