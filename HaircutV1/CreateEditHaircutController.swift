@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import CoreData
 
-class SecondViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
+class CreateEditHaircutController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
 
     // for segue preparation
     var haircut = PFObject(className: "Haircut")

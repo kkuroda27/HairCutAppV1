@@ -10,8 +10,8 @@
 		2A8B2F0E202278DE004F3162 /* MyHaircutsFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8B2F0D202278DE004F3162 /* MyHaircutsFeedTableViewCell.swift */; };
 		2A8B2F1020227D77004F3162 /* museum.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A8B2F0F20227D77004F3162 /* museum.jpg */; };
 		2A915A09201FD2A0001295B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A915A08201FD2A0001295B0 /* AppDelegate.swift */; };
-		2A915A0B201FD2A0001295B0 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A915A0A201FD2A0001295B0 /* FirstViewController.swift */; };
-		2A915A0D201FD2A0001295B0 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A915A0C201FD2A0001295B0 /* SecondViewController.swift */; };
+		2A915A0B201FD2A0001295B0 /* ViewMyHaircutsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A915A0A201FD2A0001295B0 /* ViewMyHaircutsController.swift */; };
+		2A915A0D201FD2A0001295B0 /* CreateEditHaircutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A915A0C201FD2A0001295B0 /* CreateEditHaircutController.swift */; };
 		2A915A10201FD2A0001295B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A915A0E201FD2A0001295B0 /* Main.storyboard */; };
 		2A915A12201FD2A0001295B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A915A11201FD2A0001295B0 /* Assets.xcassets */; };
 		2A915A15201FD2A0001295B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A915A13201FD2A0001295B0 /* LaunchScreen.storyboard */; };
@@ -25,8 +25,8 @@
 		2A8B2F0F20227D77004F3162 /* museum.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = museum.jpg; sourceTree = "<group>"; };
 		2A915A05201FD2A0001295B0 /* HaircutV1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HaircutV1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A915A08201FD2A0001295B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2A915A0A201FD2A0001295B0 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		2A915A0C201FD2A0001295B0 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		2A915A0A201FD2A0001295B0 /* ViewMyHaircutsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMyHaircutsController.swift; sourceTree = "<group>"; };
+		2A915A0C201FD2A0001295B0 /* CreateEditHaircutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditHaircutController.swift; sourceTree = "<group>"; };
 		2A915A0F201FD2A0001295B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2A915A11201FD2A0001295B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A915A14201FD2A0001295B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -71,8 +71,8 @@
 			children = (
 				2A915A08201FD2A0001295B0 /* AppDelegate.swift */,
 				2A915A3D201FDF24001295B0 /* HaircutV1.xcdatamodeld */,
-				2A915A0A201FD2A0001295B0 /* FirstViewController.swift */,
-				2A915A0C201FD2A0001295B0 /* SecondViewController.swift */,
+				2A915A0A201FD2A0001295B0 /* ViewMyHaircutsController.swift */,
+				2A915A0C201FD2A0001295B0 /* CreateEditHaircutController.swift */,
 				2A915A0E201FD2A0001295B0 /* Main.storyboard */,
 				2A8B2F0F20227D77004F3162 /* museum.jpg */,
 				2A8B2F0D202278DE004F3162 /* MyHaircutsFeedTableViewCell.swift */,
@@ -232,11 +232,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A915A0D201FD2A0001295B0 /* SecondViewController.swift in Sources */,
+				2A915A0D201FD2A0001295B0 /* CreateEditHaircutController.swift in Sources */,
 				2A8B2F0E202278DE004F3162 /* MyHaircutsFeedTableViewCell.swift in Sources */,
 				2A915A3F201FDF24001295B0 /* HaircutV1.xcdatamodeld in Sources */,
 				2A915A09201FD2A0001295B0 /* AppDelegate.swift in Sources */,
-				2A915A0B201FD2A0001295B0 /* FirstViewController.swift in Sources */,
+				2A915A0B201FD2A0001295B0 /* ViewMyHaircutsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,7 @@ import Parse
 import CoreData
 import os.log
 
-class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
     // MARK: Extra Variables
     var userUUID = ""
@@ -166,7 +166,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             os_log("Adding a new haircut.", log: OSLog.default, type: .debug)
         
         case "showDetail":
-            guard let haircutDetailViewController = segue.destination as? SecondViewController else {
+            guard let haircutDetailViewController = segue.destination as? CreateEditHaircutController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
