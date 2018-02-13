@@ -149,8 +149,24 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     public func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        var numOfSections: Int = 0
+        if arrayHaircuts.count > 0 {
+            print("# of items is NOT empty")
+            tableView.separatorStyle = .singleLine
+            numOfSections            = 1
+            tableView.backgroundView = nil
+        
+        } else {
+            print("# of items IS empty so display 'no data available' label")
+            let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            noDataLabel.text          = "You have no haircuts!"
+            noDataLabel.textColor     = UIColor.black
+            noDataLabel.textAlignment = .center
+            tableView.backgroundView  = noDataLabel
+            tableView.separatorStyle  = .none
+        }
+        return numOfSections
+
     }
     
     // MARK: - Navigation
