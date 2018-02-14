@@ -132,6 +132,7 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
         sender.view?.removeFromSuperview()
     }
     
+    /* // OLD photo gallery upload function.
     @IBAction func chooseImg(_ sender: UIButton) {
         // the sender.tag will be passed to imagePickerController to change the correct imageView.
         imagePicked = sender.tag
@@ -141,6 +142,37 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
         imagePickerController.allowsEditing = false
         
         self.present(imagePickerController, animated: true, completion: nil)
+    }
+    */
+    
+    @IBAction func chooseImage(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Please Select an Option to Add Image", message: nil, preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Camera", style: .default , handler:{ (UIAlertAction)in
+            print("User clicks Camera Button")
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Photo Gallery", style: .default , handler:{ (UIAlertAction)in
+            print("User clicks Photo Gallery Button")
+            self.imagePicked = sender.tag
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            imagePickerController.allowsEditing = false
+            
+            self.present(imagePickerController, animated: true, completion: nil)
+
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
+            print("User clicks Dismiss button")
+        }))
+        
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+
+    
     }
     
     @IBAction func saveBtn(_ sender: Any) {

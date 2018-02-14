@@ -113,21 +113,21 @@
                                 <rect key="frame" x="41.5" y="363" width="53" height="30"/>
                                 <state key="normal" title="Choose"/>
                                 <connections>
-                                    <action selector="chooseImg:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Jec-eL-hOl"/>
+                                    <action selector="chooseImage:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="DZ9-eb-nXk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGv-NQ-60m">
                                 <rect key="frame" x="161" y="363" width="53" height="30"/>
                                 <state key="normal" title="Choose"/>
                                 <connections>
-                                    <action selector="chooseImg:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="2oK-Fr-U5v"/>
+                                    <action selector="chooseImage:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Edk-6p-XOU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAf-gD-lt6">
                                 <rect key="frame" x="281" y="363" width="53" height="30"/>
                                 <state key="normal" title="Choose"/>
                                 <connections>
-                                    <action selector="chooseImg:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Z77-ln-ygE"/>
+                                    <action selector="chooseImage:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Rg1-nj-sDq"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Name Your Haircut:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uaa-OQ-Cmi">
