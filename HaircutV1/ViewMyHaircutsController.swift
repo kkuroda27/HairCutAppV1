@@ -132,7 +132,9 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
                     if let imageToDisplay = UIImage(data: imageData) {
                         
                         cell.haircutImage.image = imageToDisplay
-                        
+
+                        // this code deletes the whitespace on each imageView so there's not a huge gap on the left and right side of the imageView.
+                        cell.haircutImage.widthAnchor.constraint(equalTo: cell.haircutImage.heightAnchor, multiplier: (cell.haircutImage.image?.size.width)! / (cell.haircutImage.image?.size.height)!).isActive = true
                     }
                     
                 }
