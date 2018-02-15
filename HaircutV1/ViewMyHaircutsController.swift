@@ -13,52 +13,13 @@ import os.log
 
 class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
-    // MARK: Extra Variables
+    // MARK: - Variables + Outlets
     var userUUID = ""
     var arrayHaircuts = [PFObject]()
-    
     @IBOutlet var table: UITableView!
     
-    // MARK: User Functions
-
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
-        // spinner + disable activity code.
-        let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        self.view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        UIApplication.shared.beginIgnoringInteractionEvents()
-
-        
-        if editingStyle == UITableViewCellEditingStyle.delete {
-            if let haircutObjectId = arrayHaircuts[indexPath.row].objectId {
-                print(haircutObjectId)
-                arrayHaircuts[indexPath.row].deleteInBackground(block: { (success, error) in
-                    
-                    if error != nil {
-                        print("error deleting the object")
-                        print(error!.localizedDescription)
-                    } else {
-                        print("deleting successful!")
-                        self.arrayHaircuts.remove(at: indexPath.row)
-                        self.table.reloadData()
-                    }
-                    activityIndicator.stopAnimating()
-                    UIApplication.shared.endIgnoringInteractionEvents()
-
-                })
-            } else {
-                print("Something's wrong")
-            }
-        }
-        
-    }
     
-    // MARK: Helper Functions
-
+    // MARK: -  Helper Functions
     func loadHaircutViews(_ haircuts: [PFObject]) {
         print("running loadHaircutViews")
         self.arrayHaircuts.removeAll()
@@ -94,10 +55,46 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
 
     }
     
-    // MARK: Table View Functions
+    // MARK: - Table View Functions
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayHaircuts.count
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        // spinner + disable activity code.
+        let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        self.view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        
+        
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            if let haircutObjectId = arrayHaircuts[indexPath.row].objectId {
+                print(haircutObjectId)
+                arrayHaircuts[indexPath.row].deleteInBackground(block: { (success, error) in
+                    
+                    if error != nil {
+                        print("error deleting the object")
+                        print(error!.localizedDescription)
+                    } else {
+                        print("deleting successful!")
+                        self.arrayHaircuts.remove(at: indexPath.row)
+                        self.table.reloadData()
+                    }
+                    activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                    
+                })
+            } else {
+                print("Something's wrong")
+            }
+        }
+        
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -149,9 +146,6 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
         } else {
             print("Image on row \(indexPath.row) has no image!")
         }
-        
-        //cell.haircutImage.image = UIImage(named: "museum.jpg")
-        
         
         return cell
     }
@@ -208,14 +202,13 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
             
-        
         }
 
     }
     
     
     
-    // MARK: viewDidLoad()
+    // MARK: - viewDidLoad()
 
     override func viewDidLoad() {
         super.viewDidLoad()

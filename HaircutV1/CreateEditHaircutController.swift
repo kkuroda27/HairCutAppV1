@@ -12,188 +12,23 @@ import CoreData
 
 class CreateEditHaircutController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
 
-    // for segue preparation
+    // MARK: - Segue Preparation Variables
     var haircut = PFObject(className: "Haircut")
     var isCreating = true
     
-    // MARK: Outlets
+    // MARK: - Outlets
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var imgLeft: UIImageView!
     @IBOutlet var imgCenter: UIImageView!
     @IBOutlet var imgRight: UIImageView!
-    
     @IBOutlet var descriptionTextField: UITextView!
     
-    
-    @IBAction func cancel(_ sender: UIBarButtonItem) {
-        
-        // Code and comments here retrieved from "https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/ImplementEditAndDeleteBehavior.html#//apple_ref/doc/uid/TP40015214-CH9-SW4"
-        
-        // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
-        
-        //This code creates a Boolean value that indicates whether the view controller that presented this scene is of type UINavigationController. As the constant name isPresentingInAddHaircutMode indicates, this means that the meal detail scene is presented by the user tapping the Add button. This is because the meal detail scene is embedded in its own navigation controller when it’s presented in this manner, which means that the navigation controller is what presents it.
-
-        let isPresentingInAddHaircutMode = presentingViewController is UINavigationController
-        
-        // if this is true, then the view controller was presented by clicking the "Add" button.
-        if isPresentingInAddHaircutMode {
-            dismiss(animated: true, completion: nil)
-            
-            // The else block (below) is called if the user is editing an existing haircut. This also means that the haircut detail scene was pushed onto a navigation stack when the user selected a haircut from the haircut list. The else statement uses an if let statement to safely unwrap the view controller’s navigationController property. If the view controller has been pushed onto a navigation stack, this property contains a reference to the stack’s navigation controller.
-            
-        } else if let owningNavigationController = navigationController{
-            owningNavigationController.popViewController(animated: true)
-            
-        } else {
-            fatalError("The MealViewController is not inside a navigation controller.")
-        }
-        
-        dismiss(animated: true, completion: nil)
-        
-    }
-    
-    // MARK: Extra Variables
+    // MARK: - Extra Variables
     var imagePicked = 1
     var userUUID = ""
-
-    // MARK: User Interactions
     
-    // Move the text field in a pretty animation!
-    func moveTextView(_ textView: UITextView, moveDistance: Int, up: Bool) {
-        let moveDuration = 0.3
-        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
-        
-        UIView.beginAnimations("animateTextView", context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(moveDuration)
-        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
-        UIView.commitAnimations()
-    }
     
-    // Start Editing The Text Field
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        moveTextView(textView, moveDistance: -250, up: true)
-    }
-    
-    // Finish Editing The Text Field
-    func textViewDidEndEditing(_ textView: UITextView) {
-        moveTextView(textView, moveDistance: -250, up: false)
-    }
-    
-    // END Keyboard move up functions
-
-    // Hide the keyboard when the return key pressed
-
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        print("shouldChangeTextIn")
-        if(text == "\n"){
-            textView.resignFirstResponder()
-            return false
-        }
-        return true
-    }
-    
-    // runs when return button is pressed
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("textFieldShouldReturn")
-
-        textField.resignFirstResponder() // shut down the keyboard associated with the textField being edited.
-        return true
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // this runs whenever the user touches the main area of the app (not the keyboard).
-        print("touchesBegan")
-        self.view.endEditing(true)
-    }
-    
-    @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
-        let imageView = sender.view as! UIImageView
-        let newImageView = UIImageView(image: imageView.image)
-        
-        newImageView.autoresizingMask = [.flexibleTopMargin, .flexibleHeight, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin, .flexibleWidth]
-        
-        newImageView.contentMode = UIViewContentMode.scaleAspectFit
-        newImageView.frame = UIScreen.main.bounds
-        newImageView.backgroundColor = .black
-        //newImageView.contentMode = .scaleToFill
-        newImageView.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
-        newImageView.addGestureRecognizer(tap)
-        self.view.addSubview(newImageView)
-        self.navigationController?.isNavigationBarHidden = true
-        self.tabBarController?.tabBar.isHidden = true
-
-    }
-    
-    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
-        self.navigationController?.isNavigationBarHidden = false
-        self.tabBarController?.tabBar.isHidden = false
-        sender.view?.removeFromSuperview()
-    }
-    
-    /* // OLD photo gallery upload function.
-    @IBAction func chooseImg(_ sender: UIButton) {
-        // the sender.tag will be passed to imagePickerController to change the correct imageView.
-        imagePicked = sender.tag
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        imagePickerController.allowsEditing = false
-        
-        self.present(imagePickerController, animated: true, completion: nil)
-    }
-    */
-    
-    @IBAction func chooseImage(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Please Select an Option to Add Image", message: nil, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Camera", style: .default , handler:{ (UIAlertAction)in
-            print("User clicks Camera Button")
-            if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)){
-                print("camera is available!")
-                self.imagePicked = sender.tag
-                let imagePickerController = UIImagePickerController()
-                imagePickerController.delegate = self
-                imagePickerController.sourceType = UIImagePickerControllerSourceType.camera
-                imagePickerController.allowsEditing = false
-                
-                self.present(imagePickerController, animated: true, completion: nil)
-
-            } else {
-                print("camera is NOT available!")
-                let alert2 = UIAlertController(title: "Camera Not Found", message: "This device has no Camera", preferredStyle: UIAlertControllerStyle.alert)
-                alert2.addAction(UIKit.UIAlertAction(title: "OK", style: .default, handler:{ (UIAlertAction)in
-                    print("Alert Displayed")
-                }))
-                self.present(alert2, animated: true, completion: nil)
-            }
-            
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Photo Gallery", style: .default , handler:{ (UIAlertAction)in
-            print("User clicks Photo Gallery Button")
-            self.imagePicked = sender.tag
-            let imagePickerController = UIImagePickerController()
-            imagePickerController.delegate = self
-            imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
-            imagePickerController.allowsEditing = false
-            
-            self.present(imagePickerController, animated: true, completion: nil)
-
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
-            print("User clicks Dismiss button")
-        }))
-        
-        self.present(alert, animated: true, completion: {
-            print("completion block")
-        })
-
-    
-    }
-    
+    // MARK: - User Interactions? (Save + Cancel)
     @IBAction func saveBtn(_ sender: Any) {
         
         // spinner + disable activity code.
@@ -204,12 +39,12 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
         self.view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         UIApplication.shared.beginIgnoringInteractionEvents()
-
+        
         // first, we'll check if we're creating a new haircut, or we're editing an existing one.
         if isCreating == true {
             // now let's create Parse Object that we'd like to save.
             let haircutObject = PFObject(className: "Haircut")
-
+            
             print("Creating New Object!")
             haircutObject["userUUID"] = userUUID
             haircutObject["title"] = titleTextField.text
@@ -223,9 +58,9 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
             let stringDate: String = dateFormatter.string(from: now as Date)
-
+            
             haircutObject["dateCreated"] = stringDate
-
+            
             // if FRONT image exists, convert it and set PFObject
             if let imageData = self.imgLeft.image {
                 guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
@@ -253,7 +88,7 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
             } else {
                 print("Side image does not exist")
             }
-
+            
             // if BACK image exists, convert it and set PFObject
             if let imageData = self.imgRight.image {
                 guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
@@ -265,7 +100,7 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
             } else {
                 print("Back image does not exist")
             }
-
+            
             
             // Save in Parse.
             haircutObject.saveInBackground { (success, error) in
@@ -275,7 +110,7 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
                         print(ojID)
                     } else {}
                     self.displayAlert(title: "Haircut Saved!", message: "Your NEW haircut has been saved successfully")
-
+                    
                 } else {
                     print("Save failed while saving new object")
                     print(error?.localizedDescription as Any)
@@ -283,22 +118,22 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
                 }
                 activityIndicator.stopAnimating()
                 UIApplication.shared.endIgnoringInteractionEvents()
-
+                
             }
-
+            
         } else {
             print("Editing Existing Object!")
             if let haircutObjectId = haircut.objectId {
                 
-                 let query = PFQuery(className:"Haircut")
-                 query.getObjectInBackground(withId: haircutObjectId) {
-                 (object, error) -> Void in
-                     if error != nil {
+                let query = PFQuery(className:"Haircut")
+                query.getObjectInBackground(withId: haircutObjectId) {
+                    (object, error) -> Void in
+                    if error != nil {
                         print("Error!")
                         print(error!)
-                     } else if let object = object {
+                    } else if let object = object {
                         print("existing object retrieval success")
-
+                        
                         object["userUUID"] = self.userUUID
                         object["title"] = self.titleTextField.text
                         object["description"] = self.descriptionTextField.text
@@ -330,7 +165,7 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
                         } else {
                             print("Side image does not exist")
                         }
-
+                        
                         // if BACK image exists, convert it and set PFObject
                         if let imageData = self.imgRight.image {
                             guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
@@ -342,46 +177,192 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
                         } else {
                             print("Back image does not exist")
                         }
-
+                        
                         // save object to Parse
                         object.saveInBackground { (success, error) in
                             if (success) {
                                 print("Save successful")
                                 self.displayAlert(title: "Haircut Saved!", message: "Your haircut has been saved successfully")
-
-
                                 
                             } else {
                                 print("Save failed while saving editing object")
                                 print(error?.localizedDescription as Any)
                                 self.displayAlert(title: "Error!", message: (error?.localizedDescription)!)
-
+                                
                             }
                             activityIndicator.stopAnimating()
                             UIApplication.shared.endIgnoringInteractionEvents()
-
-                            
                         }
                         
-
-                     }
-                 }
-                
-
-                
+                        
+                    }
+                }
                 
             } else {
                 print("Something's wrong")
             }
         }
-
-       
- 
+        
     }
- 
-    // MARK: Image Pickers
+    
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        
+        // Code and comments here retrieved from "https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/ImplementEditAndDeleteBehavior.html#//apple_ref/doc/uid/TP40015214-CH9-SW4"
+        
+        // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
+        
+        //This code creates a Boolean value that indicates whether the view controller that presented this scene is of type UINavigationController. As the constant name isPresentingInAddHaircutMode indicates, this means that the meal detail scene is presented by the user tapping the Add button. This is because the meal detail scene is embedded in its own navigation controller when it’s presented in this manner, which means that the navigation controller is what presents it.
 
-   @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let isPresentingInAddHaircutMode = presentingViewController is UINavigationController
+        
+        // if this is true, then the view controller was presented by clicking the "Add" button.
+        if isPresentingInAddHaircutMode {
+            dismiss(animated: true, completion: nil)
+            
+            // The else block (below) is called if the user is editing an existing haircut. This also means that the haircut detail scene was pushed onto a navigation stack when the user selected a haircut from the haircut list. The else statement uses an if let statement to safely unwrap the view controller’s navigationController property. If the view controller has been pushed onto a navigation stack, this property contains a reference to the stack’s navigation controller.
+            
+        } else if let owningNavigationController = navigationController{
+            owningNavigationController.popViewController(animated: true)
+            
+        } else {
+            fatalError("The MealViewController is not inside a navigation controller.")
+        }
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+
+
+    
+    // MARK: - Keyboard Functions
+    
+    // Moves the textview up when user opens keyboard
+    func moveTextView(_ textView: UITextView, moveDistance: Int, up: Bool) {
+        let moveDuration = 0.3
+        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
+        
+        UIView.beginAnimations("animateTextView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(moveDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
+    }
+    
+    // Start Editing The Text Field
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        moveTextView(textView, moveDistance: -250, up: true)
+    }
+    
+    // Finish Editing The Text Field
+    func textViewDidEndEditing(_ textView: UITextView) {
+        moveTextView(textView, moveDistance: -250, up: false)
+    }
+    
+    // Hide the keyboard when the return key pressed
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        print("shouldChangeTextIn")
+        if(text == "\n"){
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    // runs when return button is pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("textFieldShouldReturn")
+
+        textField.resignFirstResponder() // shut down the keyboard associated with the textField being edited.
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // this runs whenever the user touches the main area of the app (not the keyboard).
+        print("touchesBegan")
+        self.view.endEditing(true)
+    }
+    
+    // MARK: - ImageView Functions
+
+    @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        
+        newImageView.autoresizingMask = [.flexibleTopMargin, .flexibleHeight, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin, .flexibleWidth]
+        
+        newImageView.contentMode = UIViewContentMode.scaleAspectFit
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        //newImageView.contentMode = .scaleToFill
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+
+    }
+    
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
+    }
+    
+    
+    // MARK: - Image Picker Functions
+    @IBAction func chooseImage(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Please Select an Option to Add Image", message: nil, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Camera", style: .default , handler:{ (UIAlertAction)in
+            print("User clicks Camera Button")
+            if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)){
+                print("camera is available!")
+                self.imagePicked = sender.tag
+                let imagePickerController = UIImagePickerController()
+                imagePickerController.delegate = self
+                imagePickerController.sourceType = UIImagePickerControllerSourceType.camera
+                imagePickerController.allowsEditing = false
+                
+                self.present(imagePickerController, animated: true, completion: nil)
+                
+            } else {
+                print("camera is NOT available!")
+                let alert2 = UIAlertController(title: "Camera Not Found", message: "This device has no Camera", preferredStyle: UIAlertControllerStyle.alert)
+                alert2.addAction(UIKit.UIAlertAction(title: "OK", style: .default, handler:{ (UIAlertAction)in
+                    print("Alert Displayed")
+                }))
+                self.present(alert2, animated: true, completion: nil)
+            }
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Photo Gallery", style: .default , handler:{ (UIAlertAction)in
+            print("User clicks Photo Gallery Button")
+            self.imagePicked = sender.tag
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            imagePickerController.allowsEditing = false
+            
+            self.present(imagePickerController, animated: true, completion: nil)
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
+            print("User clicks Dismiss button")
+        }))
+        
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+        
+        
+    }
+
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             switch imagePicked {
@@ -392,7 +373,7 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
             default:
                 imgLeft.image = image
             }
-
+            
         } else {
             print("There was a problem getting the image")
         }
@@ -400,7 +381,10 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
     }
     
 
-    // MARK: viewDidLoad
+
+    
+
+    // MARK: - viewDidLoad
 
     
     
@@ -506,7 +490,7 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
 
     }
     
-    // MARK: helper functions
+    // MARK: - helper functions
     func displayAlert(title:String, message:String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
