@@ -105,6 +105,12 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
         //let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyHaircutsFeedTableViewCell
         cell.haircutTitle.text = arrayHaircuts[indexPath.row]["title"] as? String
+        if cell.haircutTitle.text == "" {
+            print("empty title")
+            cell.haircutTitle.text = "No Title"
+        } else {
+            //print("not empty title, leave it be.")
+        }
         
         // convert from String -> date
         let stringDate = arrayHaircuts[indexPath.row]["dateCreated"]
