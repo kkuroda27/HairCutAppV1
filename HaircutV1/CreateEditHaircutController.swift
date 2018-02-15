@@ -146,7 +146,7 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
     */
     
     @IBAction func chooseImage(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Please Select an Option to Add Image", message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Please Select an Option to Add Image", message: nil, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Camera", style: .default , handler:{ (UIAlertAction)in
             print("User clicks Camera Button")
