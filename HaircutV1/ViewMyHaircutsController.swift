@@ -120,7 +120,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
             dateStyle: .short,
             timeStyle: .short)
         
-        cell.haircutDescription.text = "Created at: \(dateLocalized)"
+        cell.haircutDescription.text = "\(dateLocalized)"
 
         
         if arrayHaircuts[indexPath.row]["frontImage"] != nil {

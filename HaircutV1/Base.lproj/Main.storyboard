@@ -34,19 +34,25 @@
                                                     <rect key="frame" x="10" y="10" width="355" height="182.5"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="opH-1I-lQH">
-                                                            <rect key="frame" x="0.0" y="16" width="151" height="151"/>
+                                                            <rect key="frame" x="0.0" y="16" width="172.5" height="151"/>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Dwo-w6-Dlm">
-                                                            <rect key="frame" x="161" y="67" width="194" height="48.5"/>
+                                                            <rect key="frame" x="182.5" y="58" width="172.5" height="67"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haircut Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HW1-2B-WoN">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="194" height="30"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="172.5" height="30"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Created: 1/1/18, 1:21 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zai-Jr-9dU">
-                                                                    <rect key="frame" x="0.0" y="35" width="194" height="13.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kis-DO-rdf">
+                                                                    <rect key="frame" x="0.0" y="35" width="172.5" height="13.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/1/18, 1:21 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zai-Jr-9dU">
+                                                                    <rect key="frame" x="0.0" y="53.5" width="172.5" height="13.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -54,6 +60,9 @@
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="opH-1I-lQH" firstAttribute="width" secondItem="Dwo-w6-Dlm" secondAttribute="width" id="FIf-yE-Xa2"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
