@@ -150,6 +150,25 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
         
         alert.addAction(UIAlertAction(title: "Camera", style: .default , handler:{ (UIAlertAction)in
             print("User clicks Camera Button")
+            if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)){
+                print("camera is available!")
+                self.imagePicked = sender.tag
+                let imagePickerController = UIImagePickerController()
+                imagePickerController.delegate = self
+                imagePickerController.sourceType = UIImagePickerControllerSourceType.camera
+                imagePickerController.allowsEditing = false
+                
+                self.present(imagePickerController, animated: true, completion: nil)
+
+            } else {
+                print("camera is NOT available!")
+                let alert2 = UIAlertController(title: "Camera Not Found", message: "This device has no Camera", preferredStyle: UIAlertControllerStyle.alert)
+                alert2.addAction(UIKit.UIAlertAction(title: "OK", style: .default, handler:{ (UIAlertAction)in
+                    print("Alert Displayed")
+                }))
+                self.present(alert2, animated: true, completion: nil)
+            }
+            
         }))
         
         alert.addAction(UIAlertAction(title: "Photo Gallery", style: .default , handler:{ (UIAlertAction)in
