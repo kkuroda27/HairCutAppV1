@@ -18,7 +18,6 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
     var arrayHaircuts = [PFObject]()
     @IBOutlet var table: UITableView!
     
-    
     // MARK: -  Helper Functions
     func loadHaircutViews(_ haircuts: [PFObject]) {
         print("running loadHaircutViews")
@@ -63,7 +62,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        // spinner + disable activity code.
+        // enable spinner + disable activity.
         let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
@@ -72,20 +71,19 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
         activityIndicator.startAnimating()
         UIApplication.shared.beginIgnoringInteractionEvents()
         
-        
         if editingStyle == UITableViewCellEditingStyle.delete {
             if let haircutObjectId = arrayHaircuts[indexPath.row].objectId {
                 print(haircutObjectId)
                 arrayHaircuts[indexPath.row].deleteInBackground(block: { (success, error) in
                     
                     if error != nil {
-                        print("error deleting the object")
                         print(error!.localizedDescription)
                     } else {
                         print("deleting successful!")
                         self.arrayHaircuts.remove(at: indexPath.row)
                         self.table.reloadData()
                     }
+                    // disable spinner + enable activity.
                     activityIndicator.stopAnimating()
                     UIApplication.shared.endIgnoringInteractionEvents()
                     
@@ -150,6 +148,8 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
 
     public func numberOfSections(in tableView: UITableView) -> Int {
         var numOfSections: Int = 0
+        
+        // check to see if we have any items to load. If not, display "You have no haircuts!" label.
         if arrayHaircuts.count > 0 {
             print("# of items is NOT empty")
             tableView.separatorStyle = .singleLine
