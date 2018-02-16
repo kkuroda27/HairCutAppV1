@@ -197,6 +197,9 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
             let selectedHaircut = arrayHaircuts[indexPath.row]
             haircutDetailViewController.haircut = selectedHaircut
             
+        case "showHelp":
+            os_log("Showing help screen", log: OSLog.default, type: .debug)
+
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
             
