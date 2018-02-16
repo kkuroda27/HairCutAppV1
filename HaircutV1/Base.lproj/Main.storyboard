@@ -11,6 +11,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="REG-sb-MAY">
+            <objects>
+                <viewController id="P3H-8t-R0Q" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VQe-5K-Dfh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="L6b-9x-ByV"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cte-wQ-njh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1669" y="-1167"/>
+        </scene>
         <!--My Haircuts-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
@@ -96,6 +111,11 @@
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Haircuts" id="W2o-EP-d8E">
+                        <barButtonItem key="leftBarButtonItem" title="Help" id="a0k-0X-aMg">
+                            <connections>
+                                <segue destination="P3H-8t-R0Q" kind="presentation" id="Qas-mz-LH3"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="C7i-Vx-j8x">
                             <connections>
                                 <segue destination="d8J-43-z2b" kind="presentation" identifier="addItem" id="aBL-Ui-aIj"/>
