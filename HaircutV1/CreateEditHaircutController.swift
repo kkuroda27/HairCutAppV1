@@ -261,14 +261,17 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
     
     // Hide the keyboard when the return key pressed
 
+    /*
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         print("shouldChangeTextIn")
         if(text == "\n"){
-            textView.resignFirstResponder()
+            //textView.resignFirstResponder()
+            print("return was pressed")
             return false
         }
         return true
     }
+    */
     
     // runs when return button is pressed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

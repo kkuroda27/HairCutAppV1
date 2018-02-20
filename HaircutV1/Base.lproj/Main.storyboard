@@ -269,7 +269,7 @@ Cg
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2J3-eu-2nV">
-                                <rect key="frame" x="157.5" y="593" width="60" height="46"/>
+                                <rect key="frame" x="157.5" y="606" width="60" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
@@ -283,13 +283,13 @@ Cg
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. Enter Haircut Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDW-bl-6hb">
-                                <rect key="frame" x="16" y="408" width="343" height="20.5"/>
+                                <rect key="frame" x="16" y="403" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LbB-Pz-TuJ">
-                                <rect key="frame" x="16" y="436" width="343" height="134"/>
+                                <rect key="frame" x="16" y="431" width="343" height="157"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -418,9 +418,9 @@ Cg
                             <constraint firstItem="7FC-nY-4tu" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="16" id="2MV-Vu-yt7"/>
                             <constraint firstItem="7FC-nY-4tu" firstAttribute="top" secondItem="Uaa-OQ-Cmi" secondAttribute="bottom" constant="8" id="5eP-c3-K4e"/>
                             <constraint firstItem="PGv-NQ-60m" firstAttribute="top" secondItem="F4X-lt-a8j" secondAttribute="bottom" constant="15" id="6Fc-r6-Dhf"/>
-                            <constraint firstItem="2J3-eu-2nV" firstAttribute="top" secondItem="LbB-Pz-TuJ" secondAttribute="bottom" constant="23" id="AN7-IH-6k2"/>
+                            <constraint firstItem="2J3-eu-2nV" firstAttribute="top" secondItem="LbB-Pz-TuJ" secondAttribute="bottom" constant="18" id="AN7-IH-6k2"/>
                             <constraint firstItem="kAf-gD-lt6" firstAttribute="centerX" secondItem="et8-xg-VJ4" secondAttribute="centerX" id="At2-Dw-ghf"/>
-                            <constraint firstItem="tDW-bl-6hb" firstAttribute="top" secondItem="PGv-NQ-60m" secondAttribute="bottom" constant="25" id="BKb-aA-bXK"/>
+                            <constraint firstItem="tDW-bl-6hb" firstAttribute="top" secondItem="PGv-NQ-60m" secondAttribute="bottom" constant="20" id="BKb-aA-bXK"/>
                             <constraint firstItem="PGv-NQ-60m" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="ERQ-2B-tem"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="tDW-bl-6hb" secondAttribute="trailing" constant="16" id="Eqy-cI-h1U"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="Uaa-OQ-Cmi" secondAttribute="trailing" constant="16" id="Hwj-Hc-jYL"/>
@@ -443,7 +443,7 @@ Cg
                             <constraint firstItem="HP2-YA-NAs" firstAttribute="top" secondItem="Gpa-QG-CxH" secondAttribute="bottom" constant="8" id="ozi-Az-0WY"/>
                             <constraint firstItem="M5c-Dh-z3t" firstAttribute="centerX" secondItem="Fzb-yD-qDW" secondAttribute="centerX" id="ph0-Fr-ugx"/>
                             <constraint firstItem="7tV-U3-xzL" firstAttribute="centerX" secondItem="Fzb-yD-qDW" secondAttribute="centerX" id="sl4-9q-5e6"/>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="2J3-eu-2nV" secondAttribute="bottom" constant="28" id="swv-XB-rc3"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="2J3-eu-2nV" secondAttribute="bottom" constant="15" id="swv-XB-rc3"/>
                             <constraint firstItem="F4X-lt-a8j" firstAttribute="top" secondItem="HP2-YA-NAs" secondAttribute="bottom" constant="10" id="ySD-ER-rOh"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="F4X-lt-a8j" secondAttribute="trailing" constant="10" id="z91-cT-aXv"/>
                         </constraints>
