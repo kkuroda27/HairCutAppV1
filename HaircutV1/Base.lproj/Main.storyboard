@@ -20,13 +20,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQV-yl-0Te">
-                                <rect key="frame" x="20" y="94" width="375" height="354"/>
+                                <rect key="frame" x="20" y="138" width="375" height="392"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FCG-Sg-UDv">
-                                        <rect key="frame" x="20" y="10" width="375" height="334"/>
+                                        <rect key="frame" x="20" y="10" width="375" height="372"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qgj-QV-GV3">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="276"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="314"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
@@ -38,38 +38,61 @@
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
-                                                        <string key="content">
-This app is simple.  </string>
+                                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
                                                         <attributes>
                                                             <font key="NSFont" size="11" name="ArialMT"/>
                                                         </attributes>
                                                     </fragment>
-                                                    <fragment content="Viewing Haircuts: ">
-                                                        <attributes>
-                                                            <font key="NSFont" size="11" name="Arial-BoldMT"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                    <fragment content="This screen shows all your &quot;Haircut Profiles&quot; you've created. Just tap on each row to view them, or swipe left to delete.    ">
+                                                    <fragment content="Using the FreshCut App is really simple.  ">
                                                         <attributes>
                                                             <font key="NSFont" size="11" name="ArialMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
-                                                    <fragment content="Creating New Haircuts:">
+                                                    <fragment content="&quot;How can this app help me?&quot; ">
                                                         <attributes>
                                                             <font key="NSFont" size="11" name="Arial-BoldMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="If you've ever been frustrated trying to communicate the haircut you want to your barber, then this app will help you!   ">
+                                                        <attributes>
+                                                            <font key="NSFont" size="11" name="ArialMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="&quot;How do I create a haircut?&quot;">
+                                                        <attributes>
+                                                            <font key="NSFont" size="11" name="Arial-BoldMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
-                                                        <mutableString key="content"> Click the + button on the top-right corner to create a new haircut.   Creating a new haircut takes 3 easy steps!  STEP 1 - After you get a haircut, ask the barber to take 3 pictures of your hair from the front, side, and back, using this app.   STEP 2 - Also ask the barber to fill out the "description" of the haircut in barber language, then hit "save".  Next time you want to get the same great haircut, show the barber the profile and you'll have your Fresh Cut!</mutableString>
+                                                        <mutableString key="content"> Click the + button on the top-right corner to create a new haircut.   STEP 1 - After you get a haircut, ask the barber to take 3 pictures of your hair from the front, side, and back, using this app.   STEP 2 - Also ask the barber to fill out the "description" of the haircut in barber language, then hit "save".  Next time you want to get the same great haircut, show the barber the profile and you'll have your Fresh Cut!  </mutableString>
                                                         <attributes>
                                                             <font key="NSFont" size="11" name="ArialMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="&quot;How do I view my haircuts?&quot; ">
+                                                        <attributes>
+                                                            <font key="NSFont" size="11" name="Arial-BoldMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="This screen shows all your &quot;Haircut Profiles&quot; you've created. Just tap on each row to view them, or swipe left to delete. ">
+                                                        <attributes>
+                                                            <font key="NSFont" size="11" name="ArialMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                 </attributedString>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B56-j2-AhA">
-                                                <rect key="frame" x="0.0" y="296" width="375" height="38"/>
+                                                <rect key="frame" x="0.0" y="334" width="375" height="38"/>
                                                 <color key="backgroundColor" red="0.91848979724819912" green="0.92982917746113991" blue="0.92982917746113991" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <state key="normal" title="Dismiss"/>
@@ -80,7 +103,7 @@ This app is simple.  </string>
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.69802461139896366" green="0.69802461139896366" blue="0.69802461139896366" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.69802461139896366" green="0.201467529471448" blue="0.032035415990620902" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="FCG-Sg-UDv" secondAttribute="trailing" constant="20" id="TTR-pn-yb8"/>
                                     <constraint firstItem="FCG-Sg-UDv" firstAttribute="leading" secondItem="aQV-yl-0Te" secondAttribute="leading" constant="20" id="cJi-wQ-bZ9"/>
@@ -91,10 +114,10 @@ This app is simple.  </string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="aQV-yl-0Te" firstAttribute="centerY" secondItem="VQe-5K-Dfh" secondAttribute="centerY" constant="-62.5" id="3IE-Iu-n4h"/>
                             <constraint firstItem="aQV-yl-0Te" firstAttribute="leading" secondItem="VQe-5K-Dfh" secondAttribute="leading" constant="20" id="7SG-OP-mhV"/>
                             <constraint firstItem="aQV-yl-0Te" firstAttribute="centerX" secondItem="VQe-5K-Dfh" secondAttribute="centerX" id="8ig-bZ-ezN"/>
                             <constraint firstAttribute="trailing" secondItem="aQV-yl-0Te" secondAttribute="trailing" constant="20" id="LFQ-Pg-Ojg"/>
+                            <constraint firstItem="aQV-yl-0Te" firstAttribute="centerY" secondItem="VQe-5K-Dfh" secondAttribute="centerY" id="lmr-EG-b1X"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="L6b-9x-ByV"/>
                     </view>
