@@ -138,7 +138,7 @@
 				TargetAttributes = {
 					2A915A04201FD2A0001295B0 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -378,12 +378,14 @@
 			baseConfigurationReference = 25C39328D91FA36657BB1800 /* Pods-HaircutV1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3655TSR8KY;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = HaircutV1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kaikuroda.HaircutV1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaikuroda.FreshCut1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -394,12 +396,15 @@
 			baseConfigurationReference = D2447A081F1F9901125F1E1B /* Pods-HaircutV1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3655TSR8KY;
 				INFOPLIST_FILE = HaircutV1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kaikuroda.HaircutV1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaikuroda.FreshCut1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1fb07b50-9e07-4b0d-a003-cc1f53c358d1";
+				PROVISIONING_PROFILE_SPECIFIER = FreshCutAppStore;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
