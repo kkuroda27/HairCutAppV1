@@ -10,6 +10,8 @@ import UIKit
 import Parse
 import CoreData
 import os.log
+import SystemConfiguration
+
 
 class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
@@ -157,15 +159,42 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
             tableView.backgroundView = nil
         
         } else {
-            print("# of items IS empty so display 'no data available' label")
-            let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-            noDataLabel.text          = "You have no haircuts, OR you may be offline!"
-            noDataLabel.numberOfLines = 0
-            noDataLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
-            noDataLabel.textColor     = UIColor.black
-            noDataLabel.textAlignment = .center
-            tableView.backgroundView  = noDataLabel
-            tableView.separatorStyle  = .none
+            // If tableData is NOT empty, then we're definitely connected to Internet so we follow if statement above.
+            // If tableData IS empty, it's because user has no haircuts OR user is not connected to internet. Let's check now.
+            
+            // Code for checking if we have valid internet connection.
+            if Reachability.isConnectedToNetwork(){
+                print("Internet Connection Available!")
+                // load table. Then if table is empty, display a message to "CREATE HAIRCUT!"
+                print("# of items IS empty so display 'no data available' label")
+                let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+                noDataLabel.text          = "You have no haircuts! Let's create one!" // "You have no haircuts, OR you may be offline!"
+                noDataLabel.numberOfLines = 0
+                noDataLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+                noDataLabel.textColor     = UIColor.black
+                noDataLabel.textAlignment = .center
+                tableView.backgroundView  = noDataLabel
+                tableView.separatorStyle  = .none
+
+                
+            }else{
+                print("Internet Connection not Available!")
+                // Show refresh button
+                // Ask user to connect to internet and hit "refresh"
+                // perhaps disable "Create" button\?
+                
+                print("# Internet disconnected so show 'no internet' label")
+                let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+                noDataLabel.text          = "No Internet!" // "You have no haircuts, OR you may be offline!"
+                noDataLabel.numberOfLines = 0
+                noDataLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+                noDataLabel.textColor     = UIColor.black
+                noDataLabel.textAlignment = .center
+                tableView.backgroundView  = noDataLabel
+                tableView.separatorStyle  = .none
+
+                
+            }
         }
         return numOfSections
 
@@ -209,14 +238,29 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
 
     }
     
-    
+
     
     // MARK: - viewDidLoad()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-                
+        
+        // Code for checking if we have valid internet connection.
+        if Reachability.isConnectedToNetwork(){
+            print("Internet Connection Available!")
+            // load table. Then if table is empty, display a message to "CREATE HAIRCUT!"
+            
+        }else{
+            print("Internet Connection not Available!")
+            // Show refresh button
+            // Ask user to connect to internet and hit "refresh"
+            // perhaps disable "Create" button\?
+            
+        }
+
+        
+        
         // CoreData code
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext // we can use context to access CoreData
@@ -283,5 +327,42 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
     }
 
 
+}
+
+// Code to detect if internet is working. Got code from https://stackoverflow.com/questions/30743408/check-for-internet-connection-with-swift
+public class Reachability {
+    
+    class func isConnectedToNetwork() -> Bool {
+        
+        var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
+        if SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) == false {
+            return false
+        }
+        
+        /* Only Working for WIFI
+         let isReachable = flags == .reachable
+         let needsConnection = flags == .connectionRequired
+         
+         return isReachable && !needsConnection
+         */
+        
+        // Working for Cellular and WIFI
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        let ret = (isReachable && !needsConnection)
+        
+        return ret
+        
+    }
 }
 
