@@ -70,7 +70,7 @@ Cg
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
-                                                        <mutableString key="content"> Click the + button on the top-right corner to create a new haircut.   STEP 1 - After you get a haircut, ask the barber to take 3 pictures of your hair from the front, side, and back, using this app.   STEP 2 - Also ask the barber to fill out the "description" of the haircut in barber language, then hit "save".  Next time you want to get the same great haircut, show the barber the profile and you'll have your Fresh Cut!  </mutableString>
+                                                        <string key="content"> Click the + button on the top-right corner to create a new haircut.   STEP 1 - After you get a haircut, ask the barber to take 3 pictures of your hair from the front, side, and back, using this app.   STEP 2 - Also ask the barber to fill out the "description" of the haircut in barber language, then hit "save".  Next time you want to get the same great haircut, show the barber the profile and you'll have your Fresh Cut!  </string>
                                                         <attributes>
                                                             <font key="NSFont" size="11" name="ArialMT"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -530,6 +530,6 @@ Cg
         <image name="sidePlaceholder" width="60" height="70"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Asa-YH-UIR"/>
+        <segue reference="xAv-eH-gfC"/>
     </inferredMetricsTieBreakers>
 </document>
