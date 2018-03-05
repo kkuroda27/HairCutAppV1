@@ -173,8 +173,8 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
                 //btnRefresh.removeFromSuperview()
                 // load table. Then if table is empty, display a message to "CREATE HAIRCUT!"
                 print("# of items IS empty so display 'no data available' label")
-                let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-                noDataLabel.text          = "You have no haircuts! Let's create one!" // "You have no haircuts, OR you may be offline!"
+                let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+                noDataLabel.text          = "You have no haircuts! Create one using the + button above to the right!" // "You have no haircuts, OR you may be offline!"
                 noDataLabel.numberOfLines = 0
                 noDataLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
                 noDataLabel.textColor     = UIColor.black
