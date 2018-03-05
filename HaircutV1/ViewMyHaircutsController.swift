@@ -19,7 +19,10 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
     var userUUID = ""
     var arrayHaircuts = [PFObject]()
     @IBOutlet var table: UITableView!
-    
+    // refresh Button
+    let btnRefresh = UIButton(frame: CGRect(x: 100, y: 200, width: 100, height: 50))
+    //let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+
     // MARK: -  Helper Functions
     func loadHaircutViews(_ haircuts: [PFObject]) {
         print("running loadHaircutViews")
@@ -41,15 +44,17 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
             if error != nil {
                 // print error
                 print("Error: \(error!.localizedDescription)")
+                self.btnRefresh.isHidden = false
             } else {
                 // success
                 print("Successfully retrieved \(objects!.count) haircuts!")
-                
+                self.btnRefresh.isHidden = true
                 if let objects = objects {
                     self.loadHaircutViews(objects)
                 } else {
                     print("Error occurred in updateTable()")
                 }
+                
             }
             
         } // end findObjectsInBackground
@@ -165,6 +170,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
             // Code for checking if we have valid internet connection.
             if Reachability.isConnectedToNetwork(){
                 print("Internet Connection Available!")
+                //btnRefresh.removeFromSuperview()
                 // load table. Then if table is empty, display a message to "CREATE HAIRCUT!"
                 print("# of items IS empty so display 'no data available' label")
                 let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
@@ -184,15 +190,22 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
                 // perhaps disable "Create" button\?
                 
                 print("# Internet disconnected so show 'no internet' label")
+                
+                // add label above button
                 let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-                noDataLabel.text          = "No Internet!" // "You have no haircuts, OR you may be offline!"
+                noDataLabel.text          = "No Internet! Please connect and try again!" // "You have no haircuts, OR you may be offline!"
                 noDataLabel.numberOfLines = 0
                 noDataLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
                 noDataLabel.textColor     = UIColor.black
                 noDataLabel.textAlignment = .center
                 tableView.backgroundView  = noDataLabel
                 tableView.separatorStyle  = .none
-
+                
+                // Modify existing "refresh" button
+                btnRefresh.backgroundColor = UIColor.blue
+                btnRefresh.setTitle("Refresh!", for: .normal)
+                btnRefresh.addTarget(self, action: #selector(clickRefresh), for: .touchUpInside)
+                self.view.addSubview(btnRefresh)
                 
             }
         }
@@ -200,6 +213,14 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
 
     }
     
+    @objc func clickRefresh(sender: UIButton!) {
+        print("refresh button clicked")
+        sender.isHidden = true
+        //sender.removeFromSuperview()
+        updateTable()
+
+    }
+
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
