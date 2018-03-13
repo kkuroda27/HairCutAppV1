@@ -173,12 +173,24 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
                 //btnRefresh.removeFromSuperview()
                 // load table. Then if table is empty, display a message to "CREATE HAIRCUT!"
                 print("# of items IS empty so display 'no data available' label")
+
+                // Create modified text
+                let modifiedText = NSMutableAttributedString.init(string: "No haircuts here, yet! \n \n Create one using the + button above to the right!")
+                
+                // set the custom font and color for a range in string
+                modifiedText.setAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 25),
+                                          NSAttributedStringKey.foregroundColor: UIColor.black],
+                                         range: NSMakeRange(0, 22))
+                
+                // if you want, you can add more attributes for different ranges calling .setAttributes many times
+
                 let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-                noDataLabel.text          = "You have no haircuts! Create one using the + button above to the right!" // "You have no haircuts, OR you may be offline!"
+                noDataLabel.attributedText = modifiedText     // set the attributed string to the UILabel object
                 noDataLabel.numberOfLines = 0
                 noDataLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
                 noDataLabel.textColor     = UIColor.black
                 noDataLabel.textAlignment = .center
+                
                 tableView.backgroundView  = noDataLabel
                 tableView.separatorStyle  = .none
 
