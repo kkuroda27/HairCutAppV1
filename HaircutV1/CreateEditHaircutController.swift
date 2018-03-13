@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import CoreData
+import os.log
 
 class CreateEditHaircutController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
 
@@ -27,6 +28,99 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
     var imagePicked = 1
     var userUUID = ""
     
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? "") {
+            
+        case "showNextPg2": 
+            os_log("Adding a new haircut.", log: OSLog.default, type: .debug)
+            
+            print(haircut)
+            guard let pg2ViewController = segue.destination as? CreateHaircutPg2ViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            
+            // start object creation
+
+            // now let's create Parse Object that we'd like to save.
+            let haircutObject = PFObject(className: "Haircut")
+            
+            print("Creating New Object!")
+            haircutObject["userUUID"] = userUUID
+            haircutObject["title"] = titleTextField.text
+            haircutObject["description"] = descriptionTextField.text
+            
+            // convert from date -> String
+            let now = NSDate()
+            print("nowDate = ")
+            print(now)
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
+            let stringDate: String = dateFormatter.string(from: now as Date)
+            
+            haircutObject["dateCreated"] = stringDate
+            
+            // if FRONT image exists, convert it and set PFObject
+            if let imageData = self.imgLeft.image {
+                guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
+                    print("JPEG Conversion failed")
+                    return
+                }
+                let imageFile = PFFile(name: "imageFront.jpg", data: imageDataJPEG)
+                haircutObject["frontImage"] = imageFile
+                
+                var imageSize = Float(imageDataJPEG.count)
+                imageSize = imageSize/(1024*1024)
+                print("image size is \(imageSize)Mb")
+            } else {
+                print("Front image does not exist")
+            }
+            
+            // if SIDE image exists, convert it and set PFObject
+            if let imageData = self.imgCenter.image {
+                guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
+                    print("JPEG Conversion failed")
+                    return
+                }
+                let imageFile = PFFile(name: "imageSide.jpg", data: imageDataJPEG)
+                haircutObject["sideImage"] = imageFile
+            } else {
+                print("Side image does not exist")
+            }
+            
+            // if BACK image exists, convert it and set PFObject
+            if let imageData = self.imgRight.image {
+                guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
+                    print("JPEG Conversion failed")
+                    return
+                }
+                let imageFile = PFFile(name: "imageBack.jpg", data: imageDataJPEG)
+                haircutObject["backImage"] = imageFile
+            } else {
+                print("Back image does not exist")
+            }
+            
+            // end object creation
+            haircut = haircutObject
+            print(haircut)
+            pg2ViewController.haircut = haircut
+            
+        case "showHelp":
+            os_log("Showing help screen", log: OSLog.default, type: .debug)
+            
+        default:
+            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
+            
+        }
+        
+    }
+
     
     // MARK: - User Interactions? (Save + Cancel)
     @IBAction func saveBtn(_ sender: Any) {
@@ -384,12 +478,18 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
     }
     
 
+    // MARK: - viewWillAppear
 
-    
+    override func viewWillAppear(_ animated: Bool) {
+        // this code is workaround for iOS bug = "iOS UINavigationBar button remains faded after segue back" for "next" button.
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.tintAdjustmentMode = .normal
+        self.navigationController?.navigationBar.tintAdjustmentMode = .automatic
+    }
+
 
     // MARK: - viewDidLoad
 
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
