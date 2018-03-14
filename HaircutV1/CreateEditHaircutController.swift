@@ -22,7 +22,6 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
     @IBOutlet var imgLeft: UIImageView!
     @IBOutlet var imgCenter: UIImageView!
     @IBOutlet var imgRight: UIImageView!
-    @IBOutlet var descriptionTextField: UITextView!
     
     // MARK: - Extra Variables
     var imagePicked = 1
@@ -39,7 +38,6 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
         case "showNextPg2": 
             os_log("Adding a new haircut.", log: OSLog.default, type: .debug)
             
-            print(haircut)
             guard let pg2ViewController = segue.destination as? CreateHaircutPg2ViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -50,11 +48,18 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
             // now let's create Parse Object that we'd like to save.
             let haircutObject = PFObject(className: "Haircut")
             
+            if let haircutObjectId = haircut.objectId {
+                haircutObject.objectId = haircutObjectId
+                haircutObject["description"] = haircut["description"]
+                // pass on other existing fields here that we won't change in this screen.
+            } else {
+                // do nothing, since this will be a new PFObject
+            }
             print("Creating New Object!")
             haircutObject["userUUID"] = userUUID
             haircutObject["title"] = titleTextField.text
-            haircutObject["description"] = descriptionTextField.text
-            
+            haircutObject["title"] = titleTextField.text
+
             // convert from date -> String
             let now = NSDate()
             print("nowDate = ")
@@ -106,11 +111,14 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
                 print("Back image does not exist")
             }
             
-            // end object creation
             haircut = haircutObject
-            print(haircut)
-            pg2ViewController.haircut = haircut
-            
+
+        // end object creation
+        print(haircut)
+        pg2ViewController.haircut = haircut
+        pg2ViewController.isCreating = isCreating
+        
+
         case "showHelp":
             os_log("Showing help screen", log: OSLog.default, type: .debug)
             
@@ -142,7 +150,6 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
             print("Creating New Object!")
             haircutObject["userUUID"] = userUUID
             haircutObject["title"] = titleTextField.text
-            haircutObject["description"] = descriptionTextField.text
             
             // convert from date -> String
             let now = NSDate()
@@ -227,10 +234,10 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
                         print(error!)
                     } else if let object = object {
                         print("existing object retrieval success")
-                        
+                        self.haircut = object
                         object["userUUID"] = self.userUUID
                         object["title"] = self.titleTextField.text
-                        object["description"] = self.descriptionTextField.text
+                        //object["description"] = self.descriptionTextField.text
                         
                         // if FRONT image exists, convert it and set PFObject
                         if let imageData = self.imgLeft.image {
@@ -329,6 +336,7 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
 
 
     
+   /*
     // MARK: - Keyboard Functions
     
     // Moves the textview up when user opens keyboard
@@ -352,7 +360,7 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
     func textViewDidEndEditing(_ textView: UITextView) {
         moveTextView(textView, moveDistance: -250, up: false)
     }
-    
+    */
     // Hide the keyboard when the return key pressed
 
     /*
@@ -496,14 +504,8 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
         // Do any additional setup after loading the view, typically from a nib.
         
 
-        descriptionTextField.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
-        descriptionTextField.layer.borderWidth = 1.0;
-        descriptionTextField.layer.cornerRadius = 5.0;
-        
         // Handle the text field's user input through delegate callbacks.
         titleTextField.delegate = self
-        descriptionTextField.delegate = self
-        
         
         // set up views if editing an existing Haircut.
         if haircut.objectId != nil {
@@ -512,7 +514,7 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
             // update title and textField elements.
             navigationItem.title = haircut["title"] as? String
             titleTextField.text = haircut["title"] as? String
-            descriptionTextField.text = haircut["description"] as? String
+            //descriptionTextField.text = haircut["description"] as? String
 
             if haircut["frontImage"] != nil {
                 let tempImage = haircut["frontImage"] as! PFFile
