@@ -1,17 +1,20 @@
 PODS:
   - Bolts/Tasks (1.9.0)
+  - ImagePicker (3.0.0)
   - Parse (1.16.0):
     - Parse/Core (= 1.16.0)
   - Parse/Core (1.16.0):
     - Bolts/Tasks (~> 1.9)
 
 DEPENDENCIES:
+  - ImagePicker
   - Parse
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  ImagePicker: 973953c25960fe04729a7082a56194321c6762d2
   Parse: 5b36dc2c2f0a2fd82a257ae018bc3d68cf2c24e7
 
-PODFILE CHECKSUM: f775d26fa16cbb7f473ebedf8666a09d01031d97
+PODFILE CHECKSUM: 4a78e10de32d1b742a6d20b445d4fab719cdfac4
 
 COCOAPODS: 1.4.0

@@ -7,5 +7,7 @@ target 'HaircutV1' do
 
   # Pods for HaircutV1
   pod 'Parse'
+  pod 'ImagePicker'
+
 
 end

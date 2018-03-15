@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B22A66870DA52281DB97D61D5474F40E"
+               BlueprintIdentifier = "B19F389BEE7DAB5E6C7BB0F5C71E68B1"
                BuildableName = "Pods_HaircutV1.framework"
                BlueprintName = "Pods-HaircutV1"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B22A66870DA52281DB97D61D5474F40E"
+            BlueprintIdentifier = "B19F389BEE7DAB5E6C7BB0F5C71E68B1"
             BuildableName = "Pods_HaircutV1.framework"
             BlueprintName = "Pods-HaircutV1"
             ReferencedContainer = "container:Pods.xcodeproj">
