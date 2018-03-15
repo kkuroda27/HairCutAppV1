@@ -40,6 +40,16 @@ class CreateHaircutPg3ViewController: UIViewController {
         // Before we save, let's update the haircut object with the variables on Screen 3, before we update an existing object OR create a new one.
         modelController.haircut["salonCity"] = salonCityTextField.text
         modelController.haircut["haircutName"] = haircutNameTextField.text
+        
+        // format date and store.
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        if(datePicker == nil){
+        } else {
+            modelController.haircut["dateSet"] = dateFormatter.string(from: datePicker.date)
+        }
+
 
         //modelController.haircut["testDate"] =
 
@@ -95,7 +105,7 @@ class CreateHaircutPg3ViewController: UIViewController {
                         // screen 3
                         object["salonCity"] = self.modelController.haircut["salonCity"]
                         object["haircutName"] = self.modelController.haircut["haircutName"]
-
+                        object["dateSet"] = self.modelController.haircut["dateSet"]
 
                         print("STATUS: Save Updated existing PFObject")
 
@@ -130,12 +140,26 @@ class CreateHaircutPg3ViewController: UIViewController {
     override func willMove(toParentViewController parent: UIViewController?) {
         super.willMove(toParentViewController: parent)
         print("FUNCTION START: willMove - to page 2")
+
         
         if parent == nil {
             // The view is being removed from the stack, so call your function here
             modelController.haircut["salonCity"] = salonCityTextField.text
             modelController.haircut["haircutName"] = haircutNameTextField.text
+            
+            // format date and store.
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .none
+            if(datePicker == nil){
+            } else {
+                //print(dateFormatter.string(from: datePicker.date))
+                modelController.haircut["dateSet"] = dateFormatter.string(from: datePicker.date)
+            }
+
             modelController.haircut = modelController.haircut
+
+            
         }
     }
 
@@ -160,6 +184,18 @@ class CreateHaircutPg3ViewController: UIViewController {
             haircutNameTextField.text = modelController.haircut["haircutName"] as? String
         }
 
+        if modelController.haircut["dateSet"] == nil {
+            // do nothing
+        } else {
+            // Convert dateSet string back to date format and set it to Date Picker.
+            // format date and store.
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .none
+
+            let date = dateFormatter.date(from: modelController.haircut["dateSet"] as! String)
+            datePicker.setDate(date!, animated: true)
+        }
 
 
     }
