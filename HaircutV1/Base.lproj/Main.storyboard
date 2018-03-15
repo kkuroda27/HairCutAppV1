@@ -245,7 +245,7 @@ Cg
                                 <rect key="frame" x="36" y="352.5" width="53" height="30"/>
                                 <state key="normal" title="Choose"/>
                                 <connections>
-                                    <action selector="chooseImage:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="DZ9-eb-nXk"/>
+                                    <action selector="testChooseImage:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="pCE-Xf-Dcp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGv-NQ-60m">

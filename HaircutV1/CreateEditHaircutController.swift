@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import CoreData
 import os.log
+import ALCameraViewController
 
 class CreateEditHaircutController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
 
@@ -308,6 +309,51 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = false
         sender.view?.removeFromSuperview()
+    }
+    
+    // MARK: - [TEST] Image Picker Functions
+
+    
+    @IBAction func testChooseImage(_ sender: UIButton) {
+    
+        print("User clicks TEST Camera Button")
+        
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)){
+            print("TEST camera is available!")
+            self.imagePicked = sender.tag
+            //let imagePickerController = UIImagePickerController()
+            let cameraViewController = CameraViewController { [weak self] image, asset in
+                // Do something with your image here.
+                
+                if let image = image {
+                    switch self?.imagePicked {
+                    case 2?:
+                        self?.imgCenter.image = image
+                    case 3?:
+                        self?.imgRight.image = image
+                    default:
+                        self?.imgLeft.image = image
+                    }
+                    
+                } else {
+                    print("There was a problem getting the image")
+                }
+                
+                self?.dismiss(animated: true, completion: nil)
+            }
+            
+            present(cameraViewController, animated: true, completion: nil)
+
+
+        } else {
+            print("TEST camera is NOT available!")
+            let alert2 = UIAlertController(title: "Camera Not Found", message: "This device has no Camera", preferredStyle: UIAlertControllerStyle.alert)
+            alert2.addAction(UIKit.UIAlertAction(title: "OK", style: .default, handler:{ (UIAlertAction)in
+                print("Alert Displayed")
+            }))
+            self.present(alert2, animated: true, completion: nil)
+        }
+
     }
     
     
