@@ -14,11 +14,20 @@ import os.log
 class CreateHaircutPg3ViewController: UIViewController {
 
     // MARK: - Segue Preparation Variables
-    var haircut = PFObject(className: "Haircut")
     var isCreating = true
+    var modelController: ModelController!
+
+    // MARK: - Outlets
+    @IBOutlet var datePicker: UIDatePicker!
+    @IBOutlet var salonCityTextField: UITextField!
+    @IBOutlet var haircutNameTextField: UITextField!
+    
+    
+    // MARK: - User Interactions? (Save)
 
     @IBAction func saveBtn(_ sender: Any) {
-    
+        print("FUNCTION START: saveBtn")
+
         // spinner + disable activity code.
         let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         activityIndicator.center = self.view.center
@@ -28,23 +37,26 @@ class CreateHaircutPg3ViewController: UIViewController {
         activityIndicator.startAnimating()
         UIApplication.shared.beginIgnoringInteractionEvents()
 
-        // Save in Parse.
-        // first, we'll check if we're creating a new haircut, or we're editing an existing one.
-
+        // Before we save, let's update the haircut object with the variables on Screen 3, before we update an existing object OR create a new one.
+        modelController.haircut["salonCity"] = salonCityTextField.text
+        
+        // Save or Update in Parse.
+        // Let's check if we're creating a new haircut, or we're editing an existing one.
+        
         if isCreating == true {
+            print("STATUS: Saving New PFObject!")
 
-            haircut.saveInBackground { (success, error) in
-                print(self.haircut)
+            modelController.haircut.saveInBackground { (success, error) in
                 if (success) {
-                    print("Save successful")
-                    if let ojID = self.haircut.objectId {
+                    print("STATUS: New Object Save successful")
+                    if let ojID = self.modelController.haircut.objectId {
                         print(ojID)
                     } else {}
                     self.displayAlert(title: "Haircut Saved!", message: "Your NEW haircut has been saved successfully")
                     
                 } else {
-                    print("Save failed while saving new object")
-                    print(error?.localizedDescription as Any)
+                    print("STATUS: New Object Save UNsuccessful")
+                    print("ERROR: \(error?.localizedDescription as Any)")
                     self.displayAlert(title: "Error!", message: (error?.localizedDescription)!)
                 }
                 activityIndicator.stopAnimating()
@@ -53,59 +65,91 @@ class CreateHaircutPg3ViewController: UIViewController {
             }
 
         } else {
-            print("Editing Existing Object!")
-            print(haircut)
-            if let haircutObjectId = haircut.objectId {
+            print("STATUS: Editing Existing PFObject!")
+            if let haircutObjectId = modelController.haircut.objectId {
                 
                 let query = PFQuery(className:"Haircut")
                 query.getObjectInBackground(withId: haircutObjectId) {
                     (object, error) -> Void in
                     if error != nil {
-                        print("Error!")
-                        print(error!)
+                        print("STATUS: Existing Object retrieval UNsuccessful")
+                        print("ERROR: \(error!)")
                     } else if let object = object {
-                        print("existing object retrieval success")
-                        object["userUUID"] = self.haircut["userUUID"]
-                        object["title"] = self.haircut["title"]
-                        object["description"] = self.haircut["description"]
-                        object["frontImage"] = self.haircut["frontImage"]
-                        object["sideImage"] = self.haircut["sideImage"]
-                        object["backImage"] = self.haircut["backImage"]
+                        print("STATUS: Existing PFObject retrieval successful")
+                        // let's now update existing fields.
+                        print("STATUS: Updating fields in existing PFObject.")
                         
-                        // save object to Parse
+                        // screen 1
+                        object["userUUID"] = self.modelController.haircut["userUUID"]
+                        object["frontImage"] = self.modelController.haircut["frontImage"]
+                        object["sideImage"] = self.modelController.haircut["sideImage"]
+                        object["backImage"] = self.modelController.haircut["backImage"]
+
+                        // screen 2
+                        object["description"] = self.modelController.haircut["description"]
+                        
+                        // screen 3
+                        object["salonCity"] = self.modelController.haircut["salonCity"]
+                        object["title"] = self.modelController.haircut["title"]
+
+
+                        print("STATUS: Save Updated existing PFObject")
+
                         object.saveInBackground { (success, error) in
                             if (success) {
-                                print("Save successful")
+                                print("STATUS: Updating existing PFObject succcessful!")
                                 self.displayAlert(title: "Haircut Saved!", message: "Your haircut has been saved successfully")
                                 
                             } else {
-                                print("Save failed while saving editing object")
-                                print(error?.localizedDescription as Any)
+                                print("STATUS: Updating existing PFObject UNsucccessful!")
+                                print("ERROR: \(error?.localizedDescription as Any)")
                                 self.displayAlert(title: "Error!", message: (error?.localizedDescription)!)
                                 
                             }
+                            // resume ignored interactions and remove spinner.
                             activityIndicator.stopAnimating()
                             UIApplication.shared.endIgnoringInteractionEvents()
                         }
-                        
                         
                     }
                 }
                 
             } else {
-                print("Something's wrong")
+                print("ERROR: [if let haircutObjectId = modelController.haircut.objectId] FAILED")
             }
         }
     
-    
     }
     
+    // MARK: - willMove
+    
+    override func willMove(toParentViewController parent: UIViewController?) {
+        super.willMove(toParentViewController: parent)
+        print("FUNCTION START: willMove - to page 2")
+        
+        if parent == nil {
+            // The view is being removed from the stack, so call your function here
+            modelController.haircut["salonCity"] = salonCityTextField.text
+            modelController.haircut = modelController.haircut
+        }
+    }
+
+    // MARK: - viewDidLoad
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("FUNCTION START: viewDidLoad - CreateHaircutPg3ViewController.swift")
+        print("modelController.haircut = \(modelController.haircut)")
 
-        print("SCREEN THREE!!")
-        print(haircut)
-        // Do any additional setup after loading the view.
+        // Let's update existing views if 1. we're editing or 2. we went back to another view during creating and then came back.
+
+        if modelController.haircut["salonCity"] == nil {
+            // do nothing
+        } else {
+            salonCityTextField.text = modelController.haircut["salonCity"] as? String
+        }
+
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -137,7 +181,6 @@ class CreateHaircutPg3ViewController: UIViewController {
                         return
                     }
                 }
-                //owningNavigationController.popViewController(animated: true)
 
             } else {
                 fatalError("The MealViewController is not inside a navigation controller.")

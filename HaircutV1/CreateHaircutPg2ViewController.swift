@@ -14,11 +14,10 @@ import os.log
 class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
 
     // MARK: - Segue Preparation Variables
-    var haircut = PFObject(className: "Haircut")
     var isCreating = true
+    var modelController: ModelController!
 
     // MARK: - Outlets
-    
     @IBOutlet var descriptionTextField: UITextView!
 
     // MARK: - Keyboard Functions
@@ -54,34 +53,29 @@ class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        print("FUNCTION START: prepareForSegue")
+
         super.prepare(for: segue, sender: sender)
         
         switch(segue.identifier ?? "") {
             
         case "showNextPg3":
-            os_log("Adding a new haircut.", log: OSLog.default, type: .debug)
-            
-            print(haircut)
+            //os_log("Adding a new haircut.", log: OSLog.default, type: .debug)
+            print("STATUS: Preparing Segue to Page 3")
+
             guard let pg3ViewController = segue.destination as? CreateHaircutPg3ViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
+            print("STATUS: Begin adding to modelController.haircut...")
+
+            modelController.haircut["description"] = descriptionTextField.text
             
-            
-            // start object editing
-            
-            print("Adding to New Object!")
-            haircut["description"] = descriptionTextField.text
-            
-            
-            // end object creation
-            print(haircut)
-            pg3ViewController.haircut = haircut
+            pg3ViewController.modelController = modelController
             pg3ViewController.isCreating = isCreating
 
-            
-        case "showHelp":
-            os_log("Showing help screen", log: OSLog.default, type: .debug)
+            print("STATUS: Finished adding to modelController.haircut...")
+            print("PRINT -> POST - modelController.haircut \(modelController.haircut)")
+
             
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
@@ -90,9 +84,25 @@ class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
         
     }
 
+    // MARK: - willMove
+
+    override func willMove(toParentViewController parent: UIViewController?) {
+        super.willMove(toParentViewController: parent)
+        print("FUNCTION START: willMove - to page 1")
+
+        if parent == nil {
+            // The view is being removed from the stack, so call your function here
+            modelController.haircut["description"] = descriptionTextField.text
+            modelController.haircut = modelController.haircut
+        }
+    }
+
+    
     // MARK: - viewWillAppear
     
     override func viewWillAppear(_ animated: Bool) {
+        print("FUNCTION START: viewWillAppear - CreateHaircutPg2ViewController.swift")
+
         // this code is workaround for iOS bug = "iOS UINavigationBar button remains faded after segue back" for "next" button.
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.tintAdjustmentMode = .normal
@@ -105,8 +115,9 @@ class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("SCREEN TWO!")
-        print(haircut)
+        print("FUNCTION START: viewDidLoad - CreateHaircutPg2ViewController.swift")
+        print("modelController.haircut = \(modelController.haircut)")
+        
         // modify textView for description field.
         descriptionTextField.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
         descriptionTextField.layer.borderWidth = 1.0;
@@ -115,19 +126,13 @@ class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
         // Handle the text field's user input through delegate callbacks.
         descriptionTextField.delegate = self
 
-        if haircut.objectId != nil {
-            // We're editing, not creating. let's update view.
-            // update title and textField elements.
-            //navigationItem.title = haircut["title"] as? String
-            descriptionTextField.text = haircut["description"] as? String
-            
-            
+        // Let's update existing views if 1. we're editing or 2. we went back to another view during creating and then came back.
+        if modelController.haircut["description"] == nil {
+            // do nothing
         } else {
-            // we're creating a new haircut, so do nothing.
-            
+            descriptionTextField.text = modelController.haircut["description"] as? String
         }
 
-    
     }
 
     override func didReceiveMemoryWarning() {
@@ -135,15 +140,4 @@ class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

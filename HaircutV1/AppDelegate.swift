@@ -14,10 +14,9 @@ import Parse
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        // parse stuff
         let configuration = ParseClientConfiguration {
             $0.applicationId = "214ad04b2f476d6e1b9d132b477469c85c9910b3"
             $0.clientKey = "9a2d29a80b4b97abf44d98ec4fb848261752bf47"

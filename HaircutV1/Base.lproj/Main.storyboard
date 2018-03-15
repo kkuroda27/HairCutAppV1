@@ -268,14 +268,6 @@ Cg
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2J3-eu-2nV">
-                                <rect key="frame" x="157.5" y="606" width="60" height="46"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="saveBtn:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="O8U-fM-dVV"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take Headshots:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpa-QG-CxH">
                                 <rect key="frame" x="16" y="176.5" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -418,13 +410,11 @@ Cg
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="7FC-nY-4tu" secondAttribute="trailing" constant="16" id="bfQ-ol-gUG"/>
                             <constraint firstItem="Gpa-QG-CxH" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="16" id="d7G-7e-Jub"/>
                             <constraint firstItem="HP2-YA-NAs" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="gXm-Ig-wAx"/>
-                            <constraint firstItem="2J3-eu-2nV" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="h7l-88-HFq"/>
                             <constraint firstItem="M5c-Dh-z3t" firstAttribute="top" secondItem="PGv-NQ-60m" secondAttribute="top" id="iJZ-Wx-qvi"/>
                             <constraint firstItem="7hB-xO-dLF" firstAttribute="centerX" secondItem="et8-xg-VJ4" secondAttribute="centerX" id="ke4-HK-fH8"/>
                             <constraint firstItem="HP2-YA-NAs" firstAttribute="top" secondItem="Gpa-QG-CxH" secondAttribute="bottom" constant="8" id="ozi-Az-0WY"/>
                             <constraint firstItem="M5c-Dh-z3t" firstAttribute="centerX" secondItem="Fzb-yD-qDW" secondAttribute="centerX" id="ph0-Fr-ugx"/>
                             <constraint firstItem="7tV-U3-xzL" firstAttribute="centerX" secondItem="Fzb-yD-qDW" secondAttribute="centerX" id="sl4-9q-5e6"/>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="2J3-eu-2nV" secondAttribute="bottom" constant="15" id="swv-XB-rc3"/>
                             <constraint firstItem="F4X-lt-a8j" firstAttribute="top" secondItem="HP2-YA-NAs" secondAttribute="bottom" constant="10" id="ySD-ER-rOh"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="F4X-lt-a8j" secondAttribute="trailing" constant="10" id="z91-cT-aXv"/>
                         </constraints>
@@ -579,6 +569,11 @@ Cg
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="datePicker" destination="R3k-Kx-NvQ" id="dIC-nN-DvQ"/>
+                        <outlet property="haircutNameTextField" destination="lp9-eg-ETg" id="9eN-Pl-gY9"/>
+                        <outlet property="salonCityTextField" destination="uaa-ia-u5Z" id="LNb-gh-tW8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h65-Ec-fi3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -631,6 +626,6 @@ Cg
         <image name="sidePlaceholder" width="60" height="70"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xAv-eH-gfC"/>
+        <segue reference="Asa-YH-UIR"/>
     </inferredMetricsTieBreakers>
 </document>

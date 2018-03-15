@@ -244,8 +244,20 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
             
         case "addItem": // if the user is adding a new haircut, you don't need to change the appearnce of the screen.
             os_log("Adding a new haircut.", log: OSLog.default, type: .debug)
+            print("SEGUE1")
+            print(segue.destination)
+            guard let destinationNavigationController = segue.destination as? UINavigationController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+
+            let newHaircutVC = destinationNavigationController.topViewController as? CreateEditHaircutController
+            newHaircutVC?.modelController = ModelController()
         
         case "showDetail":
+            print("SEGUE2")
+
+            print(segue.destination)
+
             guard let haircutDetailViewController = segue.destination as? CreateEditHaircutController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -259,7 +271,9 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
             }
             
             let selectedHaircut = arrayHaircuts[indexPath.row]
-            haircutDetailViewController.haircut = selectedHaircut
+            //haircutDetailViewController.haircut = selectedHaircut
+            haircutDetailViewController.modelController = ModelController()
+            haircutDetailViewController.modelController.haircut = selectedHaircut
             
         case "showHelp":
             os_log("Showing help screen", log: OSLog.default, type: .debug)
