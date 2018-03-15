@@ -178,8 +178,18 @@ class CreateHaircutPg3ViewController: UIViewController {
             salonCityTextField.text = modelController.haircut["salonCity"] as? String
         }
         
+        // print("STATUS: Set haircut title to Haircut: $date ONLY IF haircutname doesn't exist. ")
         if modelController.haircut["haircutName"] == nil {
-            // do nothing
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .none
+            var dateString = "Haircut: Date"
+            if(datePicker == nil){
+            } else {
+                dateString = dateFormatter.string(from: datePicker.date)
+            }
+            haircutNameTextField.text = "Haircut: \(String(describing: dateString))"
+
         } else {
             haircutNameTextField.text = modelController.haircut["haircutName"] as? String
         }

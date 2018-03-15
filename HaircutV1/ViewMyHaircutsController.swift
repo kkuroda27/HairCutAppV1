@@ -106,7 +106,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
     
         //let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyHaircutsFeedTableViewCell
-        cell.haircutTitle.text = arrayHaircuts[indexPath.row]["title"] as? String
+        cell.haircutTitle.text = arrayHaircuts[indexPath.row]["haircutName"] as? String
         if cell.haircutTitle.text == "" {
             print("empty title")
             cell.haircutTitle.text = "No Title"
