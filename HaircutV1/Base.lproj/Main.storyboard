@@ -437,7 +437,7 @@ Cg
                         <outlet property="imgCenter" destination="U4q-1Q-Xx7" id="6jw-qP-MDh"/>
                         <outlet property="imgLeft" destination="YL8-2X-FvG" id="brY-Lc-sa1"/>
                         <outlet property="imgRight" destination="aDb-44-MJQ" id="oyo-XQ-r5m"/>
-                        <outlet property="titleTextField" destination="7FC-nY-4tu" id="ywc-gT-lBW"/>
+                        <outlet property="stylistNameTextField" destination="7FC-nY-4tu" id="hJP-PW-joX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

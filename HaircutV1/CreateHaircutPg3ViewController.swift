@@ -39,7 +39,10 @@ class CreateHaircutPg3ViewController: UIViewController {
 
         // Before we save, let's update the haircut object with the variables on Screen 3, before we update an existing object OR create a new one.
         modelController.haircut["salonCity"] = salonCityTextField.text
-        
+        modelController.haircut["haircutName"] = haircutNameTextField.text
+
+        //modelController.haircut["testDate"] =
+
         // Save or Update in Parse.
         // Let's check if we're creating a new haircut, or we're editing an existing one.
         
@@ -81,6 +84,7 @@ class CreateHaircutPg3ViewController: UIViewController {
                         
                         // screen 1
                         object["userUUID"] = self.modelController.haircut["userUUID"]
+                        object["stylistName"] = self.modelController.haircut["stylistName"]
                         object["frontImage"] = self.modelController.haircut["frontImage"]
                         object["sideImage"] = self.modelController.haircut["sideImage"]
                         object["backImage"] = self.modelController.haircut["backImage"]
@@ -90,7 +94,7 @@ class CreateHaircutPg3ViewController: UIViewController {
                         
                         // screen 3
                         object["salonCity"] = self.modelController.haircut["salonCity"]
-                        object["title"] = self.modelController.haircut["title"]
+                        object["haircutName"] = self.modelController.haircut["haircutName"]
 
 
                         print("STATUS: Save Updated existing PFObject")
@@ -130,6 +134,7 @@ class CreateHaircutPg3ViewController: UIViewController {
         if parent == nil {
             // The view is being removed from the stack, so call your function here
             modelController.haircut["salonCity"] = salonCityTextField.text
+            modelController.haircut["haircutName"] = haircutNameTextField.text
             modelController.haircut = modelController.haircut
         }
     }
@@ -148,6 +153,13 @@ class CreateHaircutPg3ViewController: UIViewController {
         } else {
             salonCityTextField.text = modelController.haircut["salonCity"] as? String
         }
+        
+        if modelController.haircut["haircutName"] == nil {
+            // do nothing
+        } else {
+            haircutNameTextField.text = modelController.haircut["haircutName"] as? String
+        }
+
 
 
     }

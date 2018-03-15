@@ -18,7 +18,7 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
     var modelController: ModelController!
 
     // MARK: - Outlets
-    @IBOutlet var titleTextField: UITextField!
+    @IBOutlet var stylistNameTextField: UITextField!
     @IBOutlet var imgLeft: UIImageView!
     @IBOutlet var imgCenter: UIImageView!
     @IBOutlet var imgRight: UIImageView!
@@ -68,7 +68,7 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
 
             }
             
-            modelController.haircut["title"] = titleTextField.text
+            modelController.haircut["stylistName"] = stylistNameTextField.text
 
             // if FRONT image exists, convert it and set PFObject
             if let imageData = self.imgLeft.image {
@@ -401,15 +401,15 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
         print("modelController.haircut = \(modelController.haircut)")
 
         // Handle the text field's user input through delegate callbacks.
-        titleTextField.delegate = self
+        stylistNameTextField.delegate = self
         
         // set up views if editing an existing Haircut.
         if modelController.haircut.objectId != nil {
             isCreating = false
             // We're editing, not creating. let's update view.
             // update title and textField elements.
-            navigationItem.title = modelController.haircut["title"] as? String
-            titleTextField.text = modelController.haircut["title"] as? String
+            navigationItem.title = modelController.haircut["haircutName"] as? String
+            stylistNameTextField.text = modelController.haircut["stylistName"] as? String
 
             if modelController.haircut["frontImage"] != nil {
                 let tempImage = modelController.haircut["frontImage"] as! PFFile
