@@ -130,6 +130,18 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
         
         cell.haircutDescription.text = "\(dateLocalized)"
         
+        if let textDateSet = arrayHaircuts[indexPath.row]["dateSet"] as? String {
+            cell.haircutDescription.text = textDateSet
+        } else {
+            
+        }
+
+        if let textSalonCity = arrayHaircuts[indexPath.row]["salonCity"] as? String {
+            cell.haircutSalonTitle.text = textSalonCity
+        } else {
+            
+        }
+        
         if arrayHaircuts[indexPath.row]["frontImage"] != nil {
             let tempImage = arrayHaircuts[indexPath.row]["frontImage"] as! PFFile
             tempImage.getDataInBackground { (data, error) in

@@ -160,7 +160,7 @@ Cg
                                                             <rect key="frame" x="0.0" y="16" width="172.5" height="151"/>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Dwo-w6-Dlm">
-                                                            <rect key="frame" x="182.5" y="58" width="172.5" height="67"/>
+                                                            <rect key="frame" x="182.5" y="39.5" width="172.5" height="104"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haircut Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HW1-2B-WoN">
                                                                     <rect key="frame" x="0.0" y="0.0" width="172.5" height="30"/>
@@ -170,12 +170,24 @@ Cg
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kis-DO-rdf">
                                                                     <rect key="frame" x="0.0" y="35" width="172.5" height="13.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/1/18" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zai-Jr-9dU" userLabel="Text: Created Date">
+                                                                    <rect key="frame" x="0.0" y="53.5" width="172.5" height="13.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/1/18, 1:21 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zai-Jr-9dU">
-                                                                    <rect key="frame" x="0.0" y="53.5" width="172.5" height="13.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salon + City:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PiC-ob-Xud">
+                                                                    <rect key="frame" x="0.0" y="72" width="172.5" height="13.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example Text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zm9-mA-D5T" userLabel="Text: Salon + City">
+                                                                    <rect key="frame" x="0.0" y="90.5" width="172.5" height="13.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -198,6 +210,7 @@ Cg
                                         <connections>
                                             <outlet property="haircutDescription" destination="zai-Jr-9dU" id="Sdm-3v-JrI"/>
                                             <outlet property="haircutImage" destination="opH-1I-lQH" id="uF4-Dw-6o4"/>
+                                            <outlet property="haircutSalonTitle" destination="zm9-mA-D5T" id="INf-G4-1ht"/>
                                             <outlet property="haircutTitle" destination="HW1-2B-WoN" id="QYn-tG-Pzj"/>
                                             <segue destination="8rJ-Kc-sve" kind="show" identifier="showDetail" id="Asa-YH-UIR"/>
                                         </connections>
@@ -751,6 +764,6 @@ Read them the example below to give them an idea of what info you need. </string
     <inferredMetricsTieBreakers>
         <segue reference="ngQ-uN-UpQ"/>
         <segue reference="dUP-zs-M99"/>
-        <segue reference="xAv-eH-gfC"/>
+        <segue reference="Asa-YH-UIR"/>
     </inferredMetricsTieBreakers>
 </document>
