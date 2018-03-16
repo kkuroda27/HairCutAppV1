@@ -28,6 +28,11 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
     @IBOutlet var btnSideRetake: UIButton!
     @IBOutlet var btnBackRetake: UIButton!
     
+    @IBOutlet var iconUploadFront: UIImageView!
+    @IBOutlet var iconUploadSide: UIImageView!
+    @IBOutlet var iconUploadBack: UIImageView!
+    
+    
     // MARK: - Extra Variables
     var imagePicked = 1
     var userUUID = ""
@@ -291,14 +296,18 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
                         case 2?:
                             self?.imgCenter.image = image
                             self?.btnSideRetake.isHidden = false
+                            self?.iconUploadSide.isHidden = true
+
 
                         case 3?:
                             self?.imgRight.image = image
                             self?.btnBackRetake.isHidden = false
+                            self?.iconUploadBack.isHidden = true
 
                         default:
                             self?.imgLeft.image = image
                             self?.btnFrontRetake.isHidden = false
+                            self?.iconUploadFront.isHidden = true
                         }
 
                     } else {
@@ -489,7 +498,10 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
         btnSideRetake.isHidden = true
         btnBackRetake.isHidden = true
 
-        
+        iconUploadFront.isHidden = false
+        iconUploadSide.isHidden = false
+        iconUploadBack.isHidden = false
+
         // Handle the text field's user input through delegate callbacks.
         stylistNameTextField.delegate = self
         
@@ -504,6 +516,7 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
 
             if modelController.haircut["frontImage"] != nil {
                 btnFrontRetake.isHidden = false
+                iconUploadFront.isHidden = true
                 let tempImage = modelController.haircut["frontImage"] as! PFFile
                 tempImage.getDataInBackground { (data, error) in
                     if let imageData = data {
@@ -520,6 +533,8 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
             
             if modelController.haircut["sideImage"] != nil {
                 btnSideRetake.isHidden = false
+                iconUploadSide.isHidden = true
+
                 let tempImage = modelController.haircut["sideImage"] as! PFFile
                 tempImage.getDataInBackground { (data, error) in
                     if let imageData = data {
@@ -536,6 +551,8 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
             
             if modelController.haircut["backImage"] != nil {
                 btnBackRetake.isHidden = false
+                iconUploadBack.isHidden = true
+
                 let tempImage = modelController.haircut["backImage"] as! PFFile
                 tempImage.getDataInBackground { (data, error) in
                     if let imageData = data {

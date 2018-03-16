@@ -305,23 +305,26 @@ Cg
                                                     <outletCollection property="gestureRecognizers" destination="M8C-Oc-kXI" appends="YES" id="adm-uv-v1N"/>
                                                 </connections>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap To View" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lap-BH-0x6">
-                                                <rect key="frame" x="7" y="43" width="92" height="20.5"/>
-                                                <color key="backgroundColor" red="1" green="0.99137475899756156" blue="0.93635082425275895" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uploadIcon" translatesAutoresizingMaskIntoConstraints="NO" id="l38-US-vWg">
+                                                <rect key="frame" x="25" y="22" width="55" height="62"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="55" id="BxQ-Zz-jOK"/>
+                                                    <constraint firstAttribute="height" constant="62" id="YqR-Qw-bOT"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="Lap-BH-0x6" firstAttribute="centerY" secondItem="YL8-2X-FvG" secondAttribute="centerY" id="5RL-Zs-U1j"/>
-                                            <constraint firstItem="Lap-BH-0x6" firstAttribute="centerX" secondItem="YL8-2X-FvG" secondAttribute="centerX" id="Dss-hn-tWQ"/>
                                             <constraint firstItem="YL8-2X-FvG" firstAttribute="leading" secondItem="Fzb-yD-qDW" secondAttribute="leading" id="F32-n8-hKs"/>
+                                            <constraint firstItem="l38-US-vWg" firstAttribute="centerX" secondItem="YL8-2X-FvG" secondAttribute="centerX" id="Qzr-I1-OF8"/>
+                                            <constraint firstItem="l38-US-vWg" firstAttribute="centerY" secondItem="YL8-2X-FvG" secondAttribute="centerY" id="bRm-TK-jxK"/>
+                                            <constraint firstItem="YL8-2X-FvG" firstAttribute="centerX" secondItem="Fzb-yD-qDW" secondAttribute="centerX" id="qEj-zy-Tvm"/>
                                             <constraint firstItem="YL8-2X-FvG" firstAttribute="top" secondItem="Fzb-yD-qDW" secondAttribute="top" id="rQk-Tl-NOw"/>
+                                            <constraint firstItem="YL8-2X-FvG" firstAttribute="centerX" secondItem="Fzb-yD-qDW" secondAttribute="centerX" id="tPd-Wf-kXA"/>
                                             <constraint firstAttribute="trailing" secondItem="YL8-2X-FvG" secondAttribute="trailing" id="xVB-vB-cMq"/>
                                             <constraint firstAttribute="bottom" secondItem="YL8-2X-FvG" secondAttribute="bottom" id="xg4-wJ-gm4"/>
                                             <constraint firstAttribute="width" secondItem="Fzb-yD-qDW" secondAttribute="height" multiplier="1:1" id="yzY-GC-7aM"/>
+                                            <constraint firstItem="YL8-2X-FvG" firstAttribute="centerY" secondItem="Fzb-yD-qDW" secondAttribute="centerY" id="zhz-Pl-FFf"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UB-Vh-b54">
@@ -334,23 +337,23 @@ Cg
                                                     <outletCollection property="gestureRecognizers" destination="kID-aa-yR5" appends="YES" id="jR7-4N-VqE"/>
                                                 </connections>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap To View" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Le-IM-c9B">
-                                                <rect key="frame" x="7" y="42.5" width="92" height="20.5"/>
-                                                <color key="backgroundColor" red="1" green="0.99137475900000005" blue="0.93635082430000005" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uploadIcon" translatesAutoresizingMaskIntoConstraints="NO" id="jJ2-2Q-Gsx">
+                                                <rect key="frame" x="25" y="22" width="55" height="62"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="55" id="OcC-Xa-m6S"/>
+                                                    <constraint firstAttribute="height" constant="62" id="sAj-US-mg9"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="U4q-1Q-Xx7" firstAttribute="leading" secondItem="7UB-Vh-b54" secondAttribute="leading" id="5U9-92-6lD"/>
                                             <constraint firstAttribute="bottom" secondItem="U4q-1Q-Xx7" secondAttribute="bottom" id="8Se-Yw-adt"/>
                                             <constraint firstAttribute="width" secondItem="7UB-Vh-b54" secondAttribute="height" multiplier="1:1" id="ISx-x9-i9g"/>
-                                            <constraint firstItem="3Le-IM-c9B" firstAttribute="centerX" secondItem="7UB-Vh-b54" secondAttribute="centerX" id="PZL-Eh-xUU"/>
-                                            <constraint firstItem="3Le-IM-c9B" firstAttribute="centerY" secondItem="7UB-Vh-b54" secondAttribute="centerY" id="Xva-Kp-ZU2"/>
+                                            <constraint firstItem="jJ2-2Q-Gsx" firstAttribute="centerX" secondItem="U4q-1Q-Xx7" secondAttribute="centerX" id="Uw2-Sb-37M"/>
                                             <constraint firstItem="U4q-1Q-Xx7" firstAttribute="top" secondItem="7UB-Vh-b54" secondAttribute="top" id="Ypb-ZH-8J7"/>
                                             <constraint firstAttribute="trailing" secondItem="U4q-1Q-Xx7" secondAttribute="trailing" id="ngh-qP-3Js"/>
+                                            <constraint firstItem="jJ2-2Q-Gsx" firstAttribute="centerY" secondItem="U4q-1Q-Xx7" secondAttribute="centerY" id="psr-f4-705"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="et8-xg-VJ4">
@@ -363,23 +366,23 @@ Cg
                                                     <outletCollection property="gestureRecognizers" destination="LCP-BQ-bXT" appends="YES" id="e8t-Wk-RKC"/>
                                                 </connections>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap To View" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQG-4B-8Hh">
-                                                <rect key="frame" x="7" y="42.5" width="92" height="20.5"/>
-                                                <color key="backgroundColor" red="1" green="0.99137475900000005" blue="0.93635082430000005" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uploadIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Bnn-n8-cKf">
+                                                <rect key="frame" x="25" y="21.5" width="55" height="62"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="62" id="FMb-hV-o4K"/>
+                                                    <constraint firstAttribute="width" constant="55" id="fVh-0y-IYk"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="aDb-44-MJQ" firstAttribute="leading" secondItem="et8-xg-VJ4" secondAttribute="leading" id="18M-dl-WIh"/>
-                                            <constraint firstItem="WQG-4B-8Hh" firstAttribute="centerY" secondItem="et8-xg-VJ4" secondAttribute="centerY" id="HM1-bT-wKl"/>
-                                            <constraint firstItem="WQG-4B-8Hh" firstAttribute="centerX" secondItem="et8-xg-VJ4" secondAttribute="centerX" id="Jum-YH-JnT"/>
+                                            <constraint firstItem="Bnn-n8-cKf" firstAttribute="centerX" secondItem="aDb-44-MJQ" secondAttribute="centerX" id="4uA-s4-Oet"/>
                                             <constraint firstAttribute="width" secondItem="et8-xg-VJ4" secondAttribute="height" multiplier="1:1" id="XOu-JG-iVI"/>
                                             <constraint firstAttribute="bottom" secondItem="aDb-44-MJQ" secondAttribute="bottom" id="XVX-yu-uPt"/>
                                             <constraint firstItem="aDb-44-MJQ" firstAttribute="top" secondItem="et8-xg-VJ4" secondAttribute="top" id="jzr-kZ-lMg"/>
                                             <constraint firstAttribute="trailing" secondItem="aDb-44-MJQ" secondAttribute="trailing" id="qcd-jv-Ojd"/>
+                                            <constraint firstItem="Bnn-n8-cKf" firstAttribute="centerY" secondItem="aDb-44-MJQ" secondAttribute="centerY" id="xSv-lW-K9Q"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -437,6 +440,9 @@ Cg
                         <outlet property="btnBackRetake" destination="kAf-gD-lt6" id="i97-u6-fuO"/>
                         <outlet property="btnFrontRetake" destination="M5c-Dh-z3t" id="5dF-Lm-Sa5"/>
                         <outlet property="btnSideRetake" destination="PGv-NQ-60m" id="JN5-oc-qGJ"/>
+                        <outlet property="iconUploadBack" destination="Bnn-n8-cKf" id="F1v-em-QDx"/>
+                        <outlet property="iconUploadFront" destination="l38-US-vWg" id="spn-kK-UfG"/>
+                        <outlet property="iconUploadSide" destination="jJ2-2Q-Gsx" id="zsz-RE-ed6"/>
                         <outlet property="imgCenter" destination="U4q-1Q-Xx7" id="6jw-qP-MDh"/>
                         <outlet property="imgLeft" destination="YL8-2X-FvG" id="brY-Lc-sa1"/>
                         <outlet property="imgRight" destination="aDb-44-MJQ" id="oyo-XQ-r5m"/>
@@ -627,8 +633,9 @@ Cg
         <image name="frontPlaceholder" width="60" height="70"/>
         <image name="second" width="30" height="30"/>
         <image name="sidePlaceholder" width="60" height="70"/>
+        <image name="uploadIcon" width="640" height="471"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Asa-YH-UIR"/>
+        <segue reference="xAv-eH-gfC"/>
     </inferredMetricsTieBreakers>
 </document>
