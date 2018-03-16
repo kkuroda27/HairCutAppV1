@@ -245,21 +245,21 @@ Cg
                                 <rect key="frame" x="39" y="352.5" width="47" height="30"/>
                                 <state key="normal" title="Retake"/>
                                 <connections>
-                                    <action selector="testChooseImage:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="pCE-Xf-Dcp"/>
+                                    <action selector="retakePhoto:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Gje-jM-BwM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGv-NQ-60m">
-                                <rect key="frame" x="161" y="352.5" width="53" height="30"/>
-                                <state key="normal" title="Choose"/>
+                                <rect key="frame" x="164" y="352.5" width="47" height="30"/>
+                                <state key="normal" title="Retake"/>
                                 <connections>
-                                    <action selector="chooseImage:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Edk-6p-XOU"/>
+                                    <action selector="retakePhoto:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="ZaU-H9-XH6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAf-gD-lt6">
-                                <rect key="frame" x="286" y="352.5" width="53" height="30"/>
-                                <state key="normal" title="Choose"/>
+                                <rect key="frame" x="289" y="352.5" width="47" height="30"/>
+                                <state key="normal" title="Retake"/>
                                 <connections>
-                                    <action selector="chooseImage:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Rg1-nj-sDq"/>
+                                    <action selector="retakePhoto:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="UGJ-bM-Xpi"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hair Stylist's Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uaa-OQ-Cmi">
@@ -434,7 +434,9 @@ Cg
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="btnLeftRetake" destination="M5c-Dh-z3t" id="lZM-zO-um8"/>
+                        <outlet property="btnBackRetake" destination="kAf-gD-lt6" id="i97-u6-fuO"/>
+                        <outlet property="btnFrontRetake" destination="M5c-Dh-z3t" id="5dF-Lm-Sa5"/>
+                        <outlet property="btnSideRetake" destination="PGv-NQ-60m" id="JN5-oc-qGJ"/>
                         <outlet property="imgCenter" destination="U4q-1Q-Xx7" id="6jw-qP-MDh"/>
                         <outlet property="imgLeft" destination="YL8-2X-FvG" id="brY-Lc-sa1"/>
                         <outlet property="imgRight" destination="aDb-44-MJQ" id="oyo-XQ-r5m"/>

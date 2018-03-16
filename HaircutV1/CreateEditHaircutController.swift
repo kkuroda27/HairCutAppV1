@@ -24,8 +24,9 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
     @IBOutlet var imgCenter: UIImageView!
     @IBOutlet var imgRight: UIImageView!
     
-    @IBOutlet var btnLeftRetake: UIButton!
-    
+    @IBOutlet var btnFrontRetake: UIButton!
+    @IBOutlet var btnSideRetake: UIButton!
+    @IBOutlet var btnBackRetake: UIButton!
     
     // MARK: - Extra Variables
     var imagePicked = 1
@@ -74,123 +75,88 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
             
             modelController.haircut["stylistName"] = stylistNameTextField.text
 
+            // Now do Pictures... If image exists AND it is NOT placeholder, convert and set to PFObject.
+           
+            // let's check if each image is a placeholder, and if so, then hide "retake" button.
+            var imagePH = UIImage()
+
             // if FRONT image exists, convert it and set PFObject
             if let imageData = self.imgLeft.image {
-                guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
-                    print("JPEG Conversion failed")
-                    return
+                // check for placeholder.
+                imagePH = UIImage(named: "frontPlaceholder")!
+                if imagePH == self.imgLeft.image {
+                    // placeholder, so do nothing.
+                    
+                } else {
+                    // not placeholder, so actually save.
+                    //convert
+                    guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
+                        print("JPEG Conversion failed")
+                        return
+                    }
+                    let imageFile = PFFile(name: "imageFront.jpg", data: imageDataJPEG)
+                    modelController.haircut["frontImage"] = imageFile
+                    
+                    var imageSize = Float(imageDataJPEG.count)
+                    imageSize = imageSize/(1024*1024)
+                    print("image size is \(imageSize)Mb")
+
                 }
-                let imageFile = PFFile(name: "imageFront.jpg", data: imageDataJPEG)
-                modelController.haircut["frontImage"] = imageFile
                 
-                var imageSize = Float(imageDataJPEG.count)
-                imageSize = imageSize/(1024*1024)
-                print("image size is \(imageSize)Mb")
             } else {
-                print("Front image does not exist")
+                print("ERROR: Front image does not exist")
             }
             
             // if SIDE image exists, convert it and set PFObject
             if let imageData = self.imgCenter.image {
-                guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
-                    print("JPEG Conversion failed")
-                    return
+                // check for placeholder.
+                imagePH = UIImage(named: "sidePlaceholder")!
+                if imagePH == self.imgCenter.image {
+                    // placeholder, so do nothing.
+                    
+                } else {
+                    // not placeholder, so actually save.
+                    //convert
+                    guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
+                        print("JPEG Conversion failed")
+                        return
+                    }
+                    let imageFile = PFFile(name: "imageSide.jpg", data: imageDataJPEG)
+                    modelController.haircut["sideImage"] = imageFile
+                
                 }
-                let imageFile = PFFile(name: "imageSide.jpg", data: imageDataJPEG)
-                modelController.haircut["sideImage"] = imageFile
+
             } else {
-                print("Side image does not exist")
+                print("ERROR: Side image does not exist")
             }
             
             // if BACK image exists, convert it and set PFObject
             if let imageData = self.imgRight.image {
-                guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
-                    print("JPEG Conversion failed")
-                    return
+                // check for placeholder.
+                imagePH = UIImage(named: "backPlaceholder")!
+                if imagePH == self.imgRight.image {
+                    // placeholder, so do nothing.
+                    
+                } else {
+                    // not placeholder, so actually save.
+                    //convert
+                    guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
+                        print("JPEG Conversion failed")
+                        return
+                    }
+                    let imageFile = PFFile(name: "imageBack.jpg", data: imageDataJPEG)
+                    modelController.haircut["backImage"] = imageFile
+
                 }
-                let imageFile = PFFile(name: "imageBack.jpg", data: imageDataJPEG)
-                modelController.haircut["backImage"] = imageFile
+
             } else {
-                print("Back image does not exist")
+                print("ERROR: Back image does not exist")
             }
             
             print("STATUS: Finished adding to modelController.haircut...")
             print("PRINT -> POST - modelController.haircut \(modelController.haircut)")
 
             
-            /*
-            let haircutObject = PFObject(className: "Haircut")
-            
-            print(modelController.haircut)
-            if let haircutObjectId = modelController.haircut.objectId {
-                haircutObject.objectId = haircutObjectId
-                haircutObject["description"] = modelController.haircut["description"]
-                haircutObject["salonCity"] = modelController.haircut["salonCity"]
-
-                // pass on other existing fields here that we won't change in this screen.
-            } else {
-                // do nothing, since this will be a new PFObject
-                
-            }
-            print("Creating New Object!")
-            haircutObject["userUUID"] = userUUID
-            haircutObject["title"] = titleTextField.text
-
-            // convert from date -> String
-            let now = NSDate()
-            print("nowDate = ")
-            print(now)
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
-            let stringDate: String = dateFormatter.string(from: now as Date)
-            
-            haircutObject["dateCreated"] = stringDate
-            
-            // if FRONT image exists, convert it and set PFObject
-            if let imageData = self.imgLeft.image {
-                guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
-                    print("JPEG Conversion failed")
-                    return
-                }
-                let imageFile = PFFile(name: "imageFront.jpg", data: imageDataJPEG)
-                haircutObject["frontImage"] = imageFile
-                
-                var imageSize = Float(imageDataJPEG.count)
-                imageSize = imageSize/(1024*1024)
-                print("image size is \(imageSize)Mb")
-            } else {
-                print("Front image does not exist")
-            }
-            
-            // if SIDE image exists, convert it and set PFObject
-            if let imageData = self.imgCenter.image {
-                guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
-                    print("JPEG Conversion failed")
-                    return
-                }
-                let imageFile = PFFile(name: "imageSide.jpg", data: imageDataJPEG)
-                haircutObject["sideImage"] = imageFile
-            } else {
-                print("Side image does not exist")
-            }
-            
-            // if BACK image exists, convert it and set PFObject
-            if let imageData = self.imgRight.image {
-                guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
-                    print("JPEG Conversion failed")
-                    return
-                }
-                let imageFile = PFFile(name: "imageBack.jpg", data: imageDataJPEG)
-                haircutObject["backImage"] = imageFile
-            } else {
-                print("Back image does not exist")
-            }
-            
-            modelController.haircut = haircutObject
-
-        // end object creation
- */
         pg2ViewController.modelController = modelController
         pg2ViewController.isCreating = isCreating
 
@@ -290,39 +256,50 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
     // MARK: - ImageView Functions
 
 
-    
+    // Currently linked to all 3 image views. But only works for left image view.
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
-        print("User clicks IMAGE TO TRIGGER CAMERA")
+        print("User clicks IMAGE")
 
         let imageView = sender.view as! UIImageView
         let newImageView = UIImageView(image: imageView.image)
         
         // start playing
-        let imagePH1 = UIImage(named: "frontPlaceholder")
+        
+        var imagePH = UIImage()
+        // set global variable imagePicked to tag so we can distinguish between images.
+        self.imagePicked = (sender.view?.tag)!
+        
+        switch imagePicked {
+        case 2:
+            imagePH = UIImage(named: "sidePlaceholder")!
+        case 3:
+            imagePH = UIImage(named: "backPlaceholder")!
+        default:
+            imagePH = UIImage(named: "frontPlaceholder")!
+        }
 
-
-        if imagePH1 == imageView.image {
+        if imagePH == imageView.image {
             print("Image DOES equal placeholder... So present camera view")
             // execute show camera controller
             
             if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)){
-                print("TEST camera is available!")
-                self.imagePicked = (sender.view?.tag)!
-                //let imagePickerController = UIImagePickerController()
+                print("Camera is available!")
                 let cameraViewController = CameraViewController { [weak self] image, asset in
                     // Do something with your image here.
-                    
                     if let image = image {
                         switch self?.imagePicked {
                         case 2?:
                             self?.imgCenter.image = image
+                            self?.btnSideRetake.isHidden = false
+
                         case 3?:
                             self?.imgRight.image = image
+                            self?.btnBackRetake.isHidden = false
+
                         default:
                             self?.imgLeft.image = image
+                            self?.btnFrontRetake.isHidden = false
                         }
-                        print("BTN should show now!")
-                        self?.btnLeftRetake.isHidden = false
 
                     } else {
                         print("There was a problem getting the image")
@@ -334,16 +311,13 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
                 
                 
             } else {
-                print("TEST camera is NOT available!")
+                print("Camera is NOT available!")
                 let alert2 = UIAlertController(title: "Camera Not Found", message: "This device has no Camera", preferredStyle: UIAlertControllerStyle.alert)
                 alert2.addAction(UIKit.UIAlertAction(title: "OK", style: .default, handler:{ (UIAlertAction)in
                     print("Alert Displayed")
                 }))
                 self.present(alert2, animated: true, completion: nil)
             }
-
-            
-
 
         } else {
             print("Image DOES NOT equal placeholder... So present full image view.")
@@ -375,16 +349,14 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
     }
     
     // MARK: - [TEST] Image Picker Functions
-
     
-    @IBAction func testChooseImage(_ sender: UIButton) {
-        
+    // Currently linked to all "retake" buttons.
+    @IBAction func retakePhoto(_ sender: UIButton) {
+    
         print("User clicks RETAKE TEST Camera Button")
-        
     if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)){
-            print("TEST camera is available!")
+            print("Camera is available!")
             self.imagePicked = sender.tag
-            //let imagePickerController = UIImagePickerController()
             let cameraViewController = CameraViewController { [weak self] image, asset in
                 // Do something with your image here.
                 if let image = image {
@@ -396,11 +368,11 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
                     default:
                         self?.imgLeft.image = image
                     }
-
+                    
                 } else {
                     print("There was a problem getting the image")
                 }
-
+                
                 self?.dismiss(animated: true, completion: nil)
             }
             
@@ -408,18 +380,21 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
             
             
         } else {
-            print("TEST camera is NOT available!")
+            print("Camera is NOT available!")
             let alert2 = UIAlertController(title: "Camera Not Found", message: "This device has no Camera", preferredStyle: UIAlertControllerStyle.alert)
             alert2.addAction(UIKit.UIAlertAction(title: "OK", style: .default, handler:{ (UIAlertAction)in
                 print("Alert Displayed")
             }))
             self.present(alert2, animated: true, completion: nil)
         }
-        
+
     }
-    
+
     
     // MARK: - Image Picker Functions
+    
+    /*
+    // Deprecated function to allow users to select Camera or Upload.
     @IBAction func chooseImage(_ sender: UIButton) {
         let alert = UIAlertController(title: "Please Select an Option to Add Image", message: nil, preferredStyle: .alert)
         
@@ -466,9 +441,9 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
             print("completion block")
         })
         
-        
     }
 
+ 
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -486,7 +461,7 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
         }
         self.dismiss(animated: true, completion: nil)
     }
-    
+    */
 
     // MARK: - viewWillAppear
 
@@ -510,12 +485,15 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
         
 
         // By default, we want "Retake" button to be hidden.
-        btnLeftRetake.isHidden = true
+        btnFrontRetake.isHidden = true
+        btnSideRetake.isHidden = true
+        btnBackRetake.isHidden = true
 
         
         // Handle the text field's user input through delegate callbacks.
         stylistNameTextField.delegate = self
         
+
         // set up views if editing an existing Haircut.
         if modelController.haircut.objectId != nil {
             isCreating = false
@@ -525,45 +503,53 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
             stylistNameTextField.text = modelController.haircut["stylistName"] as? String
 
             if modelController.haircut["frontImage"] != nil {
-                btnLeftRetake.isHidden = false
-
+                btnFrontRetake.isHidden = false
                 let tempImage = modelController.haircut["frontImage"] as! PFFile
                 tempImage.getDataInBackground { (data, error) in
                     if let imageData = data {
                         if let imageToDisplay = UIImage(data: imageData) {
                             self.imgLeft.image = imageToDisplay
+
                         }
                     }
                 }
+
             } else {
                 print("frontImage doesn't exist!")
             }
             
             if modelController.haircut["sideImage"] != nil {
+                btnSideRetake.isHidden = false
                 let tempImage = modelController.haircut["sideImage"] as! PFFile
                 tempImage.getDataInBackground { (data, error) in
                     if let imageData = data {
                         if let imageToDisplay = UIImage(data: imageData) {
                             self.imgCenter.image = imageToDisplay
+                            
                         }
                     }
                 }
             } else {
                 print("sideImage doesn't exist!")
+
             }
             
             if modelController.haircut["backImage"] != nil {
+                btnBackRetake.isHidden = false
                 let tempImage = modelController.haircut["backImage"] as! PFFile
                 tempImage.getDataInBackground { (data, error) in
                     if let imageData = data {
                         if let imageToDisplay = UIImage(data: imageData) {
                             self.imgRight.image = imageToDisplay
+                            
                         }
                     }
                 }
             } else {
                 print("backImage doesn't exist!")
+
             }
+            
             
         } else {
             // we're creating a new haircut, so do nothing.
