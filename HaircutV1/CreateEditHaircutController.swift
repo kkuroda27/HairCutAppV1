@@ -24,6 +24,9 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
     @IBOutlet var imgCenter: UIImageView!
     @IBOutlet var imgRight: UIImageView!
     
+    @IBOutlet var btnLeftRetake: UIButton!
+    
+    
     // MARK: - Extra Variables
     var imagePicked = 1
     var userUUID = ""
@@ -286,22 +289,82 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
     
     // MARK: - ImageView Functions
 
+
+    
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
+        print("User clicks IMAGE TO TRIGGER CAMERA")
+
         let imageView = sender.view as! UIImageView
         let newImageView = UIImageView(image: imageView.image)
         
-        newImageView.autoresizingMask = [.flexibleTopMargin, .flexibleHeight, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin, .flexibleWidth]
-        
-        newImageView.contentMode = UIViewContentMode.scaleAspectFit
-        newImageView.frame = UIScreen.main.bounds
-        newImageView.backgroundColor = .black
-        //newImageView.contentMode = .scaleToFill
-        newImageView.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
-        newImageView.addGestureRecognizer(tap)
-        self.view.addSubview(newImageView)
-        self.navigationController?.isNavigationBarHidden = true
-        self.tabBarController?.tabBar.isHidden = true
+        // start playing
+        let imagePH1 = UIImage(named: "frontPlaceholder")
+
+
+        if imagePH1 == imageView.image {
+            print("Image DOES equal placeholder... So present camera view")
+            // execute show camera controller
+            
+            if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)){
+                print("TEST camera is available!")
+                self.imagePicked = (sender.view?.tag)!
+                //let imagePickerController = UIImagePickerController()
+                let cameraViewController = CameraViewController { [weak self] image, asset in
+                    // Do something with your image here.
+                    
+                    if let image = image {
+                        switch self?.imagePicked {
+                        case 2?:
+                            self?.imgCenter.image = image
+                        case 3?:
+                            self?.imgRight.image = image
+                        default:
+                            self?.imgLeft.image = image
+                        }
+                        print("BTN should show now!")
+                        self?.btnLeftRetake.isHidden = false
+
+                    } else {
+                        print("There was a problem getting the image")
+                    }
+                    self?.dismiss(animated: true, completion: nil)
+                }
+                
+                present(cameraViewController, animated: true, completion: nil)
+                
+                
+            } else {
+                print("TEST camera is NOT available!")
+                let alert2 = UIAlertController(title: "Camera Not Found", message: "This device has no Camera", preferredStyle: UIAlertControllerStyle.alert)
+                alert2.addAction(UIKit.UIAlertAction(title: "OK", style: .default, handler:{ (UIAlertAction)in
+                    print("Alert Displayed")
+                }))
+                self.present(alert2, animated: true, completion: nil)
+            }
+
+            
+
+
+        } else {
+            print("Image DOES NOT equal placeholder... So present full image view.")
+            // execute view image full
+            newImageView.autoresizingMask = [.flexibleTopMargin, .flexibleHeight, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin, .flexibleWidth]
+            
+            newImageView.contentMode = UIViewContentMode.scaleAspectFit
+            newImageView.frame = UIScreen.main.bounds
+            newImageView.backgroundColor = .black
+            //newImageView.contentMode = .scaleToFill
+            newImageView.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+            newImageView.addGestureRecognizer(tap)
+            self.view.addSubview(newImageView)
+            self.navigationController?.isNavigationBarHidden = true
+            self.tabBarController?.tabBar.isHidden = true
+
+
+        }
+        // end playing
+
 
     }
     
@@ -315,16 +378,15 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
 
     
     @IBAction func testChooseImage(_ sender: UIButton) {
-    
-        print("User clicks TEST Camera Button")
         
-        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)){
+        print("User clicks RETAKE TEST Camera Button")
+        
+    if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)){
             print("TEST camera is available!")
             self.imagePicked = sender.tag
             //let imagePickerController = UIImagePickerController()
             let cameraViewController = CameraViewController { [weak self] image, asset in
                 // Do something with your image here.
-                
                 if let image = image {
                     switch self?.imagePicked {
                     case 2?:
@@ -334,17 +396,17 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
                     default:
                         self?.imgLeft.image = image
                     }
-                    
+
                 } else {
                     print("There was a problem getting the image")
                 }
-                
+
                 self?.dismiss(animated: true, completion: nil)
             }
             
             present(cameraViewController, animated: true, completion: nil)
-
-
+            
+            
         } else {
             print("TEST camera is NOT available!")
             let alert2 = UIAlertController(title: "Camera Not Found", message: "This device has no Camera", preferredStyle: UIAlertControllerStyle.alert)
@@ -353,7 +415,7 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
             }))
             self.present(alert2, animated: true, completion: nil)
         }
-
+        
     }
     
     
@@ -445,7 +507,12 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
         super.viewDidLoad()
         print("FUNCTION START: viewDidLoad - CreateEditHaircutController.swift")
         print("modelController.haircut = \(modelController.haircut)")
+        
 
+        // By default, we want "Retake" button to be hidden.
+        btnLeftRetake.isHidden = true
+
+        
         // Handle the text field's user input through delegate callbacks.
         stylistNameTextField.delegate = self
         
@@ -458,6 +525,8 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
             stylistNameTextField.text = modelController.haircut["stylistName"] as? String
 
             if modelController.haircut["frontImage"] != nil {
+                btnLeftRetake.isHidden = false
+
                 let tempImage = modelController.haircut["frontImage"] as! PFFile
                 tempImage.getDataInBackground { (data, error) in
                     if let imageData = data {
