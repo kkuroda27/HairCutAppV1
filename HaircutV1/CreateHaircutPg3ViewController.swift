@@ -95,9 +95,16 @@ class CreateHaircutPg3ViewController: UIViewController {
                         // screen 1
                         object["userUUID"] = self.modelController.haircut["userUUID"]
                         object["stylistName"] = self.modelController.haircut["stylistName"]
-                        object["frontImage"] = self.modelController.haircut["frontImage"]
-                        object["sideImage"] = self.modelController.haircut["sideImage"]
-                        object["backImage"] = self.modelController.haircut["backImage"]
+                       
+                        if let tempImage = self.modelController.haircut["frontImage"] {
+                            object["frontImage"] = tempImage
+                        } else {}
+                        if let tempImage = self.modelController.haircut["sideImage"] {
+                            object["sideImage"] = tempImage
+                        } else {}
+                        if let tempImage = self.modelController.haircut["backImage"] {
+                            object["backImage"] = tempImage
+                        } else {}
 
                         // screen 2
                         object["description"] = self.modelController.haircut["description"]

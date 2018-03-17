@@ -12,7 +12,7 @@ import CoreData
 import os.log
 import ALCameraViewController
 
-class CreateEditHaircutController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
+class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
 
     // MARK: - Segue Preparation Variables
     var isCreating = true
@@ -475,7 +475,7 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
     // MARK: - viewWillAppear
 
     override func viewWillAppear(_ animated: Bool) {
-        print("FUNCTION START: viewWillAppear - CreateEditHaircutController.swift")
+        print("FUNCTION START: viewWillAppear - CreateHaircutPg1ViewController.swift")
         // this code is workaround for iOS bug = "iOS UINavigationBar button remains faded after segue back" for "next" button.
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.tintAdjustmentMode = .normal
@@ -489,7 +489,7 @@ class CreateEditHaircutController: UIViewController, UINavigationControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("FUNCTION START: viewDidLoad - CreateEditHaircutController.swift")
+        print("FUNCTION START: viewDidLoad - CreateHaircutPg1ViewController.swift")
         print("modelController.haircut = \(modelController.haircut)")
         
 

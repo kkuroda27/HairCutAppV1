@@ -262,7 +262,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
                 fatalError("Unexpected destination: \(segue.destination)")
             }
 
-            let newHaircutVC = destinationNavigationController.topViewController as? CreateEditHaircutController
+            let newHaircutVC = destinationNavigationController.topViewController as? CreateHaircutPg1ViewController
             newHaircutVC?.modelController = ModelController()
         
         case "showDetail":
@@ -270,7 +270,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
 
             print(segue.destination)
 
-            guard let haircutDetailViewController = segue.destination as? CreateEditHaircutController else {
+            guard let haircutDetailViewController = segue.destination as? CreateHaircutPg1ViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
