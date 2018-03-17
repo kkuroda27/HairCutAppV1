@@ -12,63 +12,25 @@ import CoreData
 import os.log
 import SystemConfiguration
 
-
 class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
-    // MARK: - Variables + Outlets
+    // MARK: - Outlets + Variables
     var userUUID = ""
     var arrayHaircuts = [PFObject]()
     @IBOutlet var table: UITableView!
-    // refresh Button
     let btnRefresh = UIButton(frame: CGRect(x: 100, y: 200, width: 100, height: 50))
-    //let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
 
-    // MARK: -  Helper Functions
-    func loadHaircutViews(_ haircuts: [PFObject]) {
-        print("running loadHaircutViews")
-        self.arrayHaircuts.removeAll()
-        for haircut in haircuts {
-            arrayHaircuts.append(haircut)
-        }
-        table.reloadData()
-        print("table reloaded!")
-    }
-
-    func updateTable() {
-        
-        // retrieve user's Haircuts from Parse Server using userUUID.
-        let query = PFQuery(className:"Haircut")
-        query.whereKey("userUUID", equalTo: userUUID)
-        query.findObjectsInBackground { (objects, error) in
-            
-            if error != nil {
-                // print error
-                print("Error: \(error!.localizedDescription)")
-                self.btnRefresh.isHidden = false
-            } else {
-                // success
-                print("Successfully retrieved \(objects!.count) haircuts!")
-                self.btnRefresh.isHidden = true
-                if let objects = objects {
-                    self.loadHaircutViews(objects)
-                } else {
-                    print("Error occurred in updateTable()")
-                }
-                
-            }
-            
-        } // end findObjectsInBackground
-
-    }
     
     // MARK: - Table View Functions
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("FUNCTION START: numberOfRowsInSection")
         return arrayHaircuts.count
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
+        print("FUNCTION START: forRowAt")
+
         // enable spinner + disable activity.
         let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         activityIndicator.center = self.view.center
@@ -103,8 +65,8 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
-        //let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
+        print("FUNCTION START: cellForRowAt")
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyHaircutsFeedTableViewCell
         cell.haircutTitle.text = arrayHaircuts[indexPath.row]["haircutName"] as? String
         if cell.haircutTitle.text == "" {
@@ -166,6 +128,8 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     public func numberOfSections(in tableView: UITableView) -> Int {
+        print("FUNCTION START: numberOfSections")
+
         var numOfSections: Int = 0
         
         // check to see if we have any items to load. If not, display "You have no haircuts!" label.
@@ -237,18 +201,60 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
 
     }
     
+    // MARK: -  User Functions
+
     @objc func clickRefresh(sender: UIButton!) {
-        print("refresh button clicked")
+        print("FUNCTION START: clickRefresh")
         sender.isHidden = true
-        //sender.removeFromSuperview()
         updateTable()
 
     }
 
+    // MARK: -  Table Helper Functions
+    func loadHaircutViews(_ haircuts: [PFObject]) {
+        print("FUNCTION START: loadHaircutViews")
+        self.arrayHaircuts.removeAll()
+        for haircut in haircuts {
+            arrayHaircuts.append(haircut)
+        }
+        table.reloadData()
+        print("table reloaded!")
+    }
+    
+    func updateTable() {
+        print("FUNCTION START: updateTable")
+        
+        // retrieve user's Haircuts from Parse Server using userUUID.
+        let query = PFQuery(className:"Haircut")
+        query.whereKey("userUUID", equalTo: userUUID)
+        query.findObjectsInBackground { (objects, error) in
+            
+            if error != nil {
+                // print error
+                print("Error: \(error!.localizedDescription)")
+                self.btnRefresh.isHidden = false
+            } else {
+                // success
+                print("Successfully retrieved \(objects!.count) haircuts!")
+                self.btnRefresh.isHidden = true
+                if let objects = objects {
+                    self.loadHaircutViews(objects)
+                } else {
+                    print("Error occurred in updateTable()")
+                }
+                
+            }
+            
+        } // end findObjectsInBackground
+        
+    }
+
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("FUNCTION START: prepareForSegue")
 
         super.prepare(for: segue, sender: sender)
         
@@ -299,12 +305,17 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
     
 
     
-    // MARK: - viewDidLoad()
+    // MARK: - viewDidAppear / viewDidLoad Functions
+
+    override func viewDidAppear(_ animated: Bool) {
+        print("FUNCTION START: viewDidAppear - ViewMyHaircutsController.swift")
+        updateTable()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+        print("FUNCTION START: viewDidLoad - ViewMyHaircutsController.swift")
+
         // Code for checking if we have valid internet connection.
         if Reachability.isConnectedToNetwork(){
             print("Internet Connection Available!")
@@ -318,8 +329,6 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
             
         }
 
-        
-        
         // CoreData code
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext // we can use context to access CoreData
@@ -374,25 +383,25 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
         updateTable()
         
     } // end viewDidLoad
-
-    override func viewDidAppear(_ animated: Bool) {
-        print("view did appear")
-        updateTable()
-    }
     
+    // MARK: - Helper Functions
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        print("FUNCTION START: didReceiveMemoryWarning")
         // Dispose of any resources that can be recreated.
     }
 
 
-}
+} // end View Controller Class
 
+
+// MARK: - Outside Class
 // Code to detect if internet is working. Got code from https://stackoverflow.com/questions/30743408/check-for-internet-connection-with-swift
 public class Reachability {
     
     class func isConnectedToNetwork() -> Bool {
-        
+        print("FUNCTION START: isConnectedToNetwork")
+
         var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
         zeroAddress.sin_family = sa_family_t(AF_INET)

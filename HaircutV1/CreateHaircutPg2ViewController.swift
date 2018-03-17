@@ -8,7 +8,6 @@
 
 import UIKit
 import Parse
-import CoreData
 import os.log
 
 class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
@@ -17,41 +16,10 @@ class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
     var isCreating = true
     var modelController: ModelController!
 
-    // MARK: - Outlets
+    // MARK: - Outlet Variables
     @IBOutlet var descriptionTextField: UITextView!
 
-    // MARK: - Keyboard Functions
-    
-    // Moves the textview up when user opens keyboard
-    func moveTextView(_ textView: UITextView, moveDistance: Int, up: Bool) {
-        let moveDuration = 0.3
-        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
-        
-        UIView.beginAnimations("animateTextView", context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(moveDuration)
-        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
-        UIView.commitAnimations()
-    }
-    
-    // Start Editing The Text Field
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        moveTextView(textView, moveDistance: -250, up: true)
-    }
-    
-    // Finish Editing The Text Field
-    func textViewDidEndEditing(_ textView: UITextView) {
-        moveTextView(textView, moveDistance: -250, up: false)
-    }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // this runs whenever the user touches the main area of the app (not the keyboard).
-        print("touchesBegan")
-        self.view.endEditing(true)
-    }
-
-    // MARK: - Navigation
-    
+    // MARK: - Navigation Functions
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("FUNCTION START: prepareForSegue")
 
@@ -60,7 +28,6 @@ class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
         switch(segue.identifier ?? "") {
             
         case "showNextPg3":
-            //os_log("Adding a new haircut.", log: OSLog.default, type: .debug)
             print("STATUS: Preparing Segue to Page 3")
 
             guard let pg3ViewController = segue.destination as? CreateHaircutPg3ViewController else {
@@ -84,7 +51,41 @@ class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
         
     }
 
-    // MARK: - willMove
+    // MARK: - Keyboard Functions
+    
+    // Moves the textview up when user opens keyboard
+    func moveTextView(_ textView: UITextView, moveDistance: Int, up: Bool) {
+        print("FUNCTION START: moveTextView")
+        let moveDuration = 0.3
+        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
+        
+        UIView.beginAnimations("animateTextView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(moveDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
+    }
+    
+    // Start Editing The Text Field
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        print("FUNCTION START: textViewDidBeginEditing")
+        moveTextView(textView, moveDistance: -250, up: true)
+    }
+    
+    // Finish Editing The Text Field
+    func textViewDidEndEditing(_ textView: UITextView) {
+        print("FUNCTION START: textViewDidEndEditing")
+        moveTextView(textView, moveDistance: -250, up: false)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // this runs whenever the user touches the main area of the app (not the keyboard).
+        print("FUNCTION START: touchesBegan")
+        self.view.endEditing(true)
+    }
+
+    
+    // MARK: - willMove / viewWillAppear / viewDidLoad Functions
 
     override func willMove(toParentViewController parent: UIViewController?) {
         super.willMove(toParentViewController: parent)
@@ -97,9 +98,6 @@ class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
         }
     }
 
-    
-    // MARK: - viewWillAppear
-    
     override func viewWillAppear(_ animated: Bool) {
         print("FUNCTION START: viewWillAppear - CreateHaircutPg2ViewController.swift")
 
@@ -109,9 +107,6 @@ class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
         self.navigationController?.navigationBar.tintAdjustmentMode = .automatic
     }
     
-
-    // MARK: - viewDidLoad
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -137,6 +132,7 @@ class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        print("FUNCTION START: didReceiveMemoryWarning")
         // Dispose of any resources that can be recreated.
     }
     

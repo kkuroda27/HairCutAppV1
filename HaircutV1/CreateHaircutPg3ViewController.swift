@@ -8,7 +8,6 @@
 
 import UIKit
 import Parse
-import CoreData
 import os.log
 
 class CreateHaircutPg3ViewController: UIViewController {
@@ -21,7 +20,6 @@ class CreateHaircutPg3ViewController: UIViewController {
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var salonCityTextField: UITextField!
     @IBOutlet var haircutNameTextField: UITextField!
-    
     
     // MARK: - User Interactions? (Save)
 
@@ -216,16 +214,10 @@ class CreateHaircutPg3ViewController: UIViewController {
 
 
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
     // MARK: - helper functions
     func displayAlert(title:String, message:String) {
-        
+        print("FUNCTION START: displayAlert")
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
             self.dismiss(animated: true, completion: nil)
@@ -257,6 +249,10 @@ class CreateHaircutPg3ViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
-    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
 
 }
