@@ -33,28 +33,46 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
         let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        activityIndicator.color = UIColor.black
         self.view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        UIApplication.shared.beginIgnoringInteractionEvents()
         
         if editingStyle == UITableViewCellEditingStyle.delete {
             if let haircutObjectId = arrayHaircuts[indexPath.row].objectId {
-                print(haircutObjectId)
-                arrayHaircuts[indexPath.row].deleteInBackground(block: { (success, error) in
-                    
-                    if error != nil {
-                        print("ERROR: \(error!.localizedDescription)")
-                    } else {
-                        print("STATUS: Table Row Deleting successful!")
-                        self.arrayHaircuts.remove(at: indexPath.row)
-                        self.table.reloadData()
-                    }
-                    // disable spinner + enable activity.
-                    activityIndicator.stopAnimating()
-                    UIApplication.shared.endIgnoringInteractionEvents()
-                    
-                })
+                
+                let alert = UIAlertController(title: "Are you sure you want to delete this Haircut?", message: "It won't come back once you do!", preferredStyle: UIAlertControllerStyle.alert)
+                
+                alert.addAction(UIAlertAction(title: "Delete!", style: .default, handler: { action in
+                    print("DELETE!")
+                    activityIndicator.startAnimating()
+                    UIApplication.shared.beginIgnoringInteractionEvents()
+
+                    self.arrayHaircuts[indexPath.row].deleteInBackground(block: { (success, error) in
+                        
+                        if error != nil {
+                            print("ERROR: \(error!.localizedDescription)")
+                        } else {
+                            print("STATUS: Table Row Deleting successful!")
+                            self.arrayHaircuts.remove(at: indexPath.row)
+                            self.table.reloadData()
+                        }
+                        
+                        // disable spinner + enable activity.
+                        activityIndicator.stopAnimating()
+                        UIApplication.shared.endIgnoringInteractionEvents()
+
+                    })
+
+                }))
+                
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+                    print("Cancel!")
+                }))
+
+                //  self.dismiss(animated: true, completion: nil)
+                
+                self.present(alert, animated: true, completion: nil)
+
             } else {
                 print("Something's wrong")
             }
@@ -365,7 +383,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
         updateTable()
         
     } // end viewDidLoad
-    
+
     // MARK: - Helper Functions
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
