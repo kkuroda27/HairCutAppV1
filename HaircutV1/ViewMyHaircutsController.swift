@@ -46,7 +46,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
                     if error != nil {
                         print("ERROR: \(error!.localizedDescription)")
                     } else {
-                        print("NOTE: Table Row Deleting successful!")
+                        print("STATUS: Table Row Deleting successful!")
                         self.arrayHaircuts.remove(at: indexPath.row)
                         self.table.reloadData()
                     }
@@ -68,10 +68,10 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyHaircutsFeedTableViewCell
         cell.haircutTitle.text = arrayHaircuts[indexPath.row]["haircutName"] as? String
         if cell.haircutTitle.text == "" {
-            print("empty title")
+            //print("STATUS: Title IS empty")
             cell.haircutTitle.text = "No Title"
         } else {
-            //print("not empty title, leave it be.")
+            //print("STATUS: Title is NOT empty, leave it be.")
         }
         
         // convert from String -> date
@@ -119,7 +119,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
                 
             }
         } else {
-            print("Image on row \(indexPath.row) has no image!")
+            //print("STATUS: Image on row \(indexPath.row) has no image!")
         }
         
         return cell
@@ -127,26 +127,27 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
 
     public func numberOfSections(in tableView: UITableView) -> Int {
         print("FUNCTION START: numberOfSections")
-
         var numOfSections: Int = 0
         
         // check to see if we have any items to load. If not, display "You have no haircuts!" label.
         if arrayHaircuts.count > 0 {
-            print("# of items is NOT empty")
+            print("STATUS: We have at least 1 item in the Table")
             tableView.separatorStyle = .singleLine
             numOfSections            = 1
             tableView.backgroundView = nil
         
         } else {
+            print("STATUS: We have 0 items in the Table")
+            print("STATUS: Displaying 'no data available' label")
+
             // If tableData is NOT empty, then we're definitely connected to Internet so we follow if statement above.
             // If tableData IS empty, it's because user has no haircuts OR user is not connected to internet. Let's check now.
             
             // Code for checking if we have valid internet connection.
+            print("STATUS: Check if there's a valid internet connection")
             if Reachability.isConnectedToNetwork(){
-                print("Internet Connection Available!")
-                //btnRefresh.removeFromSuperview()
-                // load table. Then if table is empty, display a message to "CREATE HAIRCUT!"
-                print("# of items IS empty so display 'no data available' label")
+                print("STATUS: Internet Connection Available!")
+                print("STATUS: Displaying 'no data available' label")
 
                 // Create modified text
                 let modifiedText = NSMutableAttributedString.init(string: "No haircuts here, yet! \n \n Create one using the + button above to the right!")
@@ -170,12 +171,9 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
 
                 
             }else{
-                print("Internet Connection not Available!")
-                // Show refresh button
-                // Ask user to connect to internet and hit "refresh"
-                // perhaps disable "Create" button\?
-                
-                print("# Internet disconnected so show 'no internet' label")
+                print("STATUS: Internet Connection not Available!")
+                // No Internet, so lets show refresh button and ask user to connect to internet.
+                // perhaps we should disable "Create" button in this case?
                 
                 // add label above button
                 let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
@@ -216,7 +214,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
             arrayHaircuts.append(haircut)
         }
         table.reloadData()
-        print("table reloaded!")
+        print("STATUS: Table reloaded!")
     }
     
     func updateTable() {
@@ -229,16 +227,16 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
             
             if error != nil {
                 // print error
-                print("Error: \(error!.localizedDescription)")
+                print("ERROR: \(error!.localizedDescription)")
                 self.btnRefresh.isHidden = false
             } else {
                 // success
-                print("Successfully retrieved \(objects!.count) haircuts!")
+                print("STATUS: Successfully retrieved \(objects!.count) haircuts!")
                 self.btnRefresh.isHidden = true
                 if let objects = objects {
                     self.loadHaircutViews(objects)
                 } else {
-                    print("Error occurred in updateTable()")
+                    print("ERROR: Error occurred in updateTable()")
                 }
                 
             }
@@ -250,18 +248,14 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
     
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("FUNCTION START: prepareForSegue")
 
         super.prepare(for: segue, sender: sender)
-        
         switch(segue.identifier ?? "") {
             
         case "addItem": // if the user is adding a new haircut, you don't need to change the appearnce of the screen.
-            os_log("Adding a new haircut.", log: OSLog.default, type: .debug)
-            print("SEGUE1")
-            print(segue.destination)
+            print("STATUS: Segue case = addItem")
             guard let destinationNavigationController = segue.destination as? UINavigationController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -270,9 +264,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
             newHaircutVC?.modelController = ModelController()
         
         case "showDetail":
-            print("SEGUE2")
-
-            print(segue.destination)
+            print("STATUS: Segue case = showDetail")
 
             guard let haircutDetailViewController = segue.destination as? CreateHaircutPg1ViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
@@ -287,12 +279,12 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
             }
             
             let selectedHaircut = arrayHaircuts[indexPath.row]
-            //haircutDetailViewController.haircut = selectedHaircut
             haircutDetailViewController.modelController = ModelController()
             haircutDetailViewController.modelController.haircut = selectedHaircut
             
         case "showHelp":
-            os_log("Showing help screen", log: OSLog.default, type: .debug)
+            //os_log("Showing help screen", log: OSLog.default, type: .debug)
+            print("STATUS: Segue case = showHelp")
 
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
@@ -306,41 +298,32 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: - viewDidAppear / viewDidLoad Functions
 
     override func viewDidAppear(_ animated: Bool) {
-        print("FUNCTION START: viewDidAppear - ViewMyHaircutsController.swift")
+        print("---NEW SCREEN--- FUNCTION START: viewDidAppear - ViewMyHaircutsController.swift")
         updateTable()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("FUNCTION START: viewDidLoad - ViewMyHaircutsController.swift")
-
-        // Code for checking if we have valid internet connection.
-        if Reachability.isConnectedToNetwork(){
-            print("Internet Connection Available!")
-            // load table. Then if table is empty, display a message to "CREATE HAIRCUT!"
-            
-        }else{
-            print("Internet Connection not Available!")
-            // Show refresh button
-            // Ask user to connect to internet and hit "refresh"
-            // perhaps disable "Create" button\?
-            
-        }
+        print("---NEW SCREEN--- FUNCTION START: viewDidLoad - ViewMyHaircutsController.swift")
 
         // CoreData code
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext // we can use context to access CoreData
         
         // core data retrieval
+        print("STATUS: Fetching CoreData results for entityName: UserRecords")
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserRecords")
         request.returnsObjectsAsFaults = false
         // by default, when request is run, instead of returning actual data, it'll return faults. we usually want this set to false.
         
-        do { // this person is an existing user... let's just retrieve the stored userUUID.
+        // Let's do-try catch a context.fetch to see if we get any UserRecord results from CoreData
+        do {
             
             let results = try context.fetch(request)
+            // not let's see if this is an existing user or not.
             if results.count > 0 {
-                // we already have a UserRecord
+                print("STATUS: Existing User, since we have a UserRecord in CoreData")
+                // we already have a UserRecord, which means this IS an existing user. Let's just retrieve the stored userUUID.
                 for result in results as! [NSManagedObject] {
                     
                     if let userID = result.value(forKey: "userID") as? String {
@@ -349,11 +332,12 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
                 }
                 
             } else { // this person is a brand new user!
-                // let's create a UserRecord
-                print("No results, so this is a new user")
-                
+                print("STATUS: New User, since we have no entries for UserRecord in CoreData")
+
+                // Instead, let's create a new UserRecord Entity for this new user.
                 let newUser = NSEntityDescription.insertNewObject(forEntityName: "UserRecords", into: context)
                 
+                print("STATUS: Generating new user UUID and saving to CoreData + Global Variable for saving in PFObject later.")
                 // generate random UUID
                 let uuid = UUID().uuidString
                 newUser.setValue(uuid, forKey: "userID")
@@ -369,13 +353,13 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
                     try context.save()
                     
                 } catch {
-                    print("There was an error")
+                    print("ERROR: There was an error trying to save to CoreData")
                 }
                 
             }
             
         } catch {
-            print("Couldn't fetch results")
+            print("ERROR: Couldn't fetch results from CoreData")
         }
         
         updateTable()
@@ -393,7 +377,6 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
 } // end View Controller Class
 
 
-// MARK: - Outside Class
 // Code to detect if internet is working. Got code from https://stackoverflow.com/questions/30743408/check-for-internet-connection-with-swift
 public class Reachability {
     

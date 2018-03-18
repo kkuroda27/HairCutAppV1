@@ -8,10 +8,9 @@
 
 import UIKit
 import Parse
+import CoreData
 import os.log
 import ALCameraViewController
-import CoreData
-
 class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
 
     // MARK: - Segue Preparation Variables
@@ -338,7 +337,7 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
     // MARK: - viewWillAppear / viewDidLoad Functions
 
     override func viewWillAppear(_ animated: Bool) {
-        print("FUNCTION START: viewWillAppear - CreateHaircutPg1ViewController.swift")
+        print("---NEW SCREEN--- FUNCTION START: viewWillAppear - CreateHaircutPg1ViewController.swift")
         // this code is workaround for iOS bug = "iOS UINavigationBar button remains faded after segue back" for "next" button.
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.tintAdjustmentMode = .normal
@@ -347,7 +346,7 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("FUNCTION START: viewDidLoad - CreateHaircutPg1ViewController.swift")
+        print("---NEW SCREEN--- FUNCTION START: viewDidLoad - CreateHaircutPg1ViewController.swift")
         print("modelController.haircut = \(modelController.haircut)")
         
         // By default, we want "Retake" button to be hidden.

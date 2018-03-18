@@ -172,7 +172,7 @@ class CreateHaircutPg3ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("FUNCTION START: viewDidLoad - CreateHaircutPg3ViewController.swift")
+        print("---NEW SCREEN--- FUNCTION START: viewDidLoad - CreateHaircutPg3ViewController.swift")
         print("modelController.haircut = \(modelController.haircut)")
 
         // Let's update existing views if 1. we're editing or 2. we went back to another view during creating and then came back.
