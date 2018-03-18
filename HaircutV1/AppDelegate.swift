@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Parse
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        // Enable keyboardmanager from cocoapods.
+        IQKeyboardManager.sharedManager().enable = true
+
         // parse stuff
         let configuration = ParseClientConfiguration {
             $0.applicationId = "214ad04b2f476d6e1b9d132b477469c85c9910b3"

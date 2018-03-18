@@ -8,5 +8,6 @@ target 'HaircutV1' do
   # Pods for HaircutV1
   pod 'Parse'
   pod 'ALCameraViewController'
-
+  pod 'IQKeyboardManagerSwift'
+  
 end

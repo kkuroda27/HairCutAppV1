@@ -1,6 +1,7 @@
 PODS:
   - ALCameraViewController (3.0.3)
   - Bolts/Tasks (1.9.0)
+  - IQKeyboardManagerSwift (5.0.7)
   - Parse (1.16.0):
     - Parse/Core (= 1.16.0)
   - Parse/Core (1.16.0):
@@ -8,13 +9,15 @@ PODS:
 
 DEPENDENCIES:
   - ALCameraViewController
+  - IQKeyboardManagerSwift
   - Parse
 
 SPEC CHECKSUMS:
   ALCameraViewController: 6398a9282057f709b87a1ecc52a83b48028ade64
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  IQKeyboardManagerSwift: 30fb3a61de1af53a95e02b80fb54ed0a19d5ede5
   Parse: 5b36dc2c2f0a2fd82a257ae018bc3d68cf2c24e7
 
-PODFILE CHECKSUM: 4438614e52ae7800c3be2574ae36e6c3b1cea6a3
+PODFILE CHECKSUM: 2fc22b69f52dd01a06cf1b4370be3490e06b0faa
 
 COCOAPODS: 1.4.0

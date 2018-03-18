@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0920"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1042A0580FE9C75224124BEBF0BE9A2B"
+               BlueprintIdentifier = "655D77D2D3EB54FC7D83B44DCDBA3FD5"
                BuildableName = "Pods_HaircutV1.framework"
                BlueprintName = "Pods-HaircutV1"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1042A0580FE9C75224124BEBF0BE9A2B"
+            BlueprintIdentifier = "655D77D2D3EB54FC7D83B44DCDBA3FD5"
             BuildableName = "Pods_HaircutV1.framework"
             BlueprintName = "Pods-HaircutV1"
             ReferencedContainer = "container:Pods.xcodeproj">
