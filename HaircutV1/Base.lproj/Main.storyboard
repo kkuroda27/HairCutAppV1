@@ -409,7 +409,7 @@ Cg
                                 <rect key="frame" x="16" y="162.5" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 1 - YOUR STYLIST will fill this out." textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5WI-RF-Omo">
                                 <rect key="frame" x="16" y="81" width="343" height="19"/>
