@@ -190,7 +190,7 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
     }
 
     
-    // MARK: - Text / Touch Functions
+    // MARK: - Keyboard / Touch Functions
     
     // this runs when return button is pressed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

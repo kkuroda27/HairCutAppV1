@@ -51,7 +51,7 @@ class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
         
     }
 
-    // MARK: - Keyboard Functions
+    // MARK: - Keyboard / Touch Functions
     
     // Start Editing The Text Field
     func textViewDidBeginEditing(_ textView: UITextView) {

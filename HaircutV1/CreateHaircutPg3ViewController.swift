@@ -140,6 +140,21 @@ class CreateHaircutPg3ViewController: UIViewController {
     
     }
     
+    // MARK: - Keyboard / Touch Functions
+    
+    // this runs when return button is pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("FUNCTION START: textFieldShouldReturn")
+        textField.resignFirstResponder() // shut down the keyboard associated with the textField being edited.
+        return true
+    }
+    
+    // this runs whenever the user touches the main area of the app (not the keyboard).
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("FUNCTION START: touchesBegan")
+        self.view.endEditing(true)
+    }
+    
     // MARK: - willMove
     
     override func willMove(toParentViewController parent: UIViewController?) {
