@@ -20,9 +20,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet var table: UITableView!
     let btnRefresh = UIButton(frame: CGRect(x: 100, y: 200, width: 100, height: 50))
 
-    
     // MARK: - Table View Functions
-
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("FUNCTION START: numberOfRowsInSection")
         return arrayHaircuts.count
@@ -46,9 +44,9 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
                 arrayHaircuts[indexPath.row].deleteInBackground(block: { (success, error) in
                     
                     if error != nil {
-                        print(error!.localizedDescription)
+                        print("ERROR: \(error!.localizedDescription)")
                     } else {
-                        print("deleting successful!")
+                        print("NOTE: Table Row Deleting successful!")
                         self.arrayHaircuts.remove(at: indexPath.row)
                         self.table.reloadData()
                     }

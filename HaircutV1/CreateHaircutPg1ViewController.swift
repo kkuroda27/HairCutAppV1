@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import os.log
 import ALCameraViewController
+import CoreData
 
 class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
 
