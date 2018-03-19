@@ -132,7 +132,108 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cte-wQ-njh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1668" y="-1167.1664167916042"/>
+            <point key="canvasLocation" x="718" y="-1125"/>
+        </scene>
+        <!--Select View Option-->
+        <scene sceneID="Mjx-7A-mJg">
+            <objects>
+                <viewController id="Nir-M5-fXb" customClass="ViewOptionsViewController" customModule="HaircutV1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PuX-Jb-y9J">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="458-04-J9m">
+                                <rect key="frame" x="113" y="179" width="149" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="PRESENT"/>
+                                <connections>
+                                    <segue destination="l3p-Qg-2CI" kind="show" identifier="showPresentMode" id="jyd-5A-mdT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqP-2m-SWm">
+                                <rect key="frame" x="77" y="360" width="221" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="FULL DETAILS"/>
+                                <connections>
+                                    <segue destination="4pD-8e-fzd" kind="show" identifier="showFullDetailsMode" id="ngs-CO-HE5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hqP-2m-SWm" firstAttribute="top" secondItem="458-04-J9m" secondAttribute="bottom" constant="127" id="2Dz-O6-nXU"/>
+                            <constraint firstItem="458-04-J9m" firstAttribute="centerX" secondItem="PuX-Jb-y9J" secondAttribute="centerX" id="8UW-NO-nxf"/>
+                            <constraint firstItem="458-04-J9m" firstAttribute="top" secondItem="jYF-tA-b4E" secondAttribute="top" constant="115" id="OT4-GS-NRI"/>
+                            <constraint firstItem="hqP-2m-SWm" firstAttribute="centerX" secondItem="PuX-Jb-y9J" secondAttribute="centerX" id="olV-gs-e10"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jYF-tA-b4E"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Select View Option" id="bgA-zO-9qk">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Vsj-cx-xA6"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="Qpa-Qh-6T5">
+                            <connections>
+                                <action selector="backBtnPressed:" destination="Nir-M5-fXb" id="WF4-es-2Sn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2AT-AU-ioZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3682" y="63"/>
+        </scene>
+        <!--Full Details Mode-->
+        <scene sceneID="r2r-dv-Jzf">
+            <objects>
+                <viewController id="4pD-8e-fzd" customClass="FullDetailsModeViewController" customModule="HaircutV1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rGs-nm-1nI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Hgy-Vi-Rbu"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Full Details Mode" id="54P-7x-myJ">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="Kgr-ja-hC3">
+                            <connections>
+                                <segue destination="8rJ-Kc-sve" kind="show" identifier="showEdit" id="WCN-UJ-CMr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="96U-4Z-hGA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4678" y="535"/>
+        </scene>
+        <!--Present Mode-->
+        <scene sceneID="HFn-ug-FM8">
+            <objects>
+                <viewController id="l3p-Qg-2CI" customClass="PresentModeViewController" customModule="HaircutV1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="15F-Hp-JEq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Headshots:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaG-xy-LHS">
+                                <rect key="frame" x="16" y="159" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Haircut Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUf-ZT-sOn">
+                                <rect key="frame" x="16" y="426" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="udm-93-gO1"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Present Mode" id="Uug-W9-as2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="14w-r4-SYq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4679" y="-249"/>
         </scene>
         <!--My Haircuts-->
         <scene sceneID="hNz-n2-bh7">
@@ -212,7 +313,7 @@ Cg
                                             <outlet property="haircutImage" destination="opH-1I-lQH" id="uF4-Dw-6o4"/>
                                             <outlet property="haircutSalonTitle" destination="zm9-mA-D5T" id="INf-G4-1ht"/>
                                             <outlet property="haircutTitle" destination="HW1-2B-WoN" id="QYn-tG-Pzj"/>
-                                            <segue destination="8rJ-Kc-sve" kind="show" identifier="showDetail" id="Asa-YH-UIR"/>
+                                            <segue destination="CEu-xR-t64" kind="show" identifier="showDetail" id="t4X-va-S7t"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -232,6 +333,7 @@ Cg
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Haircuts" id="W2o-EP-d8E">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="2SE-f5-GVY"/>
                         <barButtonItem key="leftBarButtonItem" title="Help" id="a0k-0X-aMg">
                             <connections>
                                 <segue destination="P3H-8t-R0Q" kind="presentation" identifier="showHelp" id="Qas-mz-LH3"/>
@@ -513,7 +615,7 @@ Please give phone back to owner!</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3544.8000000000002" y="-513.19340329835086"/>
+            <point key="canvasLocation" x="3554" y="-1147"/>
         </scene>
         <!--Create New Haircut 2-->
         <scene sceneID="iBn-aA-Yc9">
@@ -605,7 +707,7 @@ Read them the example below to give them an idea of what info you need. </string
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Gd-J8-EU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4349.6000000000004" y="-513.19340329835086"/>
+            <point key="canvasLocation" x="4351" y="-1147"/>
         </scene>
         <!--Create New Haircut 3-->
         <scene sceneID="uBA-A4-G6R">
@@ -712,7 +814,7 @@ Read them the example below to give them an idea of what info you need. </string
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h65-Ec-fi3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5160.8000000000002" y="-513.19340329835086"/>
+            <point key="canvasLocation" x="5151" y="-1147"/>
         </scene>
         <!--Create New Haircut-->
         <scene sceneID="Zas-nv-DjG">
@@ -731,7 +833,7 @@ Read them the example below to give them an idea of what info you need. </string
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="74K-ur-Cf4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2510" y="35"/>
+            <point key="canvasLocation" x="2697" y="-1147"/>
         </scene>
         <!--My Haircuts-->
         <scene sceneID="PNg-zc-ysm">
@@ -750,7 +852,25 @@ Read them the example below to give them an idea of what info you need. </string
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5a9-MC-aO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="748.79999999999995" y="-442.5787106446777"/>
+            <point key="canvasLocation" x="718" y="-443"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="q07-8x-aqM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CEu-xR-t64" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UgT-Zc-W2c">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Nir-M5-fXb" kind="relationship" relationship="rootViewController" id="Lpg-7h-hXb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EVY-sd-RVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2697" y="63"/>
         </scene>
     </scenes>
     <resources>
@@ -764,6 +884,6 @@ Read them the example below to give them an idea of what info you need. </string
     <inferredMetricsTieBreakers>
         <segue reference="ngQ-uN-UpQ"/>
         <segue reference="dUP-zs-M99"/>
-        <segue reference="Asa-YH-UIR"/>
+        <segue reference="WCN-UJ-CMr"/>
     </inferredMetricsTieBreakers>
 </document>

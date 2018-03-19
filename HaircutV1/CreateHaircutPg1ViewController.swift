@@ -16,6 +16,7 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
     // MARK: - Segue Preparation Variables
     var isCreating = true
     var modelController: ModelController!
+    var previousVC = ""
 
     // MARK: - Outlet Variables
     @IBOutlet var stylistNameTextField: UITextField!
@@ -170,15 +171,34 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
         
         //This code creates a Boolean value that indicates whether the view controller that presented this scene is of type UINavigationController. As the constant name isPresentingInAddHaircutMode indicates, this means that the meal detail scene is presented by the user tapping the Add button. This is because the meal detail scene is embedded in its own navigation controller when it’s presented in this manner, which means that the navigation controller is what presents it.
         
-        let isPresentingInAddHaircutMode = presentingViewController is UINavigationController
+        if previousVC == "FullDetailsModeViewController" {
+            print("Coming from Full Details")
+            if let owningNavigationController = navigationController {
+                owningNavigationController.popViewController(animated: true)
+            } else {
+                fatalError("The MealViewController is not inside a navigation controller.")
+            }
+
+        } else if previousVC == "ViewMyHaircutsController" {
+            print("Coming from ViewMyHaircutsController")
+            dismiss(animated: true, completion: nil)
+
+        } else {
+            print("this should never happen")
+        }
         
+        dismiss(animated: true, completion: nil)
+
+        /* // DEPRECATED CANCEL BUTTON HANDLER
         // if this is true, then the view controller was presented by clicking the "Add" button.
         if isPresentingInAddHaircutMode {
+            // takes you back to myhaircutstable
             dismiss(animated: true, completion: nil)
             
             // The else block (below) is called if the user is editing an existing haircut. This also means that the haircut detail scene was pushed onto a navigation stack when the user selected a haircut from the haircut list. The else statement uses an if let statement to safely unwrap the view controller’s navigationController property. If the view controller has been pushed onto a navigation stack, this property contains a reference to the stack’s navigation controller.
-            
+
         } else if let owningNavigationController = navigationController{
+            // takes you back to previous screen.
             owningNavigationController.popViewController(animated: true)
             
         } else {
@@ -186,7 +206,7 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
         }
         
         dismiss(animated: true, completion: nil)
-        
+        */
     }
 
     

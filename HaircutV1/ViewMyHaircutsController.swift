@@ -280,14 +280,18 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
 
             let newHaircutVC = destinationNavigationController.topViewController as? CreateHaircutPg1ViewController
             newHaircutVC?.modelController = ModelController()
+            newHaircutVC?.previousVC = "ViewMyHaircutsController"
+
         
         case "showDetail":
             print("STATUS: Segue case = showDetail")
 
-            guard let haircutDetailViewController = segue.destination as? CreateHaircutPg1ViewController else {
+            guard let destinationNavigationController = segue.destination as? UINavigationController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
+            let viewOptionsVC = destinationNavigationController.topViewController as? ViewOptionsViewController
+
             guard let selectedHaircutCell = sender as? MyHaircutsFeedTableViewCell else {
                 fatalError("Unexpected sender: \(String(describing: sender))")
             }
@@ -297,8 +301,8 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
             }
             
             let selectedHaircut = arrayHaircuts[indexPath.row]
-            haircutDetailViewController.modelController = ModelController()
-            haircutDetailViewController.modelController.haircut = selectedHaircut
+            viewOptionsVC?.modelController = ModelController()
+            viewOptionsVC?.modelController.haircut = selectedHaircut
             
         case "showHelp":
             //os_log("Showing help screen", log: OSLog.default, type: .debug)
