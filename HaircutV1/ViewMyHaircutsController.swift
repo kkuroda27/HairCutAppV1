@@ -38,7 +38,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
         self.view.addSubview(activityIndicator)
         
         if editingStyle == UITableViewCellEditingStyle.delete {
-            if let haircutObjectId = arrayHaircuts[indexPath.row].objectId {
+            if arrayHaircuts[indexPath.row].objectId != nil {
                 
                 let alert = UIAlertController(title: "Are you sure you want to delete this Haircut?", message: "It won't come back once you do!", preferredStyle: UIAlertControllerStyle.alert)
                 
