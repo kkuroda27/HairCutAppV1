@@ -9,5 +9,7 @@ target 'HaircutV1' do
   pod 'Parse'
   pod 'ALCameraViewController'
   pod 'IQKeyboardManagerSwift'
-  
+  pod 'SKPhotoBrowser'
+  use_frameworks!
+
 end

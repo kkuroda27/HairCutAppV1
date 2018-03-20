@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C9C4DD6BC2B8680048889ECAD2DDD3B"
-               BuildableName = "Pods_HaircutV1.framework"
-               BlueprintName = "Pods-HaircutV1"
+               BlueprintIdentifier = "270F12D42D50FE5B0F2E42A0861388BA"
+               BuildableName = "SKPhotoBrowser.framework"
+               BlueprintName = "SKPhotoBrowser"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4C9C4DD6BC2B8680048889ECAD2DDD3B"
-            BuildableName = "Pods_HaircutV1.framework"
-            BlueprintName = "Pods-HaircutV1"
+            BlueprintIdentifier = "270F12D42D50FE5B0F2E42A0861388BA"
+            BuildableName = "SKPhotoBrowser.framework"
+            BlueprintName = "SKPhotoBrowser"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

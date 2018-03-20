@@ -138,12 +138,14 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Parse/Parse.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SKPhotoBrowser/SKPhotoBrowser.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ALCameraViewController/ALCameraViewController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Parse/Parse.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SKPhotoBrowser/SKPhotoBrowser.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
