@@ -132,7 +132,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cte-wQ-njh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="718" y="-1125"/>
+            <point key="canvasLocation" x="1146" y="-1253"/>
         </scene>
         <!--Select View Option-->
         <scene sceneID="Mjx-7A-mJg">
@@ -179,7 +179,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2AT-AU-ioZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3682" y="63"/>
+            <point key="canvasLocation" x="2749" y="19"/>
         </scene>
         <!--Full Details Mode-->
         <scene sceneID="r2r-dv-Jzf">
@@ -455,7 +455,7 @@ Cg
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4677.6000000000004" y="623.38830584707648"/>
+            <point key="canvasLocation" x="3366" y="582"/>
         </scene>
         <!--Present Mode-->
         <scene sceneID="HFn-ug-FM8">
@@ -621,7 +621,7 @@ Cg
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5426" y="586"/>
+            <point key="canvasLocation" x="3366" y="-327"/>
         </scene>
         <!--My Haircuts-->
         <scene sceneID="hNz-n2-bh7">
@@ -1003,7 +1003,7 @@ Please give phone back to owner!</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3554" y="-1147"/>
+            <point key="canvasLocation" x="2749" y="-1148"/>
         </scene>
         <!--Create New Haircut 2-->
         <scene sceneID="iBn-aA-Yc9">
@@ -1095,7 +1095,7 @@ Read them the example below to give them an idea of what info you need. </string
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Gd-J8-EU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4351" y="-1147"/>
+            <point key="canvasLocation" x="3366" y="-1149"/>
         </scene>
         <!--Create New Haircut 3-->
         <scene sceneID="uBA-A4-G6R">
@@ -1202,7 +1202,7 @@ Read them the example below to give them an idea of what info you need. </string
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h65-Ec-fi3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5151" y="-1147"/>
+            <point key="canvasLocation" x="3960" y="-1149"/>
         </scene>
         <!--Create New Haircut-->
         <scene sceneID="Zas-nv-DjG">
@@ -1221,7 +1221,7 @@ Read them the example below to give them an idea of what info you need. </string
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="74K-ur-Cf4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2697" y="-1147"/>
+            <point key="canvasLocation" x="2214" y="-1148"/>
         </scene>
         <!--My Haircuts-->
         <scene sceneID="PNg-zc-ysm">
@@ -1240,7 +1240,7 @@ Read them the example below to give them an idea of what info you need. </string
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5a9-MC-aO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="718" y="-443"/>
+            <point key="canvasLocation" x="1146" y="-444"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="q07-8x-aqM">
@@ -1258,7 +1258,7 @@ Read them the example below to give them an idea of what info you need. </string
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EVY-sd-RVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2697" y="63"/>
+            <point key="canvasLocation" x="2214" y="19"/>
         </scene>
     </scenes>
     <resources>

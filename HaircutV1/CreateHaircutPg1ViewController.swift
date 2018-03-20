@@ -167,31 +167,48 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         print("FUNCTION START: cancel")
         
-        // Code and comments here retrieved from "https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/ImplementEditAndDeleteBehavior.html#//apple_ref/doc/uid/TP40015214-CH9-SW4"
         
-        // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
-        
-        //This code creates a Boolean value that indicates whether the view controller that presented this scene is of type UINavigationController. As the constant name isPresentingInAddHaircutMode indicates, this means that the meal detail scene is presented by the user tapping the Add button. This is because the meal detail scene is embedded in its own navigation controller when it’s presented in this manner, which means that the navigation controller is what presents it.
-        
-        if previousVC == "FullDetailsModeViewController" {
-            print("Coming from Full Details")
-            if let owningNavigationController = navigationController {
-                owningNavigationController.popViewController(animated: true)
+        let alert = UIAlertController(title: "Are you sure?", message: "You'll lose all your unsaved changes!", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            self.dismiss(animated: true, completion: nil)
+            
+            // Let's check which ViewController presented this and navigate back accordingly.
+            if self.previousVC == "FullDetailsModeViewController" {
+                print("Coming from Full Details")
+                if let owningNavigationController = self.navigationController {
+                    owningNavigationController.popViewController(animated: true)
+                } else {
+                    fatalError("The owningNavigationController is not inside a navigation controller.")
+                }
+                
+            } else if self.previousVC == "ViewMyHaircutsController" {
+                print("Coming from ViewMyHaircutsController")
+                self.dismiss(animated: true, completion: nil)
+                
             } else {
-                fatalError("The owningNavigationController is not inside a navigation controller.")
+                print("this should never happen")
             }
+            
 
-        } else if previousVC == "ViewMyHaircutsController" {
-            print("Coming from ViewMyHaircutsController")
-            dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
 
-        } else {
-            print("this should never happen")
-        }
+        }))
         
-        dismiss(animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            print("Cancel!")
+        }))
+
+        self.present(alert, animated: true, completion: nil)
+
+        
 
         /* // DEPRECATED CANCEL BUTTON HANDLER
+         // Code and comments here retrieved from "https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/ImplementEditAndDeleteBehavior.html#//apple_ref/doc/uid/TP40015214-CH9-SW4"
+         
+         // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
+         
+         //This code creates a Boolean value that indicates whether the view controller that presented this scene is of type UINavigationController. As the constant name isPresentingInAddHaircutMode indicates, this means that the meal detail scene is presented by the user tapping the Add button. This is because the meal detail scene is embedded in its own navigation controller when it’s presented in this manner, which means that the navigation controller is what presents it.
+
         // if this is true, then the view controller was presented by clicking the "Add" button.
         if isPresentingInAddHaircutMode {
             // takes you back to myhaircutstable
@@ -485,9 +502,17 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
     }
     
     // MARK: - helper functions
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        print("FUNCTION START: didReceiveMemoryWarning")
+        // Dispose of any resources that can be recreated.
+    }
+
+    /* // DEPRECATED DISPLAY ALERT FUNCTION
     func displayAlert(title:String, message:String) {
         print("FUNCTION START: displayAlert")
-
+        
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
             self.dismiss(animated: true, completion: nil)
@@ -499,23 +524,16 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
             } else if let owningNavigationController = self.navigationController{
                 owningNavigationController.popViewController(animated: true)
             } else {
-                fatalError("The MealViewController is not inside a navigation controller.")
+                fatalError("The ViewController is not inside a navigation controller.")
             }
             self.dismiss(animated: true, completion: nil)
-
+            
         }))
         
         self.present(alert, animated: true, completion: nil)
     }
+    */
 
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        print("FUNCTION START: didReceiveMemoryWarning")
-        // Dispose of any resources that can be recreated.
-    }
-
-    
     /*
      // Deprecated function to allow users to select Camera or Upload.
      @IBAction func chooseImage(_ sender: UIButton) {
