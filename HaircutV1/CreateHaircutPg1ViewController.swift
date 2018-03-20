@@ -154,6 +154,8 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
             
         pg2ViewController.modelController = modelController
         pg2ViewController.isCreating = isCreating
+        pg2ViewController.previousVC = previousVC
+
 
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
@@ -176,7 +178,7 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
             if let owningNavigationController = navigationController {
                 owningNavigationController.popViewController(animated: true)
             } else {
-                fatalError("The MealViewController is not inside a navigation controller.")
+                fatalError("The owningNavigationController is not inside a navigation controller.")
             }
 
         } else if previousVC == "ViewMyHaircutsController" {

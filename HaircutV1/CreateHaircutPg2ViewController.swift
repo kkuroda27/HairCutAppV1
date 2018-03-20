@@ -15,6 +15,7 @@ class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
     // MARK: - Segue Preparation Variables
     var isCreating = true
     var modelController: ModelController!
+    var previousVC = ""
 
     // MARK: - Outlet Variables
     @IBOutlet var descriptionTextField: UITextView!
@@ -39,6 +40,7 @@ class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
             
             pg3ViewController.modelController = modelController
             pg3ViewController.isCreating = isCreating
+            pg3ViewController.previousVC = previousVC
 
             print("STATUS: Finished adding to modelController.haircut...")
             print("PRINT -> POST - modelController.haircut \(modelController.haircut)")

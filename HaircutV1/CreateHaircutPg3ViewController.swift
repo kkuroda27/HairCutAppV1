@@ -15,6 +15,7 @@ class CreateHaircutPg3ViewController: UIViewController {
     // MARK: - Segue Preparation Variables
     var isCreating = true
     var modelController: ModelController!
+    var previousVC = ""
 
     // MARK: - Outlets
     @IBOutlet var datePicker: UIDatePicker!
@@ -236,7 +237,33 @@ class CreateHaircutPg3ViewController: UIViewController {
         print("FUNCTION START: displayAlert")
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            
+            if self.previousVC == "FullDetailsModeViewController" {
+                print("STATUS: Coming from Full Details, aka we're in Edit Haircut Flow")
+                if let owningNavigationController = self.navigationController {
+                    let nb = 4
+                    if let viewControllers: [UIViewController] = self.navigationController?.viewControllers {
+                        guard viewControllers.count < nb else {
+                            owningNavigationController.popToViewController(viewControllers[viewControllers.count - nb], animated: true)
+                            return
+                        }
+                    }
+                } else {
+                    fatalError("The owningNavigationController is not inside a navigation controller.")
+                }
+                
+            } else if self.previousVC == "ViewMyHaircutsController" {
+                print("STATUS: Coming from ViewMyHaircutsController, aka we're in Add Haircut Flow")
+                self.dismiss(animated: true, completion: nil)
+                
+            } else {
+                print("this should never happen")
+            }
+            
             self.dismiss(animated: true, completion: nil)
+
+            /*
+             self.dismiss(animated: true, completion: nil)
             
             // segue transitions
             let isPresentingInAddHaircutMode = self.presentingViewController is UINavigationController
@@ -259,7 +286,7 @@ class CreateHaircutPg3ViewController: UIViewController {
                 fatalError("The MealViewController is not inside a navigation controller.")
             }
             self.dismiss(animated: true, completion: nil)
-            
+            */
         }))
         
         self.present(alert, animated: true, completion: nil)
