@@ -25,13 +25,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQV-yl-0Te">
-                                <rect key="frame" x="20" y="138" width="375" height="392"/>
+                                <rect key="frame" x="20" y="157" width="375" height="354"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FCG-Sg-UDv">
-                                        <rect key="frame" x="20" y="10" width="375" height="372"/>
+                                        <rect key="frame" x="20" y="10" width="375" height="334"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qgj-QV-GV3">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="314"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="276"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
@@ -68,26 +68,14 @@ Cg
                                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
-                                                    <fragment content="&quot;How do I create a haircut?&quot;">
+                                                    <fragment content="&quot;How do I use this?&quot;">
                                                         <attributes>
                                                             <font key="NSFont" size="11" name="Arial-BoldMT"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
-                                                        <string key="content"> Click the + button on the top-right corner to create a new haircut.   STEP 1 - After you get a haircut, ask the barber to take 3 pictures of your hair from the front, side, and back, using this app.   STEP 2 - Also ask the barber to fill out the "description" of the haircut in barber language, then hit "save".  Next time you want to get the same great haircut, show the barber the profile and you'll have your Fresh Cut!  </string>
-                                                        <attributes>
-                                                            <font key="NSFont" size="11" name="ArialMT"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                    <fragment content="&quot;How do I view my haircuts?&quot; ">
-                                                        <attributes>
-                                                            <font key="NSFont" size="11" name="Arial-BoldMT"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                    <fragment content="This screen shows all your &quot;Haircut Profiles&quot; you've created. Just tap on each row to view them, or swipe left to delete. ">
+                                                        <mutableString key="content"> Simple! Next time you get a haircut, use the + button in the top-right corner to create a haircut! FreshCut will guide you through the easy process to record details of your fresh cut!  Make sure to do it right after your haircut while you're still sitting in the barber seat, since the barber will have to take 3 quick pictures for you (Don't worry, they'll be more than happy to help!). The lighting in a barber shop is extremely ideal for taking pictures.  Next time you want to get the same great haircut, show the barber your haircut profile and you'll have your Fresh Cut just the way you want it!</mutableString>
                                                         <attributes>
                                                             <font key="NSFont" size="11" name="ArialMT"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -97,7 +85,7 @@ Cg
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B56-j2-AhA">
-                                                <rect key="frame" x="0.0" y="334" width="375" height="38"/>
+                                                <rect key="frame" x="0.0" y="296" width="375" height="38"/>
                                                 <color key="backgroundColor" red="0.91848979724819912" green="0.92982917746113991" blue="0.92982917746113991" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <state key="normal" title="Dismiss"/>
@@ -108,7 +96,7 @@ Cg
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.69802461139896366" green="0.201467529471448" blue="0.032035415990620902" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.14375942417265081" green="0.4864860889755554" blue="0.69802461139896366" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="FCG-Sg-UDv" secondAttribute="trailing" constant="20" id="TTR-pn-yb8"/>
                                     <constraint firstItem="FCG-Sg-UDv" firstAttribute="leading" secondItem="aQV-yl-0Te" secondAttribute="leading" constant="20" id="cJi-wQ-bZ9"/>
@@ -202,7 +190,7 @@ You can also edit your haircut here!</string>
                     </view>
                     <navigationItem key="navigationItem" title="Select View Option" id="bgA-zO-9qk">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Vsj-cx-xA6"/>
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="Qpa-Qh-6T5">
+                        <barButtonItem key="leftBarButtonItem" image="IQButtonBarArrowLeft.png" id="Qpa-Qh-6T5">
                             <connections>
                                 <action selector="backBtnPressed:" destination="Nir-M5-fXb" id="WF4-es-2Sn"/>
                             </connections>
@@ -383,7 +371,6 @@ You can also edit your haircut here!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.54961812581273217" green="1" blue="0.34165120584037312" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="Ti7-Kw-yM4" firstAttribute="top" secondItem="ttZ-tc-ams" secondAttribute="bottom" constant="20.5" id="07x-HX-z8K"/>
                                             <constraint firstItem="n96-ls-obu" firstAttribute="top" secondItem="ON8-Iz-aMO" secondAttribute="top" constant="40" id="0tg-3c-zDD"/>
@@ -431,7 +418,6 @@ You can also edit your haircut here!</string>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.27935186816126079" green="0.7121912847710643" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="ON8-Iz-aMO" firstAttribute="width" secondItem="FId-5Q-QUG" secondAttribute="width" id="FPC-Io-xB0"/>
                                     <constraint firstItem="ON8-Iz-aMO" firstAttribute="height" secondItem="FId-5Q-QUG" secondAttribute="height" priority="250" id="GAO-jD-kg1"/>
@@ -443,6 +429,7 @@ You can also edit your haircut here!</string>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Hgy-Vi-Rbu" firstAttribute="trailing" secondItem="FId-5Q-QUG" secondAttribute="trailing" id="3XD-cW-3bg"/>
                             <constraint firstItem="Hgy-Vi-Rbu" firstAttribute="bottom" secondItem="FId-5Q-QUG" secondAttribute="bottom" id="SjB-EP-8cU"/>
@@ -1284,6 +1271,7 @@ Read them the example below to give them an idea of what info you need. </string
         </scene>
     </scenes>
     <resources>
+        <image name="IQButtonBarArrowLeft.png" width="12" height="21"/>
         <image name="backPlaceholder" width="58" height="70"/>
         <image name="first" width="30" height="30"/>
         <image name="frontPlaceholder" width="60" height="70"/>
