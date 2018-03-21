@@ -213,7 +213,7 @@ You can also edit your haircut here!</string>
                                 <rect key="frame" x="0.0" y="64" width="375" height="686"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ON8-Iz-aMO" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="686"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="680.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Haircut:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n96-ls-obu">
                                                 <rect key="frame" x="16" y="40" width="343" height="20.5"/>
@@ -228,13 +228,13 @@ You can also edit your haircut here!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="example date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yM-7M-asm">
-                                                <rect key="frame" x="32" y="553.5" width="103" height="20.5"/>
+                                                <rect key="frame" x="32" y="548" width="103" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="example date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RmM-cp-2ik">
-                                                <rect key="frame" x="32" y="616.5" width="327" height="20.5"/>
+                                                <rect key="frame" x="32" y="611" width="327" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -337,9 +337,10 @@ You can also edit your haircut here!</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tGv-6J-eZp">
-                                                <rect key="frame" x="10" y="380" width="343" height="128"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tGv-6J-eZp">
+                                                <rect key="frame" x="32" y="374.5" width="327" height="128"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" red="0.0" green="0.47934520244598389" blue="0.99908632040023804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="128" id="QkI-oi-3xu"/>
                                                 </constraints>
@@ -347,13 +348,13 @@ You can also edit your haircut here!</string>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salon Name + City: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6G-bv-J8D">
-                                                <rect key="frame" x="16" y="594" width="343" height="20.5"/>
+                                                <rect key="frame" x="16" y="588.5" width="343" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Haircut: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lr5-fD-3kg">
-                                                <rect key="frame" x="16" y="531" width="343" height="20.5"/>
+                                                <rect key="frame" x="16" y="525.5" width="343" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -384,7 +385,7 @@ You can also edit your haircut here!</string>
                                             <constraint firstAttribute="right" relation="greaterThanOrEqual" secondItem="Dcy-6I-rlr" secondAttribute="right" constant="16" id="FRA-b8-d7A"/>
                                             <constraint firstItem="xxK-dT-ceI" firstAttribute="leading" secondItem="ON8-Iz-aMO" secondAttribute="leading" constant="10" id="FYG-80-MeK"/>
                                             <constraint firstItem="Q8O-y5-chM" firstAttribute="top" secondItem="xxK-dT-ceI" secondAttribute="bottom" constant="8" id="Hlu-Xc-wu8"/>
-                                            <constraint firstAttribute="trailing" secondItem="tGv-6J-eZp" secondAttribute="trailing" constant="22" id="JEZ-aa-j7A"/>
+                                            <constraint firstAttribute="trailing" secondItem="tGv-6J-eZp" secondAttribute="trailing" constant="16" id="JEZ-aa-j7A"/>
                                             <constraint firstItem="Lr5-fD-3kg" firstAttribute="top" secondItem="tGv-6J-eZp" secondAttribute="bottom" constant="23" id="Lyo-f2-2UX"/>
                                             <constraint firstItem="V6G-bv-J8D" firstAttribute="leading" secondItem="ON8-Iz-aMO" secondAttribute="leading" constant="16" id="M8c-8u-1UY"/>
                                             <constraint firstAttribute="right" secondItem="RmM-cp-2ik" secondAttribute="right" constant="16" id="NoD-CL-R3a"/>
@@ -399,7 +400,7 @@ You can also edit your haircut here!</string>
                                             <constraint firstItem="Dcy-6I-rlr" firstAttribute="top" secondItem="Ti7-Kw-yM4" secondAttribute="bottom" constant="2" id="glX-pn-a7f"/>
                                             <constraint firstAttribute="trailing" secondItem="n96-ls-obu" secondAttribute="trailing" constant="16" id="iAJ-3v-jMy"/>
                                             <constraint firstItem="Q8O-y5-chM" firstAttribute="top" secondItem="3f7-UR-8iF" secondAttribute="top" id="iXe-rT-U0j"/>
-                                            <constraint firstItem="tGv-6J-eZp" firstAttribute="leading" secondItem="ON8-Iz-aMO" secondAttribute="leading" constant="10" id="jVc-0z-aW2"/>
+                                            <constraint firstItem="tGv-6J-eZp" firstAttribute="leading" secondItem="ON8-Iz-aMO" secondAttribute="leading" constant="32" id="jVc-0z-aW2"/>
                                             <constraint firstAttribute="trailing" secondItem="V6G-bv-J8D" secondAttribute="trailing" constant="16" id="ktL-0V-neL"/>
                                             <constraint firstItem="7yM-7M-asm" firstAttribute="left" secondItem="ON8-Iz-aMO" secondAttribute="left" constant="32" id="n61-Ar-0dk"/>
                                             <constraint firstItem="n96-ls-obu" firstAttribute="leading" secondItem="ON8-Iz-aMO" secondAttribute="leading" constant="16" id="ndd-JE-2ft"/>
@@ -409,7 +410,7 @@ You can also edit your haircut here!</string>
                                             <constraint firstItem="ttZ-tc-ams" firstAttribute="left" secondItem="ON8-Iz-aMO" secondAttribute="left" constant="32" id="qkj-FK-zpX"/>
                                             <constraint firstItem="EMo-w1-Xpq" firstAttribute="top" secondItem="mdt-Mc-e9d" secondAttribute="bottom" constant="24" id="t2J-G3-yan"/>
                                             <constraint firstItem="Lr5-fD-3kg" firstAttribute="leading" secondItem="ON8-Iz-aMO" secondAttribute="leading" constant="16" id="uIk-zJ-IIW"/>
-                                            <constraint firstItem="tGv-6J-eZp" firstAttribute="top" secondItem="EMo-w1-Xpq" secondAttribute="bottom" constant="8" id="uzk-jp-Vzg"/>
+                                            <constraint firstItem="tGv-6J-eZp" firstAttribute="top" secondItem="EMo-w1-Xpq" secondAttribute="bottom" constant="2" id="uzk-jp-Vzg"/>
                                             <constraint firstAttribute="trailing" secondItem="Lr5-fD-3kg" secondAttribute="trailing" constant="16" id="wER-d5-K48"/>
                                             <constraint firstItem="Q8O-y5-chM" firstAttribute="top" secondItem="mdt-Mc-e9d" secondAttribute="top" id="wb7-Q1-Qjr"/>
                                             <constraint firstItem="3f7-UR-8iF" firstAttribute="centerX" secondItem="zHI-IS-c5y" secondAttribute="centerX" id="xei-Rf-ATQ"/>
@@ -594,6 +595,7 @@ You can also edit your haircut here!</string>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HLt-09-5jT">
                                 <rect key="frame" x="32" y="394.5" width="329" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.0" green="0.47934520244598389" blue="0.99908632040023804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="YPk-Sx-niz"/>
                                 </constraints>
@@ -1291,6 +1293,6 @@ Read them the example below to give them an idea of what info you need. </string
         <image name="uploadIcon" width="640" height="471"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xAv-eH-gfC"/>
+        <segue reference="WCN-UJ-CMr"/>
     </inferredMetricsTieBreakers>
 </document>
