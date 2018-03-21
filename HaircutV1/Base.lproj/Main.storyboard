@@ -833,18 +833,18 @@ You can also edit your haircut here!</string>
                                                 </connections>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uploadIcon" translatesAutoresizingMaskIntoConstraints="NO" id="l38-US-vWg">
-                                                <rect key="frame" x="25" y="22" width="55" height="62"/>
+                                                <rect key="frame" x="27" y="28" width="50" height="50"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="55" id="BxQ-Zz-jOK"/>
-                                                    <constraint firstAttribute="height" constant="62" id="YqR-Qw-bOT"/>
+                                                    <constraint firstAttribute="width" constant="50" id="BxQ-Zz-jOK"/>
+                                                    <constraint firstAttribute="height" constant="50" id="YqR-Qw-bOT"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="YL8-2X-FvG" firstAttribute="leading" secondItem="Fzb-yD-qDW" secondAttribute="leading" id="F32-n8-hKs"/>
-                                            <constraint firstItem="l38-US-vWg" firstAttribute="centerX" secondItem="YL8-2X-FvG" secondAttribute="centerX" id="Qzr-I1-OF8"/>
-                                            <constraint firstItem="l38-US-vWg" firstAttribute="centerY" secondItem="YL8-2X-FvG" secondAttribute="centerY" id="bRm-TK-jxK"/>
+                                            <constraint firstItem="l38-US-vWg" firstAttribute="centerX" secondItem="YL8-2X-FvG" secondAttribute="centerX" constant="-0.5" id="Qzr-I1-OF8"/>
+                                            <constraint firstItem="l38-US-vWg" firstAttribute="centerY" secondItem="YL8-2X-FvG" secondAttribute="centerY" constant="0.5" id="bRm-TK-jxK"/>
                                             <constraint firstItem="YL8-2X-FvG" firstAttribute="centerX" secondItem="Fzb-yD-qDW" secondAttribute="centerX" id="qEj-zy-Tvm"/>
                                             <constraint firstItem="YL8-2X-FvG" firstAttribute="top" secondItem="Fzb-yD-qDW" secondAttribute="top" id="rQk-Tl-NOw"/>
                                             <constraint firstItem="YL8-2X-FvG" firstAttribute="centerX" secondItem="Fzb-yD-qDW" secondAttribute="centerX" id="tPd-Wf-kXA"/>
@@ -865,10 +865,10 @@ You can also edit your haircut here!</string>
                                                 </connections>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uploadIcon" translatesAutoresizingMaskIntoConstraints="NO" id="jJ2-2Q-Gsx">
-                                                <rect key="frame" x="25" y="22" width="55" height="62"/>
+                                                <rect key="frame" x="27" y="28" width="50" height="50"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="55" id="OcC-Xa-m6S"/>
-                                                    <constraint firstAttribute="height" constant="62" id="sAj-US-mg9"/>
+                                                    <constraint firstAttribute="width" constant="50" id="OcC-Xa-m6S"/>
+                                                    <constraint firstAttribute="height" constant="50" id="sAj-US-mg9"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
@@ -894,10 +894,10 @@ You can also edit your haircut here!</string>
                                                 </connections>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uploadIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Bnn-n8-cKf">
-                                                <rect key="frame" x="25" y="21.5" width="55" height="62"/>
+                                                <rect key="frame" x="27" y="28" width="50" height="50"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="62" id="FMb-hV-o4K"/>
-                                                    <constraint firstAttribute="width" constant="55" id="fVh-0y-IYk"/>
+                                                    <constraint firstAttribute="height" constant="50" id="FMb-hV-o4K"/>
+                                                    <constraint firstAttribute="width" constant="50" id="fVh-0y-IYk"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
