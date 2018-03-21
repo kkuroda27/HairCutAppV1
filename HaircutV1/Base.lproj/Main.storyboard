@@ -132,7 +132,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cte-wQ-njh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146" y="-1253"/>
+            <point key="canvasLocation" x="1089" y="-1253"/>
         </scene>
         <!--Select View Option-->
         <scene sceneID="Mjx-7A-mJg">
@@ -143,7 +143,7 @@ Cg
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="458-04-J9m">
-                                <rect key="frame" x="113" y="179" width="149" height="54"/>
+                                <rect key="frame" x="113" y="208" width="149" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="PRESENT"/>
                                 <connections>
@@ -151,20 +151,52 @@ Cg
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqP-2m-SWm">
-                                <rect key="frame" x="77" y="360" width="221" height="54"/>
+                                <rect key="frame" x="77" y="363" width="221" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="FULL DETAILS"/>
                                 <connections>
                                     <segue destination="4pD-8e-fzd" kind="show" identifier="showFullDetailsMode" id="ngs-CO-HE5"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How would you like to view this haircut?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k97-PE-I7J">
+                                <rect key="frame" x="16" y="77" width="343" height="64.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <color key="textColor" red="1" green="0.46172100962592688" blue="0.19143641882184392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmD-Ib-wfW">
+                                <rect key="frame" x="0.0" y="418" width="375" height="33.5"/>
+                                <string key="text">*Use this to view all details!
+You can also edit your haircut here!</string>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Use this if you're showing your stylist! Shows only relevant info needed for your haircut!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kb-gE-iKj">
+                                <rect key="frame" x="0.0" y="263" width="375" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="IZS-tg-Bla"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hqP-2m-SWm" firstAttribute="top" secondItem="458-04-J9m" secondAttribute="bottom" constant="127" id="2Dz-O6-nXU"/>
-                            <constraint firstItem="458-04-J9m" firstAttribute="centerX" secondItem="PuX-Jb-y9J" secondAttribute="centerX" id="8UW-NO-nxf"/>
-                            <constraint firstItem="458-04-J9m" firstAttribute="top" secondItem="jYF-tA-b4E" secondAttribute="top" constant="115" id="OT4-GS-NRI"/>
-                            <constraint firstItem="hqP-2m-SWm" firstAttribute="centerX" secondItem="PuX-Jb-y9J" secondAttribute="centerX" id="olV-gs-e10"/>
+                            <constraint firstItem="UmD-Ib-wfW" firstAttribute="top" secondItem="hqP-2m-SWm" secondAttribute="bottom" constant="1" id="2Ca-XU-kbw"/>
+                            <constraint firstItem="458-04-J9m" firstAttribute="centerX" secondItem="PuX-Jb-y9J" secondAttribute="centerX" id="7lf-KZ-uM2"/>
+                            <constraint firstItem="hqP-2m-SWm" firstAttribute="centerX" secondItem="PuX-Jb-y9J" secondAttribute="centerX" id="COz-ZM-tAA"/>
+                            <constraint firstItem="458-04-J9m" firstAttribute="top" secondItem="k97-PE-I7J" secondAttribute="bottom" constant="66.5" id="Ge6-aQ-z5P"/>
+                            <constraint firstItem="UmD-Ib-wfW" firstAttribute="leading" secondItem="jYF-tA-b4E" secondAttribute="leading" id="X4G-Lp-hkU"/>
+                            <constraint firstItem="3kb-gE-iKj" firstAttribute="trailing" secondItem="jYF-tA-b4E" secondAttribute="trailing" id="aPq-4N-Jiu"/>
+                            <constraint firstItem="k97-PE-I7J" firstAttribute="leading" secondItem="jYF-tA-b4E" secondAttribute="leading" constant="16" id="aQM-Nb-dtg"/>
+                            <constraint firstItem="k97-PE-I7J" firstAttribute="top" secondItem="jYF-tA-b4E" secondAttribute="top" constant="13" id="agv-AX-irM"/>
+                            <constraint firstItem="hqP-2m-SWm" firstAttribute="top" secondItem="3kb-gE-iKj" secondAttribute="bottom" constant="61" id="h3A-NV-brA"/>
+                            <constraint firstItem="UmD-Ib-wfW" firstAttribute="trailing" secondItem="jYF-tA-b4E" secondAttribute="trailing" id="vPI-Ne-8YE"/>
+                            <constraint firstItem="jYF-tA-b4E" firstAttribute="trailing" secondItem="k97-PE-I7J" secondAttribute="trailing" constant="16" id="xX2-oa-pIp"/>
+                            <constraint firstItem="3kb-gE-iKj" firstAttribute="leading" secondItem="jYF-tA-b4E" secondAttribute="leading" id="yqu-Ud-fCQ"/>
+                            <constraint firstItem="3kb-gE-iKj" firstAttribute="top" secondItem="458-04-J9m" secondAttribute="bottom" constant="1" id="zOW-Ki-WxA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jYF-tA-b4E"/>
                     </view>
@@ -179,7 +211,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2AT-AU-ioZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2749" y="19"/>
+            <point key="canvasLocation" x="3052" y="17.541229385307346"/>
         </scene>
         <!--Full Details Mode-->
         <scene sceneID="r2r-dv-Jzf">
@@ -455,7 +487,7 @@ Cg
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3366" y="582"/>
+            <point key="canvasLocation" x="3958" y="551"/>
         </scene>
         <!--Present Mode-->
         <scene sceneID="HFn-ug-FM8">
@@ -621,7 +653,7 @@ Cg
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3366" y="-327"/>
+            <point key="canvasLocation" x="3958" y="-314"/>
         </scene>
         <!--My Haircuts-->
         <scene sceneID="hNz-n2-bh7">
@@ -739,7 +771,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1666" y="-443"/>
+            <point key="canvasLocation" x="1449" y="-443"/>
         </scene>
         <!--Create New Haircut-->
         <scene sceneID="wg7-f3-ORb">
@@ -967,11 +999,6 @@ Please give phone back to owner!</string>
                                 <action selector="cancel:" destination="8rJ-Kc-sve" id="0lu-aU-3RU"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="tqm-KG-aIo">
-                            <connections>
-                                <segue destination="IHx-nX-rBy" kind="show" identifier="showNextPg2" id="Ibz-Kx-B0x"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="btnBackRetake" destination="kAf-gD-lt6" id="i97-u6-fuO"/>
@@ -1003,7 +1030,7 @@ Please give phone back to owner!</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2749" y="-1148"/>
+            <point key="canvasLocation" x="2950" y="-1167"/>
         </scene>
         <!--Create New Haircut 2-->
         <scene sceneID="iBn-aA-Yc9">
@@ -1083,11 +1110,6 @@ Read them the example below to give them an idea of what info you need. </string
                     </view>
                     <navigationItem key="navigationItem" title="Create New Haircut 2" id="fCk-Xh-yxD">
                         <barButtonItem key="backBarButtonItem" title="Back" id="BFh-Pi-uxl"/>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="8af-oM-k5D">
-                            <connections>
-                                <segue destination="dsw-uW-L7M" kind="show" identifier="showNextPg3" id="tgG-MA-jTL"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionTextField" destination="Csz-bq-HLL" id="yho-gx-rFN"/>
@@ -1095,7 +1117,7 @@ Read them the example below to give them an idea of what info you need. </string
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Gd-J8-EU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3366" y="-1149"/>
+            <point key="canvasLocation" x="3695" y="-1167"/>
         </scene>
         <!--Create New Haircut 3-->
         <scene sceneID="uBA-A4-G6R">
@@ -1202,7 +1224,7 @@ Read them the example below to give them an idea of what info you need. </string
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h65-Ec-fi3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3960" y="-1149"/>
+            <point key="canvasLocation" x="4516" y="-1167"/>
         </scene>
         <!--Create New Haircut-->
         <scene sceneID="Zas-nv-DjG">
@@ -1221,7 +1243,7 @@ Read them the example below to give them an idea of what info you need. </string
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="74K-ur-Cf4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2214" y="-1148"/>
+            <point key="canvasLocation" x="2214" y="-1167"/>
         </scene>
         <!--My Haircuts-->
         <scene sceneID="PNg-zc-ysm">
@@ -1240,7 +1262,7 @@ Read them the example below to give them an idea of what info you need. </string
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5a9-MC-aO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146" y="-444"/>
+            <point key="canvasLocation" x="655" y="-443"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="q07-8x-aqM">
@@ -1258,7 +1280,7 @@ Read them the example below to give them an idea of what info you need. </string
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EVY-sd-RVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2214" y="19"/>
+            <point key="canvasLocation" x="2214" y="18"/>
         </scene>
     </scenes>
     <resources>
@@ -1270,8 +1292,6 @@ Read them the example below to give them an idea of what info you need. </string
         <image name="uploadIcon" width="640" height="471"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ngQ-uN-UpQ"/>
-        <segue reference="dUP-zs-M99"/>
         <segue reference="WCN-UJ-CMr"/>
     </inferredMetricsTieBreakers>
 </document>
