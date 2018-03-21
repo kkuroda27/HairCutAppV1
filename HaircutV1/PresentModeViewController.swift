@@ -19,7 +19,8 @@ class PresentModeViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var imgFront: UIImageView!
     @IBOutlet var imgSide: UIImageView!
     @IBOutlet var imgBack: UIImageView!
-    @IBOutlet var descriptionTextField: UITextView!
+    @IBOutlet var descriptionTextView: UITextView!
+    
     
     // MARK: - Extra Global Variables
     var imagePicked = 1
@@ -36,11 +37,11 @@ class PresentModeViewController: UIViewController, UITextViewDelegate {
         print("modelController.haircut = \(modelController.haircut)")
 
         // modify textView for description field.
-        descriptionTextField.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
-        descriptionTextField.layer.borderWidth = 1.0;
-        descriptionTextField.layer.cornerRadius = 5.0;
+        //descriptionTextView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
+        //descriptionTextView.layer.borderWidth = 1.0;
+        //descriptionTextView.layer.cornerRadius = 5.0;
 
-        descriptionTextField.text = modelController.haircut["description"] as? String
+        descriptionTextView.text = modelController.haircut["description"] as? String
         
         // initialize imageArray with placeholders first.
         self.images.append(SKPhoto.photoWithImage(imgFront.image!))
