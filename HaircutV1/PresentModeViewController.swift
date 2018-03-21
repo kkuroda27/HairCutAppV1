@@ -122,8 +122,10 @@ class PresentModeViewController: UIViewController, UITextViewDelegate {
         
         // set global variable imagePicked to tag so we can distinguish between images.
         self.imagePicked = (sender.view?.tag)!
-
+    
+        SKCaptionOptions.font = UIFont(name: "GillSans-Bold", size: 30)!
         let browser = SKPhotoBrowser(photos: images)
+        
         browser.initializePageIndex(self.imagePicked - 1)
         present(browser, animated: true, completion: {})
 
