@@ -126,6 +126,8 @@ class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
             // do nothing
         } else {
             descriptionTextField.text = modelController.haircut["description"] as? String
+            navigationItem.title = "Editing: Page 2 of 3"
+
         }
 
     }

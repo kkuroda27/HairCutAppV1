@@ -406,7 +406,9 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
             isCreating = false
             // We're editing, not creating. let's update view.
             // update title and textField elements.
-            navigationItem.title = modelController.haircut["haircutName"] as? String
+            //navigationItem.title = modelController.haircut["haircutName"] as? String
+            navigationItem.title = "Editing: Page 1 of 3"
+
             stylistNameTextField.text = modelController.haircut["stylistName"] as? String
 
             if modelController.haircut["frontImage"] != nil {

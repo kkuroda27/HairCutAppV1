@@ -214,6 +214,8 @@ class CreateHaircutPg3ViewController: UIViewController {
 
         } else {
             haircutNameTextField.text = modelController.haircut["haircutName"] as? String
+            navigationItem.title = "Editing: Page 3 of 3"
+
         }
 
         if modelController.haircut["dateSet"] == nil {

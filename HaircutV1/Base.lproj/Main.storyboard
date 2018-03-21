@@ -189,8 +189,8 @@ You can also edit your haircut here!</string>
                         <viewLayoutGuide key="safeArea" id="jYF-tA-b4E"/>
                     </view>
                     <navigationItem key="navigationItem" title="Select View Option" id="bgA-zO-9qk">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="Vsj-cx-xA6"/>
-                        <barButtonItem key="leftBarButtonItem" image="IQButtonBarArrowLeft.png" id="Qpa-Qh-6T5">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Vsj-cx-xA6"/>
+                        <barButtonItem key="leftBarButtonItem" image="backIcon" landscapeImage="backIcon" largeContentSizeImage="backIcon" id="Qpa-Qh-6T5">
                             <connections>
                                 <action selector="backBtnPressed:" destination="Nir-M5-fXb" id="WF4-es-2Sn"/>
                             </connections>
@@ -840,7 +840,6 @@ You can also edit your haircut here!</string>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="YL8-2X-FvG" firstAttribute="leading" secondItem="Fzb-yD-qDW" secondAttribute="leading" id="F32-n8-hKs"/>
                                             <constraint firstItem="l38-US-vWg" firstAttribute="centerX" secondItem="YL8-2X-FvG" secondAttribute="centerX" constant="-0.5" id="Qzr-I1-OF8"/>
@@ -1271,7 +1270,7 @@ Read them the example below to give them an idea of what info you need. </string
         </scene>
     </scenes>
     <resources>
-        <image name="IQButtonBarArrowLeft.png" width="12" height="21"/>
+        <image name="backIcon" width="25" height="25"/>
         <image name="backPlaceholder" width="58" height="70"/>
         <image name="first" width="30" height="30"/>
         <image name="frontPlaceholder" width="60" height="70"/>
