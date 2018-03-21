@@ -166,7 +166,6 @@ class FullDetailsModeViewController: UIViewController {
         print("modelController.haircut = \(modelController.haircut)")
         refreshView()
 
-    
         // modify textView for description field.
         descriptionTextView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
         descriptionTextView.layer.borderWidth = 1.0;

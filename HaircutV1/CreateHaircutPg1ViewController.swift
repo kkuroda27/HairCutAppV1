@@ -11,6 +11,7 @@ import Parse
 import CoreData
 import os.log
 import ALCameraViewController
+
 class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
 
     // MARK: - Segue Preparation Variables
@@ -56,11 +57,12 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
 
             if isCreating {
                 print("STATUS: isCreating == true")
-                // now update fields that don't exist in new object.
-                // update userUUID
+                // now update two fields that doesn't exist yet in our new PFObject.
+                
+                // Field 1: userUUID
                 modelController.haircut["userUUID"] = userUUID
                 
-                // Grab created date, convert from date -> String, store in PFObject
+                // Field 2: createdDate
                 let now = NSDate()
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
@@ -79,15 +81,14 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
 
             // if FRONT image exists, convert it and set PFObject
             if let imageData = self.imgLeft.image {
-                // check for placeholder.
+
                 imagePH = UIImage(named: "frontPlaceholder")!
                 if imagePH == self.imgLeft.image {
-                    // placeholder, so do nothing.
+                    // Our image is a placeholder, so do nothing.
                 } else {
-                    // not placeholder, so actually save.
-                    //convert
+                    // Our image is NOT a placeholder, so let's actually save.
                     guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
-                        print("JPEG Conversion failed")
+                        print("ERROR: JPEG Conversion failed")
                         return
                     }
                     let imageFile = PFFile(name: "imageFront.jpg", data: imageDataJPEG)
@@ -106,16 +107,15 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
             
             // if SIDE image exists, convert it and set PFObject
             if let imageData = self.imgCenter.image {
-                // check for placeholder.
+
                 imagePH = UIImage(named: "sidePlaceholder")!
                 if imagePH == self.imgCenter.image {
-                    // placeholder, so do nothing.
-                    
+                    // Our image is a placeholder, so do nothing.
+
                 } else {
-                    // not placeholder, so actually save.
-                    //convert
+                    // Our image is NOT a placeholder, so let's actually save.
                     guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
-                        print("JPEG Conversion failed")
+                        print("ERROR: JPEG Conversion failed")
                         return
                     }
                     let imageFile = PFFile(name: "imageSide.jpg", data: imageDataJPEG)
@@ -129,15 +129,14 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
             
             // if BACK image exists, convert it and set PFObject
             if let imageData = self.imgRight.image {
-                // check for placeholder.
+
                 imagePH = UIImage(named: "backPlaceholder")!
                 if imagePH == self.imgRight.image {
-                    // placeholder, so do nothing.
-                    
+                    // Our image is a placeholder, so do nothing.
                 } else {
-                    // not placeholder, so actually save.
+                    // Our image is NOT a placeholder, so let's actually save.
                     guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
-                        print("JPEG Conversion failed")
+                        print("ERROR: JPEG Conversion failed")
                         return
                     }
                     let imageFile = PFFile(name: "imageBack.jpg", data: imageDataJPEG)
@@ -149,17 +148,14 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
             }
             
             print("STATUS: Finished adding to modelController.haircut...")
-            print("PRINT -> POST - modelController.haircut \(modelController.haircut)")
-
+            //print("PRINT -> POST - modelController.haircut \(modelController.haircut)")
             
         pg2ViewController.modelController = modelController
         pg2ViewController.isCreating = isCreating
         pg2ViewController.previousVC = previousVC
 
-
         default:
-            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
-            
+            fatalError("ERROR: Unexpected Segue Identifier; \(String(describing: segue.identifier))")
         }
         
     }
@@ -167,76 +163,42 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         print("FUNCTION START: cancel")
         
-        
         let alert = UIAlertController(title: "Are you sure?", message: "You'll lose all your unsaved changes!", preferredStyle: UIAlertControllerStyle.alert)
+        
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
             self.dismiss(animated: true, completion: nil)
             
             // Let's check which ViewController presented this and navigate back accordingly.
             if self.previousVC == "FullDetailsModeViewController" {
-                print("Coming from Full Details")
+                print("STATUS: We came from Full Details page, so let's go back there.")
                 if let owningNavigationController = self.navigationController {
                     owningNavigationController.popViewController(animated: true)
                 } else {
-                    fatalError("The owningNavigationController is not inside a navigation controller.")
+                    fatalError("ERROR: The owningNavigationController is not inside a navigation controller.")
                 }
                 
             } else if self.previousVC == "ViewMyHaircutsController" {
-                print("Coming from ViewMyHaircutsController")
+                print("STATUS: We came from View My Haircuts page, so let's go back there")
                 self.dismiss(animated: true, completion: nil)
                 
             } else {
-                print("this should never happen")
+                print("ERROR: Unexpected erroor in checking previousVC")
             }
             
-
             self.dismiss(animated: true, completion: nil)
 
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
-            print("Cancel!")
+            print("STATUS: Cancel Button Pressed!")
         }))
 
         self.present(alert, animated: true, completion: nil)
 
-        
-
-        /* // DEPRECATED CANCEL BUTTON HANDLER
-         // Code and comments here retrieved from "https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/ImplementEditAndDeleteBehavior.html#//apple_ref/doc/uid/TP40015214-CH9-SW4"
-         
-         // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
-         
-         //This code creates a Boolean value that indicates whether the view controller that presented this scene is of type UINavigationController. As the constant name isPresentingInAddHaircutMode indicates, this means that the meal detail scene is presented by the user tapping the Add button. This is because the meal detail scene is embedded in its own navigation controller when it’s presented in this manner, which means that the navigation controller is what presents it.
-
-        // if this is true, then the view controller was presented by clicking the "Add" button.
-        if isPresentingInAddHaircutMode {
-            // takes you back to myhaircutstable
-            dismiss(animated: true, completion: nil)
-            
-            // The else block (below) is called if the user is editing an existing haircut. This also means that the haircut detail scene was pushed onto a navigation stack when the user selected a haircut from the haircut list. The else statement uses an if let statement to safely unwrap the view controller’s navigationController property. If the view controller has been pushed onto a navigation stack, this property contains a reference to the stack’s navigation controller.
-
-        } else if let owningNavigationController = navigationController{
-            // takes you back to previous screen.
-            owningNavigationController.popViewController(animated: true)
-            
-        } else {
-            fatalError("The MealViewController is not inside a navigation controller.")
-        }
-        
-        dismiss(animated: true, completion: nil)
-        */
     }
 
     
     // MARK: - Keyboard / Touch Functions
-    
-    // this runs when return button is pressed
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("FUNCTION START: textFieldShouldReturn")
-        textField.resignFirstResponder() // shut down the keyboard associated with the textField being edited.
-        return true
-    }
     
     // this runs whenever the user touches the main area of the app (not the keyboard).
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -251,7 +213,6 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
 
         let imageView = sender.view as! UIImageView
         let newImageView = UIImageView(image: imageView.image)
-        
         var imagePH = UIImage()
         // set global variable imagePicked to tag so we can distinguish between images.
         self.imagePicked = (sender.view?.tag)!
@@ -270,7 +231,7 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
             // execute show camera controller
             
             if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)){
-                print("Camera is available!")
+                print("NOTE: Camera is available!")
                 let cameraViewController = CameraViewController { [weak self] image, asset in
                     // Do something with your image here.
                     if let image = image {
@@ -340,7 +301,7 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
     print("FUNCTION START: retakePhoto")
 
     if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)){
-            print("Camera is available!")
+        print("NOTE: Camera is available!")
             self.imagePicked = sender.tag
             let cameraViewController = CameraViewController { [weak self] image, asset in
                 // Comment from plugin Author: "Do something with your image here."
@@ -383,94 +344,26 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
         self.navigationController?.navigationBar.tintAdjustmentMode = .automatic
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("---NEW SCREEN--- FUNCTION START: viewDidLoad - CreateHaircutPg1ViewController.swift")
-        print("modelController.haircut = \(modelController.haircut)")
+        //print("modelController.haircut = \(modelController.haircut)")
         
-        // By default, we want "Retake" button to be hidden.
+        // By default, we want "Retake" buttons to be hidden.
         btnFrontRetake.isHidden = true
         btnSideRetake.isHidden = true
         btnBackRetake.isHidden = true
 
-        iconUploadFront.isHidden = false
-        iconUploadSide.isHidden = false
-        iconUploadBack.isHidden = false
-
-        // Handle the text field's user input through delegate callbacks.
-        stylistNameTextField.delegate = self
-        
 
         // set up views if editing an existing Haircut.
-        if modelController.haircut.objectId != nil {
-            isCreating = false
-            // We're editing, not creating. let's update view.
-            // update title and textField elements.
-            //navigationItem.title = modelController.haircut["haircutName"] as? String
+        if isCreating == false { // This means we're editing, not creating. Let's update view.
             navigationItem.title = "Editing: Page 1 of 3"
-
-            stylistNameTextField.text = modelController.haircut["stylistName"] as? String
-
-            if modelController.haircut["frontImage"] != nil {
-                btnFrontRetake.isHidden = false
-                iconUploadFront.isHidden = true
-                let tempImage = modelController.haircut["frontImage"] as! PFFile
-                tempImage.getDataInBackground { (data, error) in
-                    if let imageData = data {
-                        if let imageToDisplay = UIImage(data: imageData) {
-                            self.imgLeft.image = imageToDisplay
-
-                        }
-                    }
-                }
-
-            } else {
-                print("frontImage doesn't exist!")
-            }
-            
-            if modelController.haircut["sideImage"] != nil {
-                btnSideRetake.isHidden = false
-                iconUploadSide.isHidden = true
-
-                let tempImage = modelController.haircut["sideImage"] as! PFFile
-                tempImage.getDataInBackground { (data, error) in
-                    if let imageData = data {
-                        if let imageToDisplay = UIImage(data: imageData) {
-                            self.imgCenter.image = imageToDisplay
-                            
-                        }
-                    }
-                }
-            } else {
-                print("sideImage doesn't exist!")
-
-            }
-            
-            if modelController.haircut["backImage"] != nil {
-                btnBackRetake.isHidden = false
-                iconUploadBack.isHidden = true
-
-                let tempImage = modelController.haircut["backImage"] as! PFFile
-                tempImage.getDataInBackground { (data, error) in
-                    if let imageData = data {
-                        if let imageToDisplay = UIImage(data: imageData) {
-                            self.imgRight.image = imageToDisplay
-                            
-                        }
-                    }
-                }
-            } else {
-                print("backImage doesn't exist!")
-            }
-            
-            
+            refreshView() // update view with modelController.haircut
         } else {
             // we're creating a new haircut, so do nothing.
-            isCreating = true
         }
-        
-        // enable the save button only if the text field has a valid meal name.
-        // updateSaveButtonState()
         
         // coreData delegates
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -480,7 +373,7 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserRecords")
         request.returnsObjectsAsFaults = false // by default, when request is run, instead of returning actual data, it'll return faults. we usually want this set to false.
         
-        do { // this person is an existing user... let's just retrieve the stored userUUID.
+        do { // Let's retrieve stored userUUID so we can store it in our new haircut.
             
             let results = try context.fetch(request)
             if results.count > 0 {
@@ -492,18 +385,75 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
                     }
                 }
                 
-            } else { // something went very wrong... This should never happen because if a user hits FirstViewController, they should have a stored userUUID...
+            } else { // something went very wrong... This should never happen because if a user hits FirstViewController, they should have a stored userUUID already...
                 print("Something terrible has happened.")
             }
             
         } catch {
             print("Couldn't fetch results")
         }
-        
 
     }
     
     // MARK: - helper functions
+    
+    func refreshView() {
+        print("FUNCTION START: refreshView()")
+        stylistNameTextField.text = modelController.haircut["stylistName"] as? String
+        
+        if modelController.haircut["frontImage"] != nil {
+            btnFrontRetake.isHidden = false
+            iconUploadFront.isHidden = true
+            let tempImage = modelController.haircut["frontImage"] as! PFFile
+            tempImage.getDataInBackground { (data, error) in
+                if let imageData = data {
+                    if let imageToDisplay = UIImage(data: imageData) {
+                        self.imgLeft.image = imageToDisplay
+                        
+                    }
+                }
+            }
+            
+        } else {
+            print("frontImage doesn't exist!")
+        }
+        
+        if modelController.haircut["sideImage"] != nil {
+            btnSideRetake.isHidden = false
+            iconUploadSide.isHidden = true
+            
+            let tempImage = modelController.haircut["sideImage"] as! PFFile
+            tempImage.getDataInBackground { (data, error) in
+                if let imageData = data {
+                    if let imageToDisplay = UIImage(data: imageData) {
+                        self.imgCenter.image = imageToDisplay
+                        
+                    }
+                }
+            }
+        } else {
+            print("sideImage doesn't exist!")
+            
+        }
+        
+        if modelController.haircut["backImage"] != nil {
+            btnBackRetake.isHidden = false
+            iconUploadBack.isHidden = true
+            
+            let tempImage = modelController.haircut["backImage"] as! PFFile
+            tempImage.getDataInBackground { (data, error) in
+                if let imageData = data {
+                    if let imageToDisplay = UIImage(data: imageData) {
+                        self.imgRight.image = imageToDisplay
+                        
+                    }
+                }
+            }
+        } else {
+            print("backImage doesn't exist!")
+        }
+
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

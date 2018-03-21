@@ -17,12 +17,12 @@ class CreateHaircutPg3ViewController: UIViewController {
     var modelController: ModelController!
     var previousVC = ""
 
-    // MARK: - Outlets
+    // MARK: - Outlet Variables
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var salonCityTextField: UITextField!
     @IBOutlet var haircutNameTextField: UITextField!
     
-    // MARK: - User Interactions? (Save)
+    // MARK: - User Interaction Functions (Save)
 
     @IBAction func saveBtn(_ sender: Any) {
         print("FUNCTION START: saveBtn")
@@ -50,8 +50,6 @@ class CreateHaircutPg3ViewController: UIViewController {
             modelController.haircut["dateSet"] = dateFormatter.string(from: datePicker.date)
         }
 
-
-        //modelController.haircut["testDate"] =
 
         // Save or Update in Parse.
         // Let's check if we're creating a new haircut, or we're editing an existing one.
@@ -89,10 +87,9 @@ class CreateHaircutPg3ViewController: UIViewController {
                         print("ERROR: \(error!)")
                     } else if let object = object {
                         print("STATUS: Existing PFObject retrieval successful")
-                        // let's now update existing fields.
                         print("STATUS: Updating fields in existing PFObject.")
                         
-                        // screen 1
+                        // Fields from Screen 1
                         object["userUUID"] = self.modelController.haircut["userUUID"]
                         object["stylistName"] = self.modelController.haircut["stylistName"]
                        
@@ -106,15 +103,15 @@ class CreateHaircutPg3ViewController: UIViewController {
                             object["backImage"] = tempImage
                         } else {}
 
-                        // screen 2
+                        // Fields from Screen 2
                         object["description"] = self.modelController.haircut["description"]
                         
-                        // screen 3
+                        // Fields from Screen 3
                         object["salonCity"] = self.modelController.haircut["salonCity"]
                         object["haircutName"] = self.modelController.haircut["haircutName"]
                         object["dateSet"] = self.modelController.haircut["dateSet"]
 
-                        print("STATUS: Save Updated existing PFObject")
+                        print("STATUS: Updated existing PFObject, now commencing save on Parse Server")
 
                         object.saveInBackground { (success, error) in
                             if (success) {
@@ -131,7 +128,6 @@ class CreateHaircutPg3ViewController: UIViewController {
                             activityIndicator.stopAnimating()
                             UIApplication.shared.endIgnoringInteractionEvents()
                         }
-                        
                     }
                 }
                 
@@ -144,27 +140,22 @@ class CreateHaircutPg3ViewController: UIViewController {
     
     // MARK: - Keyboard / Touch Functions
     
-    // this runs when return button is pressed
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("FUNCTION START: textFieldShouldReturn")
-        textField.resignFirstResponder() // shut down the keyboard associated with the textField being edited.
-        return true
-    }
-    
     // this runs whenever the user touches the main area of the app (not the keyboard).
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("FUNCTION START: touchesBegan")
         self.view.endEditing(true)
     }
     
-    // MARK: - willMove
+    // MARK: - willMove + viewDidLoad Functions
     
+    // Called just before the VC is added or removed from a container view controller.
     override func willMove(toParentViewController parent: UIViewController?) {
         super.willMove(toParentViewController: parent)
-        print("FUNCTION START: willMove - to page 2")
+        print("FUNCTION START: willMove - CreateHaircutPg3ViewController.swift")
 
-        
+        // If parent == nil, then we're going from p3 -> p2. Otherwise, it's p2 -> p3
         if parent == nil {
+            print("STATUS: We're moving FROM p3")
             // The view is being removed from the stack, so call your function here
             modelController.haircut["salonCity"] = salonCityTextField.text
             modelController.haircut["haircutName"] = haircutNameTextField.text
@@ -175,33 +166,42 @@ class CreateHaircutPg3ViewController: UIViewController {
             dateFormatter.timeStyle = .none
             if(datePicker == nil){
             } else {
-                //print(dateFormatter.string(from: datePicker.date))
                 modelController.haircut["dateSet"] = dateFormatter.string(from: datePicker.date)
             }
 
             modelController.haircut = modelController.haircut
 
-            
-        }
+        } else { print("STATUS: We're moving TO p3")}
     }
-
-    // MARK: - viewDidLoad
 
     override func viewDidLoad() {
         super.viewDidLoad()
         print("---NEW SCREEN--- FUNCTION START: viewDidLoad - CreateHaircutPg3ViewController.swift")
-        print("modelController.haircut = \(modelController.haircut)")
+        //print("modelController.haircut = \(modelController.haircut)")
+        
+        refreshView()
 
+        // Let's modify page title in navigation bar if we're editing.
+        if isCreating == false {
+            navigationItem.title = "Editing: Page 3 of 3"
+        } else {}
+
+    }
+    
+    // MARK: - helper functions
+    
+    func refreshView() {
+        print("FUNCTION START: refreshView()")
         // Let's update existing views if 1. we're editing or 2. we went back to another view during creating and then came back.
-
-        if modelController.haircut["salonCity"] == nil {
-            // do nothing
-        } else {
+        
+        if modelController.haircut["salonCity"] != nil {
             salonCityTextField.text = modelController.haircut["salonCity"] as? String
-        }
+        } else {}
         
         // print("STATUS: Set haircut title to Haircut: $date ONLY IF haircutname doesn't exist. ")
-        if modelController.haircut["haircutName"] == nil {
+        if modelController.haircut["haircutName"] != nil {
+            haircutNameTextField.text = modelController.haircut["haircutName"] as? String
+        } else {
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
             dateFormatter.timeStyle = .none
@@ -211,30 +211,21 @@ class CreateHaircutPg3ViewController: UIViewController {
                 dateString = dateFormatter.string(from: datePicker.date)
             }
             haircutNameTextField.text = "Haircut: \(String(describing: dateString))"
-
-        } else {
-            haircutNameTextField.text = modelController.haircut["haircutName"] as? String
-            navigationItem.title = "Editing: Page 3 of 3"
-
         }
-
-        if modelController.haircut["dateSet"] == nil {
-            // do nothing
-        } else {
+        
+        if modelController.haircut["dateSet"] != nil {
             // Convert dateSet string back to date format and set it to Date Picker.
             // format date and store.
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
             dateFormatter.timeStyle = .none
-
+            
             let date = dateFormatter.date(from: modelController.haircut["dateSet"] as! String)
             datePicker.setDate(date!, animated: true)
-        }
-
+        } else {}
 
     }
-    
-    // MARK: - helper functions
+
     func displayAlert(title:String, message:String) {
         print("FUNCTION START: displayAlert")
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
@@ -264,35 +255,11 @@ class CreateHaircutPg3ViewController: UIViewController {
             
             self.dismiss(animated: true, completion: nil)
 
-            /*
-             self.dismiss(animated: true, completion: nil)
-            
-            // segue transitions
-            let isPresentingInAddHaircutMode = self.presentingViewController is UINavigationController
-            if isPresentingInAddHaircutMode {
-                print("dismiss if flow is CREATE haircut")
-                self.dismiss(animated: true, completion: nil)
-            
-            } else if let owningNavigationController = self.navigationController{
-                print("dismiss if flow is EDIT haircut")
-                
-                let nb = 4
-                if let viewControllers: [UIViewController] = self.navigationController?.viewControllers {
-                    guard viewControllers.count < nb else {
-                        owningNavigationController.popToViewController(viewControllers[viewControllers.count - nb], animated: true)
-                        return
-                    }
-                }
-
-            } else {
-                fatalError("The MealViewController is not inside a navigation controller.")
-            }
-            self.dismiss(animated: true, completion: nil)
-            */
         }))
         
         self.present(alert, animated: true, completion: nil)
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

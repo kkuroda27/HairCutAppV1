@@ -87,20 +87,23 @@ class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
 
     // MARK: - willMove / viewWillAppear / viewDidLoad Functions
 
+    // Called just before the VC is added or removed from a container view controller.
+
     override func willMove(toParentViewController parent: UIViewController?) {
         super.willMove(toParentViewController: parent)
-        print("FUNCTION START: willMove - to page 1")
+        print("FUNCTION START: willMove - CreateHaircutPg2ViewController.swift")
 
         if parent == nil {
+            print("STATUS: We're moving FROM p2")
             // The view is being removed from the stack, so call your function here
             modelController.haircut["description"] = descriptionTextField.text
             modelController.haircut = modelController.haircut
-        }
+            
+        } else { print("STATUS: We're moving TO p2")}
     }
 
     override func viewWillAppear(_ animated: Bool) {
         print("---NEW SCREEN--- FUNCTION START: viewWillAppear - CreateHaircutPg2ViewController.swift")
-
         // this code is workaround for iOS bug = "iOS UINavigationBar button remains faded after segue back" for "next" button.
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.tintAdjustmentMode = .normal
@@ -109,29 +112,34 @@ class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         print("---NEW SCREEN--- FUNCTION START: viewDidLoad - CreateHaircutPg2ViewController.swift")
-        print("modelController.haircut = \(modelController.haircut)")
+        //print("modelController.haircut = \(modelController.haircut)")
         
         // modify textView for description field.
         descriptionTextField.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
         descriptionTextField.layer.borderWidth = 1.0;
         descriptionTextField.layer.cornerRadius = 5.0;
         
-        // Handle the text field's user input through delegate callbacks.
-        descriptionTextField.delegate = self
-
-        // Let's update existing views if 1. we're editing or 2. we went back to another view during creating and then came back.
-        if modelController.haircut["description"] == nil {
-            // do nothing
-        } else {
-            descriptionTextField.text = modelController.haircut["description"] as? String
+        refreshView()
+        
+        // Let's modify page title in navigation bar if we're editing.
+        if isCreating == false {
             navigationItem.title = "Editing: Page 2 of 3"
-
-        }
-
+        } else {}
     }
 
+    // MARK: - helper functions
+    
+    func refreshView() {
+        print("FUNCTION START: refreshView()")
+        // Let's update existing views if 1. we're editing or 2. we went back to view 1 during creating and then came back.
+        // *NOTE: Unlike page 1, we're doing this regardless of if isCreating is false or true because we want to load the haircut here if we go BACK to view 1 and then come back to view 2.
+        if modelController.haircut["description"] != nil {
+            descriptionTextField.text = modelController.haircut["description"] as? String
+        } else {}
+
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         print("FUNCTION START: didReceiveMemoryWarning")

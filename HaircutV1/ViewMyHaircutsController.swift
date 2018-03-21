@@ -342,7 +342,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
         do {
             
             let results = try context.fetch(request)
-            // not let's see if this is an existing user or not.
+            // now let's see if this is an existing user or not.
             if results.count > 0 {
                 print("STATUS: Existing User, since we have a UserRecord in CoreData")
                 // we already have a UserRecord, which means this IS an existing user. Let's just retrieve the stored userUUID.
