@@ -10,6 +10,8 @@ target 'HaircutV1' do
   pod 'ALCameraViewController'
   pod 'IQKeyboardManagerSwift'
   pod 'SKPhotoBrowser'
+  pod 'KMPlaceholderTextView', '~> 1.3.0'
+
   use_frameworks!
 
 end
