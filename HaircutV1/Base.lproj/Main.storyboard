@@ -75,7 +75,7 @@ Cg
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
-                                                        <mutableString key="content"> Simple! Next time you get a haircut, use the + button in the top-right corner to create a haircut! FreshCut will guide you through the easy process to record details of your fresh cut!  Make sure to do it right after your haircut while you're still sitting in the barber seat, since the barber will have to take 3 quick pictures for you (Don't worry, they'll be more than happy to help!). The lighting in a barber shop is extremely ideal for taking pictures.  Next time you want to get the same great haircut, show the barber your haircut profile and you'll have your Fresh Cut just the way you want it!</mutableString>
+                                                        <string key="content"> Simple! Next time you get a haircut, use the + button in the top-right corner to create a haircut! FreshCut will guide you through the easy process to record details of your fresh cut!  Make sure to do it right after your haircut while you're still sitting in the barber seat, since the barber will have to take 3 quick pictures for you (Don't worry, they'll be more than happy to help!). The lighting in a barber shop is extremely ideal for taking pictures.  Next time you want to get the same great haircut, show the barber your haircut profile and you'll have your Fresh Cut just the way you want it!</string>
                                                         <attributes>
                                                             <font key="NSFont" size="11" name="ArialMT"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -774,7 +774,7 @@ You can also edit your haircut here!</string>
             </objects>
             <point key="canvasLocation" x="1449" y="-443"/>
         </scene>
-        <!--Create New Haircut-->
+        <!--Create Haircut 1 of 3-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="CreateHaircutPg1ViewController" customModule="HaircutV1" customModuleProvider="target" sceneMemberID="viewController">
@@ -992,7 +992,7 @@ Please give phone back to owner!</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Create New Haircut" id="4UL-7f-fpc">
+                    <navigationItem key="navigationItem" title="Create Haircut 1 of 3" id="4UL-7f-fpc">
                         <barButtonItem key="backBarButtonItem" title="Back" id="b9T-bU-c5b"/>
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="X2z-y1-6b3">
                             <connections>
@@ -1032,7 +1032,7 @@ Please give phone back to owner!</string>
             </objects>
             <point key="canvasLocation" x="2950" y="-1167"/>
         </scene>
-        <!--Create New Haircut 2-->
+        <!--Create Haircut 2 of 3-->
         <scene sceneID="iBn-aA-Yc9">
             <objects>
                 <viewController id="IHx-nX-rBy" customClass="CreateHaircutPg2ViewController" customModule="HaircutV1" customModuleProvider="target" sceneMemberID="viewController">
@@ -1116,7 +1116,7 @@ Read them the example below to give them an idea of what info you need. </string
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oNm-OZ-UGK"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Create New Haircut 2" id="fCk-Xh-yxD">
+                    <navigationItem key="navigationItem" title="Create Haircut 2 of 3" id="fCk-Xh-yxD">
                         <barButtonItem key="backBarButtonItem" title="Back" id="BFh-Pi-uxl"/>
                     </navigationItem>
                     <connections>
@@ -1127,7 +1127,7 @@ Read them the example below to give them an idea of what info you need. </string
             </objects>
             <point key="canvasLocation" x="3695" y="-1167"/>
         </scene>
-        <!--Create New Haircut 3-->
+        <!--Create Haircut 3 of 3-->
         <scene sceneID="uBA-A4-G6R">
             <objects>
                 <viewController id="dsw-uW-L7M" customClass="CreateHaircutPg3ViewController" customModule="HaircutV1" customModuleProvider="target" sceneMemberID="viewController">
@@ -1217,7 +1217,7 @@ Read them the example below to give them an idea of what info you need. </string
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="59j-6F-H5H"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Create New Haircut 3" id="2yo-Fg-UPy">
+                    <navigationItem key="navigationItem" title="Create Haircut 3 of 3" id="2yo-Fg-UPy">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="IQE-YW-Yfn">
                             <connections>
                                 <action selector="saveBtn:" destination="dsw-uW-L7M" id="sXn-GX-ZxP"/>
