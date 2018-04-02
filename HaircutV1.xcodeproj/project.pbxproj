@@ -21,6 +21,9 @@
 		2A915A12201FD2A0001295B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A915A11201FD2A0001295B0 /* Assets.xcassets */; };
 		2A915A15201FD2A0001295B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A915A13201FD2A0001295B0 /* LaunchScreen.storyboard */; };
 		2A915A3F201FDF24001295B0 /* HaircutV1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A915A3D201FDF24001295B0 /* HaircutV1.xcdatamodeld */; };
+		2ABE59562072C22C00B14478 /* PrimaryActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE59552072C22C00B14478 /* PrimaryActionButton.swift */; };
+		2ABE59582072F0EA00B14478 /* SecondaryActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE59572072F0EA00B14478 /* SecondaryActionButton.swift */; };
+		2ABE595A2072F2DC00B14478 /* InvertedSecondaryActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE59592072F2DC00B14478 /* InvertedSecondaryActionButton.swift */; };
 		2AE7DAC8205842D4003B6E74 /* CreateHaircutPg2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7DAC7205842D4003B6E74 /* CreateHaircutPg2ViewController.swift */; };
 		53039AE91252E0C61E48FF93 /* Pods_HaircutV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6383AF18F72850466B693818 /* Pods_HaircutV1.framework */; };
 /* End PBXBuildFile section */
@@ -43,6 +46,9 @@
 		2A915A14201FD2A0001295B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A915A16201FD2A0001295B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A915A3E201FDF24001295B0 /* HaircutV1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HaircutV1.xcdatamodel; sourceTree = "<group>"; };
+		2ABE59552072C22C00B14478 /* PrimaryActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryActionButton.swift; sourceTree = "<group>"; };
+		2ABE59572072F0EA00B14478 /* SecondaryActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryActionButton.swift; sourceTree = "<group>"; };
+		2ABE59592072F2DC00B14478 /* InvertedSecondaryActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedSecondaryActionButton.swift; sourceTree = "<group>"; };
 		2AE7DAC7205842D4003B6E74 /* CreateHaircutPg2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHaircutPg2ViewController.swift; sourceTree = "<group>"; };
 		6383AF18F72850466B693818 /* Pods_HaircutV1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HaircutV1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2447A081F1F9901125F1E1B /* Pods-HaircutV1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HaircutV1.release.xcconfig"; path = "Pods/Target Support Files/Pods-HaircutV1/Pods-HaircutV1.release.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +100,9 @@
 				2A915A0E201FD2A0001295B0 /* Main.storyboard */,
 				2A8B2F0D202278DE004F3162 /* MyHaircutsFeedTableViewCell.swift */,
 				2A915A11201FD2A0001295B0 /* Assets.xcassets */,
+				2ABE59552072C22C00B14478 /* PrimaryActionButton.swift */,
+				2ABE59572072F0EA00B14478 /* SecondaryActionButton.swift */,
+				2ABE59592072F2DC00B14478 /* InvertedSecondaryActionButton.swift */,
 				2A915A13201FD2A0001295B0 /* LaunchScreen.storyboard */,
 				2A915A16201FD2A0001295B0 /* Info.plist */,
 				2A52FE542059AF5600235182 /* ModelController.swift */,
@@ -148,7 +157,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Kai Kuroda Company";
 				TargetAttributes = {
 					2A915A04201FD2A0001295B0 = {
@@ -259,6 +268,7 @@
 			files = (
 				2A915A0D201FD2A0001295B0 /* CreateHaircutPg1ViewController.swift in Sources */,
 				2A8E9AAB203757E000766953 /* HelpViewController.swift in Sources */,
+				2ABE59582072F0EA00B14478 /* SecondaryActionButton.swift in Sources */,
 				2A5EC566206024C70011160C /* ViewOptionsViewController.swift in Sources */,
 				2A8B2F0E202278DE004F3162 /* MyHaircutsFeedTableViewCell.swift in Sources */,
 				2A52FE552059AF5600235182 /* ModelController.swift in Sources */,
@@ -267,7 +277,9 @@
 				2A52FE492058835C00235182 /* CreateHaircutPg3ViewController.swift in Sources */,
 				2A915A3F201FDF24001295B0 /* HaircutV1.xcdatamodeld in Sources */,
 				2A915A09201FD2A0001295B0 /* AppDelegate.swift in Sources */,
+				2ABE59562072C22C00B14478 /* PrimaryActionButton.swift in Sources */,
 				2A915A0B201FD2A0001295B0 /* ViewMyHaircutsController.swift in Sources */,
+				2ABE595A2072F2DC00B14478 /* InvertedSecondaryActionButton.swift in Sources */,
 				2A5EC56A20602CE50011160C /* FullDetailsModeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,6 +320,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -315,6 +328,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -365,6 +379,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -372,6 +387,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

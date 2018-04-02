@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H1T-wJ-KVA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H1T-wJ-KVA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="ArialBold.ttf">
-            <string>Arial-BoldMT</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Help View Controller-->
         <scene sceneID="REG-sb-MAY">
@@ -25,13 +20,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQV-yl-0Te">
-                                <rect key="frame" x="20" y="157" width="375" height="354"/>
+                                <rect key="frame" x="20" y="132" width="335" height="404.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FCG-Sg-UDv">
-                                        <rect key="frame" x="20" y="10" width="375" height="334"/>
+                                        <rect key="frame" x="20" y="10" width="295" height="384.5"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qgj-QV-GV3">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="276"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="295" height="326.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
@@ -85,7 +80,7 @@ Cg
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B56-j2-AhA">
-                                                <rect key="frame" x="0.0" y="296" width="375" height="38"/>
+                                                <rect key="frame" x="0.0" y="346.5" width="295" height="38"/>
                                                 <color key="backgroundColor" red="0.91848979724819912" green="0.92982917746113991" blue="0.92982917746113991" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <state key="normal" title="Dismiss"/>
@@ -130,16 +125,24 @@ Cg
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="458-04-J9m">
-                                <rect key="frame" x="113" y="208" width="149" height="54"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="458-04-J9m" customClass="SecondaryActionButton" customModule="HaircutV1" customModuleProvider="target">
+                                <rect key="frame" x="62.5" y="208" width="250" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="dKd-Eo-fJX"/>
+                                    <constraint firstAttribute="height" constant="60" id="sC5-Jk-MnC"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="PRESENT"/>
                                 <connections>
                                     <segue destination="l3p-Qg-2CI" kind="show" identifier="showPresentMode" id="jyd-5A-mdT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqP-2m-SWm">
-                                <rect key="frame" x="77" y="363" width="221" height="54"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqP-2m-SWm" customClass="InvertedSecondaryActionButton" customModule="HaircutV1" customModuleProvider="target">
+                                <rect key="frame" x="62.5" y="369" width="250" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="i3T-rW-Cko"/>
+                                    <constraint firstAttribute="height" constant="60" id="vzR-ec-wJP"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="FULL DETAILS"/>
                                 <connections>
@@ -153,7 +156,7 @@ Cg
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmD-Ib-wfW">
-                                <rect key="frame" x="0.0" y="418" width="375" height="33.5"/>
+                                <rect key="frame" x="0.0" y="430" width="375" height="33.5"/>
                                 <string key="text">*Use this to view all details!
 You can also edit your haircut here!</string>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
@@ -161,7 +164,7 @@ You can also edit your haircut here!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Use this if you're showing your stylist! Shows only relevant info needed for your haircut!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kb-gE-iKj">
-                                <rect key="frame" x="0.0" y="263" width="375" height="39"/>
+                                <rect key="frame" x="0.0" y="269" width="375" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="IZS-tg-Bla"/>
                                 </constraints>
@@ -774,7 +777,7 @@ You can also edit your haircut here!</string>
             </objects>
             <point key="canvasLocation" x="1449" y="-443"/>
         </scene>
-        <!--Create Haircut 1 of 3-->
+        <!--Create Haircut | 1 of 3-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="CreateHaircutPg1ViewController" customModule="HaircutV1" customModuleProvider="target" sceneMemberID="viewController">
@@ -947,10 +950,14 @@ Please give phone back to owner!</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mq-AK-pi3">
-                                <rect key="frame" x="153" y="583" width="69" height="45"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <state key="normal" title="NEXT"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mq-AK-pi3" customClass="PrimaryActionButton" customModule="HaircutV1" customModuleProvider="target">
+                                <rect key="frame" x="62.5" y="568" width="250" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="KIg-EF-YtY"/>
+                                    <constraint firstAttribute="height" constant="60" id="Kal-d2-qGK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
+                                <state key="normal" title="NEXT STEP"/>
                                 <connections>
                                     <segue destination="IHx-nX-rBy" kind="show" identifier="showNextPg2" id="dUP-zs-M99"/>
                                 </connections>
@@ -992,7 +999,7 @@ Please give phone back to owner!</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Create Haircut 1 of 3" id="4UL-7f-fpc">
+                    <navigationItem key="navigationItem" title="Create Haircut | 1 of 3" id="4UL-7f-fpc">
                         <barButtonItem key="backBarButtonItem" title="Back" id="b9T-bU-c5b"/>
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="X2z-y1-6b3">
                             <connections>
@@ -1032,7 +1039,7 @@ Please give phone back to owner!</string>
             </objects>
             <point key="canvasLocation" x="2950" y="-1167"/>
         </scene>
-        <!--Create Haircut 2 of 3-->
+        <!--Create Haircut | 2 of 3-->
         <scene sceneID="iBn-aA-Yc9">
             <objects>
                 <viewController id="IHx-nX-rBy" customClass="CreateHaircutPg2ViewController" customModule="HaircutV1" customModuleProvider="target" sceneMemberID="viewController">
@@ -1085,10 +1092,13 @@ Read them the example below to give them an idea of what info you need. </string
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHN-Cb-8V7">
-                                <rect key="frame" x="153" y="583" width="69" height="45"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <state key="normal" title="NEXT"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHN-Cb-8V7" customClass="PrimaryActionButton" customModule="HaircutV1" customModuleProvider="target">
+                                <rect key="frame" x="62.5" y="568" width="250" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="OLp-1r-ae6"/>
+                                    <constraint firstAttribute="height" constant="60" id="ald-tX-Ix3"/>
+                                </constraints>
+                                <state key="normal" title="NEXT STEP"/>
                                 <connections>
                                     <segue destination="dsw-uW-L7M" kind="show" identifier="showNextPg3" id="ngQ-uN-UpQ"/>
                                 </connections>
@@ -1099,11 +1109,11 @@ Read them the example below to give them an idea of what info you need. </string
                             <constraint firstItem="oNm-OZ-UGK" firstAttribute="trailing" secondItem="Csz-bq-HLL" secondAttribute="trailing" constant="16" id="5QR-9V-bFC"/>
                             <constraint firstItem="ExA-WE-D3x" firstAttribute="top" secondItem="pG5-rx-ca8" secondAttribute="bottom" constant="9" id="Hv1-l4-4l5"/>
                             <constraint firstItem="9vd-Wo-4Pk" firstAttribute="top" secondItem="ExA-WE-D3x" secondAttribute="bottom" constant="31" id="JjV-He-QsT"/>
-                            <constraint firstItem="oNm-OZ-UGK" firstAttribute="bottom" secondItem="yHN-Cb-8V7" secondAttribute="bottom" constant="39" id="Lum-BK-R5V"/>
                             <constraint firstItem="oNm-OZ-UGK" firstAttribute="trailing" secondItem="F0e-1M-Lx1" secondAttribute="trailing" constant="16" id="T17-DM-bsS"/>
                             <constraint firstItem="oNm-OZ-UGK" firstAttribute="trailing" secondItem="9vd-Wo-4Pk" secondAttribute="trailing" constant="16" id="TT0-Bo-Bl0"/>
-                            <constraint firstItem="yHN-Cb-8V7" firstAttribute="centerX" secondItem="iHq-DV-t0n" secondAttribute="centerX" id="Wiv-vu-zs7"/>
+                            <constraint firstItem="oNm-OZ-UGK" firstAttribute="bottom" secondItem="yHN-Cb-8V7" secondAttribute="bottom" constant="39" id="YLy-b7-baq"/>
                             <constraint firstItem="Csz-bq-HLL" firstAttribute="top" secondItem="9vd-Wo-4Pk" secondAttribute="bottom" constant="4" id="aNh-X1-mLM"/>
+                            <constraint firstItem="yHN-Cb-8V7" firstAttribute="centerX" secondItem="iHq-DV-t0n" secondAttribute="centerX" id="dJt-Yc-Chr"/>
                             <constraint firstItem="F0e-1M-Lx1" firstAttribute="leading" secondItem="oNm-OZ-UGK" secondAttribute="leading" constant="16" id="eXE-E1-b8d"/>
                             <constraint firstItem="9vd-Wo-4Pk" firstAttribute="leading" secondItem="oNm-OZ-UGK" secondAttribute="leading" constant="16" id="lIv-kS-Qx2"/>
                             <constraint firstItem="F0e-1M-Lx1" firstAttribute="top" secondItem="oNm-OZ-UGK" secondAttribute="top" constant="17" id="odq-4B-1XW"/>
@@ -1116,7 +1126,7 @@ Read them the example below to give them an idea of what info you need. </string
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oNm-OZ-UGK"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Create Haircut 2 of 3" id="fCk-Xh-yxD">
+                    <navigationItem key="navigationItem" title="Create Haircut | 2 of 3" id="fCk-Xh-yxD">
                         <barButtonItem key="backBarButtonItem" title="Back" id="BFh-Pi-uxl"/>
                     </navigationItem>
                     <connections>
@@ -1127,7 +1137,7 @@ Read them the example below to give them an idea of what info you need. </string
             </objects>
             <point key="canvasLocation" x="3695" y="-1167"/>
         </scene>
-        <!--Create Haircut 3 of 3-->
+        <!--Create Haircut | 3 of 3-->
         <scene sceneID="uBA-A4-G6R">
             <objects>
                 <viewController id="dsw-uW-L7M" customClass="CreateHaircutPg3ViewController" customModule="HaircutV1" customModuleProvider="target" sceneMemberID="viewController">
@@ -1180,8 +1190,12 @@ Read them the example below to give them an idea of what info you need. </string
                                 <color key="textColor" red="0.0" green="0.66806994819999999" blue="0.1999860279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HpG-QN-ldx">
-                                <rect key="frame" x="155" y="583" width="65" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HpG-QN-ldx" customClass="PrimaryActionButton" customModule="HaircutV1" customModuleProvider="target">
+                                <rect key="frame" x="62" y="568" width="250" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="Oj4-IH-m2h"/>
+                                    <constraint firstAttribute="height" constant="60" id="hJu-ry-tiv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="SAVE"/>
                                 <connections>
@@ -1217,7 +1231,7 @@ Read them the example below to give them an idea of what info you need. </string
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="59j-6F-H5H"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Create Haircut 3 of 3" id="2yo-Fg-UPy">
+                    <navigationItem key="navigationItem" title="Create Haircut | 3 of 3" id="2yo-Fg-UPy">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="IQE-YW-Yfn">
                             <connections>
                                 <action selector="saveBtn:" destination="dsw-uW-L7M" id="sXn-GX-ZxP"/>

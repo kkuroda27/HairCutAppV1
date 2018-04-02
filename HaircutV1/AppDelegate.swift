@@ -17,6 +17,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        // Nav Bar Customizations
+        // Nav Bar Items Color
+        UINavigationBar.appearance().tintColor = UIColor.white
+        
+        // Nav Bar Background Color
+        UINavigationBar.appearance().barTintColor = hexStringToUIColor(hex: "#35B18E")
+
+        // Nav Bar Text Color
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+
+        
+        // custom font setup for Nav Bar Item and Nav Bar
+        var barButtonItemTextAttributes: [NSAttributedStringKey:Any]
+        var navBarTextAttributes: [NSAttributedStringKey:Any]
+
+        let fontColor = UIColor.white
+        let barItemCustomFont = UIFont(name: "Avenir-Medium", size: 18)  //note we're not forcing anything here
+        let navBarCustomFont = UIFont(name: "Avenir-Heavy", size: 18)  //note we're not forcing anything here
+        
+        //can we use our custom font 🤔
+        if let customFont1 = barItemCustomFont, let customFont2 = navBarCustomFont {
+            //hooray we can use our font 💪
+            barButtonItemTextAttributes = [NSAttributedStringKey.foregroundColor: fontColor, NSAttributedStringKey.font: customFont1] as [NSAttributedStringKey : Any]
+            navBarTextAttributes = [NSAttributedStringKey.foregroundColor: fontColor, NSAttributedStringKey.font: customFont2] as [NSAttributedStringKey : Any]
+
+        } else {
+            //👎 not found -> omit setting font name and proceed with system font
+            barButtonItemTextAttributes = [NSAttributedStringKey.foregroundColor: fontColor]
+            navBarTextAttributes = [NSAttributedStringKey.foregroundColor: fontColor]
+
+        }
+        
+        //finally set nav bar and bar item text attributes.
+        UIBarButtonItem.appearance().setTitleTextAttributes(barButtonItemTextAttributes, for: .normal)
+        UINavigationBar.appearance().titleTextAttributes = navBarTextAttributes
+
+
         // Enable keyboardmanager from cocoapods.
         IQKeyboardManager.sharedManager().enable = true
 
@@ -102,3 +139,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+func hexStringToUIColor (hex:String) -> UIColor {
+    var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+    
+    if (cString.hasPrefix("#")) {
+        cString.remove(at: cString.startIndex)
+    }
+    
+    if ((cString.count) != 6) {
+        return UIColor.gray
+    }
+    
+    var rgbValue:UInt32 = 0
+    Scanner(string: cString).scanHexInt32(&rgbValue)
+    
+    return UIColor(
+        red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+        green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+        blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+        alpha: CGFloat(1.0)
+    )
+}
