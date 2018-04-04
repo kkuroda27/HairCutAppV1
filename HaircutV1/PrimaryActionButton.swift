@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable class PrimaryActionButton: UIButton {
 
-    @IBInspectable var cornerRadius : CGFloat = 30 {
+    @IBInspectable var cornerRadius : CGFloat = 0 {
         didSet {
             self.configureButton()
         }
@@ -25,8 +25,7 @@ import UIKit
     }
     */
     
-    @IBInspectable var backgroundColorNEW : UIColor = hexStringToUIColor(hex: "#35B18E")
- {
+    @IBInspectable var backgroundColorNEW : UIColor = hexStringToUIColor(hex: "#35B18E") {
         didSet {
             self.configureButton()
             // @IBInspectable var borderColor : UIColor = UIColor.red {
@@ -55,7 +54,8 @@ import UIKit
     func configureButton() {
         // Common logic goes here
 
-        self.layer.cornerRadius = self.cornerRadius
+        self.clipsToBounds = true
+        self.layer.cornerRadius = self.layer.bounds.height / 2.0
         self.layer.backgroundColor = self.backgroundColorNEW.cgColor
         self.layer.applySketchShadow(
             color: hexStringToUIColor(hex: "#67C2AC"),
@@ -65,7 +65,7 @@ import UIKit
             blur: 6,
             spread: 0)
 
-        self.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 24)
+        self.titleLabel?.font = UIFont(name: "Avenir-Medium", size: self.layer.bounds.height / 2.3)
         
         self.setTitleColor(.white, for: .normal)
 

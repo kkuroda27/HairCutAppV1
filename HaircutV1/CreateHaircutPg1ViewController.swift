@@ -36,6 +36,14 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
     // MARK: - Extra Global Variables
     var imagePicked = 1
     var userUUID = ""
+    var frontImgPlaceholder = "FrontHeadshotPlaceholder"
+    var sideImgPlaceholder = "SideHeadshotPlaceholder"
+    var backImgPlaceholder = "BackHeadshotPlaceholder"
+    var imgFrontSet = false
+    var imgSideSet = false
+    var imgBackSet = false
+
+
     
     // MARK: - Navigation Functions
     
@@ -77,14 +85,13 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
 
             // Now do Pictures... If image exists AND it is NOT placeholder, convert and set to PFObject.
             // let's check if each image is a placeholder, and if so, then hide "retake" button.
-            var imagePH = UIImage()
+            //var imagePH = UIImage()
 
             // if FRONT image exists, convert it and set PFObject
             if let imageData = self.imgLeft.image {
 
-                imagePH = UIImage(named: "frontPlaceholder")!
-                if imagePH == self.imgLeft.image {
-                    // Our image is a placeholder, so do nothing.
+                if imgFrontSet == false {
+                    // Front image is not set, aka a placeholder, so do nothing.
                 } else {
                     // Our image is NOT a placeholder, so let's actually save.
                     guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
@@ -108,10 +115,8 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
             // if SIDE image exists, convert it and set PFObject
             if let imageData = self.imgCenter.image {
 
-                imagePH = UIImage(named: "sidePlaceholder")!
-                if imagePH == self.imgCenter.image {
-                    // Our image is a placeholder, so do nothing.
-
+                if imgSideSet == false {
+                    // Side image is not set, aka a placeholder, so do nothing.
                 } else {
                     // Our image is NOT a placeholder, so let's actually save.
                     guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
@@ -130,9 +135,8 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
             // if BACK image exists, convert it and set PFObject
             if let imageData = self.imgRight.image {
 
-                imagePH = UIImage(named: "backPlaceholder")!
-                if imagePH == self.imgRight.image {
-                    // Our image is a placeholder, so do nothing.
+                if imgBackSet == false {
+                    // Back image is not set, aka a placeholder, so do nothing.
                 } else {
                     // Our image is NOT a placeholder, so let's actually save.
                     guard let imageDataJPEG = UIImageJPEGRepresentation(imageData, 0.5) else {
@@ -213,20 +217,34 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
 
         let imageView = sender.view as! UIImageView
         let newImageView = UIImageView(image: imageView.image)
-        var imagePH = UIImage()
+        //var imagePH = UIImage()
+        var imageSet = Bool()
         // set global variable imagePicked to tag so we can distinguish between images.
         self.imagePicked = (sender.view?.tag)!
         
+        /*
         switch imagePicked {
         case 2:
-            imagePH = UIImage(named: "sidePlaceholder")!
+            imagePH = UIImage(named: sideImgPlaceholder)!
         case 3:
-            imagePH = UIImage(named: "backPlaceholder")!
+            imagePH = UIImage(named: backImgPlaceholder)!
         default:
-            imagePH = UIImage(named: "frontPlaceholder")!
+            imagePH = UIImage(named: frontImgPlaceholder)!
+        }
+    */
+
+        switch imagePicked {
+        case 2:
+            imageSet = self.imgSideSet
+        case 3:
+            imageSet = self.imgBackSet
+        default:
+            imageSet = self.imgFrontSet
         }
 
-        if imagePH == imageView.image {
+        //if imagePH == imageView.image {
+        if imageSet == false {
+
             print("Image DOES equal placeholder... So present camera view")
             // execute show camera controller
             
@@ -240,19 +258,24 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
                             self?.imgCenter.image = image
                             self?.btnSideRetake.isHidden = false
                             self?.iconUploadSide.isHidden = true
-
+                            self?.imgSideSet = true
 
                         case 3?:
                             self?.imgRight.image = image
                             self?.btnBackRetake.isHidden = false
                             self?.iconUploadBack.isHidden = true
+                            self?.imgBackSet = true
+
 
                         default:
                             self?.imgLeft.image = image
                             self?.btnFrontRetake.isHidden = false
                             self?.iconUploadFront.isHidden = true
+                            self?.imgFrontSet = true
+
                         }
 
+                        print("This only occurs when a photo is selected. From now on, we can always consider this image to NOT have a placeholder.")
                     } else {
                         print("There was a problem getting the image")
                     }
@@ -360,7 +383,8 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
         // set up views if editing an existing Haircut.
         if isCreating == false { // This means we're editing, not creating. Let's update view.
             navigationItem.title = "Editing: Page 1 of 3"
-            refreshView() // update view with modelController.haircut
+            // Should never happen here....
+            //refreshView() // update view with modelController.haircut
         } else {
             // we're creating a new haircut, so do nothing.
         }
@@ -397,63 +421,6 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
     
     // MARK: - helper functions
     
-    func refreshView() {
-        print("FUNCTION START: refreshView()")
-        stylistNameTextField.text = modelController.haircut["stylistName"] as? String
-        
-        if modelController.haircut["frontImage"] != nil {
-            btnFrontRetake.isHidden = false
-            iconUploadFront.isHidden = true
-            let tempImage = modelController.haircut["frontImage"] as! PFFile
-            tempImage.getDataInBackground { (data, error) in
-                if let imageData = data {
-                    if let imageToDisplay = UIImage(data: imageData) {
-                        self.imgLeft.image = imageToDisplay
-                        
-                    }
-                }
-            }
-            
-        } else {
-            print("frontImage doesn't exist!")
-        }
-        
-        if modelController.haircut["sideImage"] != nil {
-            btnSideRetake.isHidden = false
-            iconUploadSide.isHidden = true
-            
-            let tempImage = modelController.haircut["sideImage"] as! PFFile
-            tempImage.getDataInBackground { (data, error) in
-                if let imageData = data {
-                    if let imageToDisplay = UIImage(data: imageData) {
-                        self.imgCenter.image = imageToDisplay
-                        
-                    }
-                }
-            }
-        } else {
-            print("sideImage doesn't exist!")
-            
-        }
-        
-        if modelController.haircut["backImage"] != nil {
-            btnBackRetake.isHidden = false
-            iconUploadBack.isHidden = true
-            
-            let tempImage = modelController.haircut["backImage"] as! PFFile
-            tempImage.getDataInBackground { (data, error) in
-                if let imageData = data {
-                    if let imageToDisplay = UIImage(data: imageData) {
-                        self.imgRight.image = imageToDisplay
-                        
-                    }
-                }
-            }
-        } else {
-            print("backImage doesn't exist!")
-        }
-
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

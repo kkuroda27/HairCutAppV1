@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable class InvertedSecondaryActionButton: UIButton {
     
-    @IBInspectable var cornerRadius : CGFloat = 30 {
+    @IBInspectable var cornerRadius : CGFloat = 0 {
         didSet {
             self.configureButton()
         }
@@ -58,7 +58,8 @@ import UIKit
     func configureButton() {
         // Common logic goes here
         
-        self.layer.cornerRadius = self.cornerRadius
+        self.clipsToBounds = true
+        self.layer.cornerRadius = self.layer.bounds.height / 2.0
         self.layer.backgroundColor = self.backgroundColorNEW.cgColor
         self.layer.applySketchShadow(
             color: hexStringToUIColor(hex: "#FF9B5A"),
@@ -68,7 +69,7 @@ import UIKit
             blur: 2,
             spread: 0)
         
-        self.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 24)
+        self.titleLabel?.font = UIFont(name: "Avenir-Medium", size: self.layer.bounds.height / 2.3)
         
         self.setTitleColor(hexStringToUIColor(hex: "#FF9B5A"), for: .normal)
         

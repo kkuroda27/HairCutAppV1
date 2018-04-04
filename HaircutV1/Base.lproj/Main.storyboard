@@ -254,7 +254,7 @@ You can also edit your haircut here!</string>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8PR-VP-Lge">
                                                         <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                                         <subviews>
-                                                            <imageView tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frontPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="G3q-8a-hIN">
+                                                            <imageView tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FrontHeadshotPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="G3q-8a-hIN">
                                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                                                 <gestureRecognizers/>
                                                                 <connections>
@@ -277,7 +277,7 @@ You can also edit your haircut here!</string>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVi-8k-9lv">
                                                         <rect key="frame" x="125" y="0.0" width="105" height="105"/>
                                                         <subviews>
-                                                            <imageView tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sidePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="Dju-7a-ft4">
+                                                            <imageView tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SideHeadshotPlaceholder " translatesAutoresizingMaskIntoConstraints="NO" id="Dju-7a-ft4">
                                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                                                 <gestureRecognizers/>
                                                                 <connections>
@@ -297,7 +297,7 @@ You can also edit your haircut here!</string>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02f-Qm-eoY">
                                                         <rect key="frame" x="250" y="0.0" width="105" height="105"/>
                                                         <subviews>
-                                                            <imageView tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="zHI-IS-c5y">
+                                                            <imageView tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackHeadshotPlaceholder " translatesAutoresizingMaskIntoConstraints="NO" id="zHI-IS-c5y">
                                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                                                 <gestureRecognizers/>
                                                                 <connections>
@@ -443,9 +443,10 @@ You can also edit your haircut here!</string>
                         <viewLayoutGuide key="safeArea" id="Hgy-Vi-Rbu"/>
                     </view>
                     <navigationItem key="navigationItem" title="Full Details Mode" id="54P-7x-myJ">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="8iN-r4-9ed"/>
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="Kgr-ja-hC3">
                             <connections>
-                                <segue destination="8rJ-Kc-sve" kind="show" identifier="showEdit" id="WCN-UJ-CMr"/>
+                                <segue destination="BDg-pP-fqY" kind="show" identifier="showEdit" id="vHl-Nv-8U1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -480,6 +481,369 @@ You can also edit your haircut here!</string>
             </objects>
             <point key="canvasLocation" x="3958" y="551"/>
         </scene>
+        <!--Editing Haircut-->
+        <scene sceneID="ICf-DI-4U8">
+            <objects>
+                <viewController id="BDg-pP-fqY" customClass="EditHaircutViewController" customModule="HaircutV1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lnO-qv-HfC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="874"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLl-dY-rtm">
+                                <rect key="frame" x="0.0" y="64" width="375" height="810"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g94-W6-LiE" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="808"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Haircut:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PwC-mG-HQU" customClass="SecondaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="16" width="343" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name your haircut here!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Ap-1U-4Mc">
+                                                <rect key="frame" x="16" y="38" width="343" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="uCp-fY-ZDj"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Headshots:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SR-vQ-ZHZ" customClass="SecondaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="90" width="343" height="22"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fAh-8N-Ft0">
+                                                <rect key="frame" x="16" y="116" width="343" height="101"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MlM-ik-jxR">
+                                                        <rect key="frame" x="0.0" y="0.0" width="101" height="101"/>
+                                                        <subviews>
+                                                            <imageView tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FrontHeadshotPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="gxs-CQ-eqd">
+                                                                <rect key="frame" x="0.0" y="0.0" width="101" height="101"/>
+                                                                <gestureRecognizers/>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="LPZ-iW-LMj" appends="YES" id="4hL-Ja-SUu"/>
+                                                                </connections>
+                                                            </imageView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCameraUpload" translatesAutoresizingMaskIntoConstraints="NO" id="CFh-3i-N2j">
+                                                                <rect key="frame" x="25" y="25" width="50" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="50" id="Yk2-Au-h8G"/>
+                                                                    <constraint firstAttribute="height" constant="50" id="zw6-Av-vQ5"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="CFh-3i-N2j" firstAttribute="centerX" secondItem="gxs-CQ-eqd" secondAttribute="centerX" id="8Zb-bA-rA7"/>
+                                                            <constraint firstItem="gxs-CQ-eqd" firstAttribute="centerX" secondItem="MlM-ik-jxR" secondAttribute="centerX" id="9E9-is-zU7"/>
+                                                            <constraint firstItem="gxs-CQ-eqd" firstAttribute="centerX" secondItem="MlM-ik-jxR" secondAttribute="centerX" id="NS8-re-iAa"/>
+                                                            <constraint firstItem="gxs-CQ-eqd" firstAttribute="centerY" secondItem="MlM-ik-jxR" secondAttribute="centerY" id="QR1-qm-Kr4"/>
+                                                            <constraint firstItem="gxs-CQ-eqd" firstAttribute="top" secondItem="MlM-ik-jxR" secondAttribute="top" id="QZf-PZ-HkA"/>
+                                                            <constraint firstItem="CFh-3i-N2j" firstAttribute="centerY" secondItem="gxs-CQ-eqd" secondAttribute="centerY" id="RUG-xM-5UF"/>
+                                                            <constraint firstAttribute="trailing" secondItem="gxs-CQ-eqd" secondAttribute="trailing" id="egm-FZ-heL"/>
+                                                            <constraint firstAttribute="width" secondItem="MlM-ik-jxR" secondAttribute="height" multiplier="1:1" id="gqz-S0-gV3"/>
+                                                            <constraint firstItem="gxs-CQ-eqd" firstAttribute="leading" secondItem="MlM-ik-jxR" secondAttribute="leading" id="iua-cm-aJE"/>
+                                                            <constraint firstAttribute="bottom" secondItem="gxs-CQ-eqd" secondAttribute="bottom" id="sJn-sv-yJl"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4tx-0m-tn6">
+                                                        <rect key="frame" x="121" y="0.0" width="101" height="101"/>
+                                                        <subviews>
+                                                            <imageView tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SideHeadshotPlaceholder " translatesAutoresizingMaskIntoConstraints="NO" id="Thq-bD-Xwt">
+                                                                <rect key="frame" x="0.0" y="0.0" width="101" height="101"/>
+                                                                <gestureRecognizers/>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="SaA-B0-gqw" appends="YES" id="J0u-q8-rcq"/>
+                                                                </connections>
+                                                            </imageView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCameraUpload" translatesAutoresizingMaskIntoConstraints="NO" id="mrC-pK-TzZ">
+                                                                <rect key="frame" x="25" y="25" width="50" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="50" id="45F-7u-5hM"/>
+                                                                    <constraint firstAttribute="width" constant="50" id="zFL-uO-4zv"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="Thq-bD-Xwt" firstAttribute="top" secondItem="4tx-0m-tn6" secondAttribute="top" id="3Us-wv-Foa"/>
+                                                            <constraint firstItem="mrC-pK-TzZ" firstAttribute="centerX" secondItem="Thq-bD-Xwt" secondAttribute="centerX" id="44V-LM-h3g"/>
+                                                            <constraint firstAttribute="width" secondItem="4tx-0m-tn6" secondAttribute="height" multiplier="1:1" id="9Bb-os-uKS"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Thq-bD-Xwt" secondAttribute="bottom" id="XlK-Sp-0m3"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Thq-bD-Xwt" secondAttribute="trailing" id="a0t-Fo-ozz"/>
+                                                            <constraint firstItem="Thq-bD-Xwt" firstAttribute="leading" secondItem="4tx-0m-tn6" secondAttribute="leading" id="fVo-p1-iRr"/>
+                                                            <constraint firstItem="mrC-pK-TzZ" firstAttribute="centerY" secondItem="Thq-bD-Xwt" secondAttribute="centerY" id="xEe-mr-vqS"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VEx-sB-Vnb">
+                                                        <rect key="frame" x="242" y="0.0" width="101" height="101"/>
+                                                        <subviews>
+                                                            <imageView tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackHeadshotPlaceholder " translatesAutoresizingMaskIntoConstraints="NO" id="4oo-3Z-4fB">
+                                                                <rect key="frame" x="0.0" y="0.0" width="101" height="101"/>
+                                                                <gestureRecognizers/>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="Wfk-tN-pYL" appends="YES" id="Pg5-k8-10R"/>
+                                                                </connections>
+                                                            </imageView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCameraUpload" translatesAutoresizingMaskIntoConstraints="NO" id="2nG-wb-E6j">
+                                                                <rect key="frame" x="25" y="25" width="50" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="50" id="ECt-NM-neC"/>
+                                                                    <constraint firstAttribute="width" constant="50" id="Qgj-aU-Yji"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="2nG-wb-E6j" firstAttribute="centerX" secondItem="4oo-3Z-4fB" secondAttribute="centerX" id="5D4-na-tYE"/>
+                                                            <constraint firstAttribute="width" secondItem="VEx-sB-Vnb" secondAttribute="height" multiplier="1:1" id="XiS-8H-bGL"/>
+                                                            <constraint firstItem="4oo-3Z-4fB" firstAttribute="top" secondItem="VEx-sB-Vnb" secondAttribute="top" id="aAX-48-wzQ"/>
+                                                            <constraint firstItem="4oo-3Z-4fB" firstAttribute="leading" secondItem="VEx-sB-Vnb" secondAttribute="leading" id="fMt-Bd-LHU"/>
+                                                            <constraint firstAttribute="bottom" secondItem="4oo-3Z-4fB" secondAttribute="bottom" id="xSI-Yy-MTI"/>
+                                                            <constraint firstItem="2nG-wb-E6j" firstAttribute="centerY" secondItem="4oo-3Z-4fB" secondAttribute="centerY" id="yFS-lz-oRj"/>
+                                                            <constraint firstAttribute="trailing" secondItem="4oo-3Z-4fB" secondAttribute="trailing" id="zAv-3c-lsT"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Front" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uny-iS-UkN">
+                                                <rect key="frame" x="49" y="220" width="36" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Side" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEQ-2U-u4R">
+                                                <rect key="frame" x="173" y="220" width="30" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szo-KK-VZ7">
+                                                <rect key="frame" x="292.5" y="220" width="33.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRX-7k-8uI" customClass="SecondaryActionButton" customModule="HaircutV1" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="245" width="101" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                <state key="normal" title="Retake"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                        <real key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="retakePhoto:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Ryl-ro-B8A"/>
+                                                    <action selector="retakePhoto:" destination="BDg-pP-fqY" eventType="touchUpInside" id="ioT-8G-bv3"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XST-mI-nxR" customClass="SecondaryActionButton" customModule="HaircutV1" customModuleProvider="target">
+                                                <rect key="frame" x="137" y="245" width="101" height="30"/>
+                                                <state key="normal" title="Retake"/>
+                                                <connections>
+                                                    <action selector="retakePhoto:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="kmE-jr-4sU"/>
+                                                    <action selector="retakePhoto:" destination="BDg-pP-fqY" eventType="touchUpInside" id="tzi-v8-qmQ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ciQ-nT-uCi" customClass="SecondaryActionButton" customModule="HaircutV1" customModuleProvider="target">
+                                                <rect key="frame" x="258" y="245" width="101" height="30"/>
+                                                <state key="normal" title="Retake"/>
+                                                <connections>
+                                                    <action selector="retakePhoto:" destination="BDg-pP-fqY" eventType="touchUpInside" id="me9-HZ-xXp"/>
+                                                    <action selector="retakePhoto:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="p0k-uB-FdF"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haircut Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8H-l5-qFd" customClass="SecondaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="297" width="343" height="22"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YP3-3Q-zZa" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
+                                                <rect key="frame" x="16" y="319" width="343" height="100"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" red="0.0" green="0.4793452024" blue="0.99908632040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="Auk-KL-8AB"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Haircut:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3D-DA-OI6" customClass="SecondaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="515" width="343" height="22"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ftc-RB-yXl">
+                                                <rect key="frame" x="0.0" y="537" width="375" height="162"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="162" id="Thk-H7-9bu"/>
+                                                </constraints>
+                                                <date key="date" timeIntervalSinceReferenceDate="542681466.58833206">
+                                                    <!--2018-03-14 00:51:06 +0000-->
+                                                </date>
+                                            </datePicker>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salon Name + City:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiW-Vd-knz" customClass="SecondaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="721" width="343" height="22"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex: Supercuts / Cupertino" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Etm-E4-TVS">
+                                                <rect key="frame" x="16" y="743" width="343" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="h6W-Yw-eDw"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hair Stylist's Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wh-Ue-XPa" customClass="SecondaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="441" width="343" height="22"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Who cut your hair?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ivS-ZU-72c">
+                                                <rect key="frame" x="16" y="463" width="343" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="CTy-ss-PwT"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="XST-mI-nxR" firstAttribute="width" secondItem="Thq-bD-Xwt" secondAttribute="width" id="0aO-3f-87K"/>
+                                            <constraint firstItem="9SR-vQ-ZHZ" firstAttribute="top" secondItem="9Ap-1U-4Mc" secondAttribute="bottom" constant="22" id="0gv-Hy-dkz"/>
+                                            <constraint firstItem="PwC-mG-HQU" firstAttribute="top" secondItem="g94-W6-LiE" secondAttribute="top" constant="16" id="42p-le-TXq"/>
+                                            <constraint firstAttribute="trailing" secondItem="x8H-l5-qFd" secondAttribute="trailing" constant="16" id="56z-gJ-1wq"/>
+                                            <constraint firstAttribute="trailing" secondItem="ivS-ZU-72c" secondAttribute="trailing" constant="16" id="6KN-UD-Gj5"/>
+                                            <constraint firstItem="Ftc-RB-yXl" firstAttribute="top" secondItem="K3D-DA-OI6" secondAttribute="bottom" id="7Xe-Kp-C5C"/>
+                                            <constraint firstItem="9Ap-1U-4Mc" firstAttribute="leading" secondItem="g94-W6-LiE" secondAttribute="leading" constant="16" id="7Zs-lB-eXD"/>
+                                            <constraint firstItem="XST-mI-nxR" firstAttribute="top" secondItem="BRX-7k-8uI" secondAttribute="top" id="8Gc-bf-94K"/>
+                                            <constraint firstItem="BRX-7k-8uI" firstAttribute="top" secondItem="uny-iS-UkN" secondAttribute="bottom" constant="7" id="BOc-EW-cDa"/>
+                                            <constraint firstItem="ciQ-nT-uCi" firstAttribute="width" secondItem="4oo-3Z-4fB" secondAttribute="width" id="BgM-Kc-DZH"/>
+                                            <constraint firstItem="x8H-l5-qFd" firstAttribute="top" secondItem="BRX-7k-8uI" secondAttribute="bottom" constant="22" id="D2L-Pn-dSB"/>
+                                            <constraint firstItem="K3D-DA-OI6" firstAttribute="top" secondItem="ivS-ZU-72c" secondAttribute="bottom" constant="22" id="D2f-hi-o08"/>
+                                            <constraint firstAttribute="bottom" secondItem="Etm-E4-TVS" secondAttribute="bottom" constant="35" id="D7h-EY-dw0"/>
+                                            <constraint firstItem="Etm-E4-TVS" firstAttribute="leading" secondItem="g94-W6-LiE" secondAttribute="leading" constant="16" id="E87-rb-Oef"/>
+                                            <constraint firstItem="YP3-3Q-zZa" firstAttribute="leading" secondItem="g94-W6-LiE" secondAttribute="leading" constant="16" id="Ghb-Ac-DBw"/>
+                                            <constraint firstItem="ciQ-nT-uCi" firstAttribute="bottom" secondItem="XST-mI-nxR" secondAttribute="bottom" id="GuV-IJ-A7m"/>
+                                            <constraint firstItem="jEQ-2U-u4R" firstAttribute="top" secondItem="fAh-8N-Ft0" secondAttribute="bottom" constant="3" id="IOT-rH-CZa"/>
+                                            <constraint firstItem="ivS-ZU-72c" firstAttribute="top" secondItem="6wh-Ue-XPa" secondAttribute="bottom" id="Jj6-Qk-IWa"/>
+                                            <constraint firstAttribute="trailing" secondItem="9Ap-1U-4Mc" secondAttribute="trailing" constant="16" id="K9t-96-aJC"/>
+                                            <constraint firstAttribute="trailing" secondItem="Etm-E4-TVS" secondAttribute="trailing" constant="16" id="MFn-qs-MbT"/>
+                                            <constraint firstItem="BRX-7k-8uI" firstAttribute="centerX" secondItem="uny-iS-UkN" secondAttribute="centerX" id="N9Z-ET-UGd"/>
+                                            <constraint firstItem="fAh-8N-Ft0" firstAttribute="top" secondItem="9SR-vQ-ZHZ" secondAttribute="bottom" constant="4" id="OZc-Sg-0PQ"/>
+                                            <constraint firstItem="YP3-3Q-zZa" firstAttribute="top" secondItem="x8H-l5-qFd" secondAttribute="bottom" id="QQJ-q7-eNc"/>
+                                            <constraint firstItem="9Ap-1U-4Mc" firstAttribute="top" secondItem="PwC-mG-HQU" secondAttribute="bottom" id="Rkr-sZ-5MA"/>
+                                            <constraint firstItem="ivS-ZU-72c" firstAttribute="leading" secondItem="g94-W6-LiE" secondAttribute="leading" constant="16" id="T0D-YT-huw"/>
+                                            <constraint firstItem="9SR-vQ-ZHZ" firstAttribute="leading" secondItem="g94-W6-LiE" secondAttribute="leading" constant="16" id="USc-Jb-Gcr"/>
+                                            <constraint firstItem="6wh-Ue-XPa" firstAttribute="top" secondItem="YP3-3Q-zZa" secondAttribute="bottom" constant="22" id="WR7-eK-oo0"/>
+                                            <constraint firstItem="eiW-Vd-knz" firstAttribute="leading" secondItem="g94-W6-LiE" secondAttribute="leading" constant="16" id="YRM-3e-CjY"/>
+                                            <constraint firstItem="K3D-DA-OI6" firstAttribute="leading" secondItem="g94-W6-LiE" secondAttribute="leading" constant="16" id="Znc-we-nSd"/>
+                                            <constraint firstItem="XST-mI-nxR" firstAttribute="bottom" secondItem="BRX-7k-8uI" secondAttribute="bottom" id="bwH-gw-lRz"/>
+                                            <constraint firstItem="BRX-7k-8uI" firstAttribute="width" secondItem="gxs-CQ-eqd" secondAttribute="width" id="cMr-Vd-7hp"/>
+                                            <constraint firstItem="XST-mI-nxR" firstAttribute="centerX" secondItem="jEQ-2U-u4R" secondAttribute="centerX" id="f8N-nB-o2W"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ftc-RB-yXl" secondAttribute="trailing" id="ghi-fq-Ho9"/>
+                                            <constraint firstAttribute="trailing" secondItem="K3D-DA-OI6" secondAttribute="trailing" constant="16" id="gwN-Fn-Qgn"/>
+                                            <constraint firstItem="x8H-l5-qFd" firstAttribute="leading" secondItem="g94-W6-LiE" secondAttribute="leading" constant="16" id="hDa-u4-0LP"/>
+                                            <constraint firstAttribute="trailing" secondItem="eiW-Vd-knz" secondAttribute="trailing" constant="16" id="hGc-BG-tPb"/>
+                                            <constraint firstItem="ciQ-nT-uCi" firstAttribute="top" secondItem="XST-mI-nxR" secondAttribute="top" id="hgq-no-Khq"/>
+                                            <constraint firstItem="Etm-E4-TVS" firstAttribute="top" secondItem="eiW-Vd-knz" secondAttribute="bottom" id="iLk-jc-50i"/>
+                                            <constraint firstItem="eiW-Vd-knz" firstAttribute="top" secondItem="Ftc-RB-yXl" secondAttribute="bottom" constant="22" id="jgI-4V-f9A"/>
+                                            <constraint firstAttribute="trailing" secondItem="PwC-mG-HQU" secondAttribute="trailing" constant="16" id="lT1-vM-yrR"/>
+                                            <constraint firstItem="PwC-mG-HQU" firstAttribute="leading" secondItem="g94-W6-LiE" secondAttribute="leading" constant="16" id="mfc-Bo-MLw"/>
+                                            <constraint firstAttribute="trailing" secondItem="YP3-3Q-zZa" secondAttribute="trailing" constant="16" id="nak-WJ-fcn"/>
+                                            <constraint firstItem="6wh-Ue-XPa" firstAttribute="leading" secondItem="g94-W6-LiE" secondAttribute="leading" constant="16" id="oBd-OP-TVu"/>
+                                            <constraint firstItem="jEQ-2U-u4R" firstAttribute="centerX" secondItem="g94-W6-LiE" secondAttribute="centerX" id="oDS-GR-xSt"/>
+                                            <constraint firstItem="uny-iS-UkN" firstAttribute="centerX" secondItem="gxs-CQ-eqd" secondAttribute="centerX" id="oU9-c6-TyW"/>
+                                            <constraint firstItem="jEQ-2U-u4R" firstAttribute="top" secondItem="uny-iS-UkN" secondAttribute="top" id="oho-df-VEb"/>
+                                            <constraint firstItem="szo-KK-VZ7" firstAttribute="centerX" secondItem="4oo-3Z-4fB" secondAttribute="centerX" id="q5H-oK-Gef"/>
+                                            <constraint firstItem="fAh-8N-Ft0" firstAttribute="leading" secondItem="g94-W6-LiE" secondAttribute="leading" constant="16" id="r1Z-N6-JEi"/>
+                                            <constraint firstItem="ciQ-nT-uCi" firstAttribute="centerX" secondItem="szo-KK-VZ7" secondAttribute="centerX" id="r80-Sg-Nn3"/>
+                                            <constraint firstAttribute="trailing" secondItem="6wh-Ue-XPa" secondAttribute="trailing" constant="16" id="u75-az-PYv"/>
+                                            <constraint firstItem="jEQ-2U-u4R" firstAttribute="top" secondItem="szo-KK-VZ7" secondAttribute="top" id="vmM-Xd-cat"/>
+                                            <constraint firstAttribute="trailing" secondItem="9SR-vQ-ZHZ" secondAttribute="trailing" constant="16" id="xxO-RD-P30"/>
+                                            <constraint firstAttribute="trailing" secondItem="fAh-8N-Ft0" secondAttribute="trailing" constant="16" id="yhz-UK-MVg"/>
+                                            <constraint firstItem="Ftc-RB-yXl" firstAttribute="leading" secondItem="g94-W6-LiE" secondAttribute="leading" id="zPx-uH-WaC"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.48578459019999998" blue="0.22845035790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="g94-W6-LiE" firstAttribute="top" secondItem="YLl-dY-rtm" secondAttribute="top" id="4Gp-B8-7L2"/>
+                                    <constraint firstAttribute="trailing" secondItem="g94-W6-LiE" secondAttribute="trailing" id="CTt-Wy-TMd"/>
+                                    <constraint firstAttribute="bottom" secondItem="g94-W6-LiE" secondAttribute="bottom" id="MT6-79-UHU"/>
+                                    <constraint firstItem="g94-W6-LiE" firstAttribute="leading" secondItem="YLl-dY-rtm" secondAttribute="leading" id="agv-hP-AV1"/>
+                                    <constraint firstItem="g94-W6-LiE" firstAttribute="height" secondItem="YLl-dY-rtm" secondAttribute="height" priority="250" id="rKV-QL-vcx"/>
+                                    <constraint firstItem="g94-W6-LiE" firstAttribute="width" secondItem="YLl-dY-rtm" secondAttribute="width" id="vNL-Rc-c6E"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YLl-dY-rtm" firstAttribute="bottom" secondItem="4VB-Ui-NnT" secondAttribute="bottom" id="FCw-JK-anO"/>
+                            <constraint firstItem="YLl-dY-rtm" firstAttribute="leading" secondItem="4VB-Ui-NnT" secondAttribute="leading" id="FHp-8C-7wF"/>
+                            <constraint firstItem="YLl-dY-rtm" firstAttribute="trailing" secondItem="4VB-Ui-NnT" secondAttribute="trailing" id="ddL-KI-EBZ"/>
+                            <constraint firstItem="YLl-dY-rtm" firstAttribute="top" secondItem="4VB-Ui-NnT" secondAttribute="top" id="wEr-GL-gmW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4VB-Ui-NnT"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Editing Haircut" id="fk8-PC-CWG">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="8js-bw-mde">
+                            <connections>
+                                <action selector="saveBtn:" destination="BDg-pP-fqY" id="4QW-oZ-Khn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <size key="freeformSize" width="375" height="874"/>
+                    <connections>
+                        <outlet property="btnBackRetake" destination="ciQ-nT-uCi" id="WSH-GE-Bjz"/>
+                        <outlet property="btnFrontRetake" destination="BRX-7k-8uI" id="uVy-Rd-je6"/>
+                        <outlet property="btnSideRetake" destination="XST-mI-nxR" id="3M9-QP-QPc"/>
+                        <outlet property="datePicker" destination="Ftc-RB-yXl" id="T4w-v8-1XK"/>
+                        <outlet property="descriptionTextField" destination="YP3-3Q-zZa" id="knb-HP-ZFN"/>
+                        <outlet property="haircutNameTextField" destination="9Ap-1U-4Mc" id="Ror-NY-aCe"/>
+                        <outlet property="iconUploadBack" destination="2nG-wb-E6j" id="PJY-3j-EnZ"/>
+                        <outlet property="iconUploadFront" destination="CFh-3i-N2j" id="2az-Ri-6ya"/>
+                        <outlet property="iconUploadSide" destination="mrC-pK-TzZ" id="H6r-As-hqa"/>
+                        <outlet property="imgBack" destination="4oo-3Z-4fB" id="Vpb-bw-5yY"/>
+                        <outlet property="imgFront" destination="gxs-CQ-eqd" id="2rt-Ss-7d6"/>
+                        <outlet property="imgSide" destination="Thq-bD-Xwt" id="MRf-81-KVE"/>
+                        <outlet property="salonCityTextField" destination="Etm-E4-TVS" id="Wyg-w5-HME"/>
+                        <outlet property="stylistNameTextField" destination="ivS-ZU-72c" id="zXj-h9-iS6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8HQ-AH-AHF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="LPZ-iW-LMj">
+                    <connections>
+                        <action selector="imageTapped:" destination="BDg-pP-fqY" id="WqK-LZ-UlN"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="SaA-B0-gqw">
+                    <connections>
+                        <action selector="imageTapped:" destination="BDg-pP-fqY" id="8f1-V0-Yof"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Wfk-tN-pYL">
+                    <connections>
+                        <action selector="imageTapped:" destination="BDg-pP-fqY" id="8IE-F4-kgx"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="4823" y="551"/>
+        </scene>
         <!--Present Mode-->
         <scene sceneID="HFn-ug-FM8">
             <objects>
@@ -489,43 +853,43 @@ You can also edit your haircut here!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Headshots:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaG-xy-LHS">
-                                <rect key="frame" x="16" y="149.5" width="345" height="20.5"/>
+                                <rect key="frame" x="16" y="149.5" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haircut Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUf-ZT-sOn">
-                                <rect key="frame" x="16" y="372" width="345" height="20.5"/>
+                                <rect key="frame" x="16" y="372" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Front" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvo-Cl-aAs">
-                                <rect key="frame" x="46" y="309" width="36" height="18"/>
+                                <rect key="frame" x="45.5" y="309" width="36" height="18"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Side" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEM-UG-7LD">
-                                <rect key="frame" x="173.5" y="309" width="30" height="18"/>
+                                <rect key="frame" x="172.5" y="309" width="30" height="18"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAu-7Q-IRJ">
-                                <rect key="frame" x="295.5" y="309" width="33.5" height="18"/>
+                                <rect key="frame" x="294" y="309" width="33.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Mbx-co-xQ5">
-                                <rect key="frame" x="5" y="180" width="367" height="119"/>
+                                <rect key="frame" x="5" y="180" width="365" height="119"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iIu-To-eoe">
-                                        <rect key="frame" x="0.0" y="0.0" width="119" height="119"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="119"/>
                                         <subviews>
-                                            <imageView tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frontPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="UaH-lr-TOY">
-                                                <rect key="frame" x="0.0" y="0.0" width="119" height="119"/>
+                                            <imageView tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FrontHeadshotPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="UaH-lr-TOY">
+                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="119"/>
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="EMm-pU-UXy" appends="YES" id="RC6-q6-oLS"/>
@@ -544,10 +908,10 @@ You can also edit your haircut here!</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gnQ-2f-0SF">
-                                        <rect key="frame" x="124" y="0.0" width="119" height="119"/>
+                                        <rect key="frame" x="123.5" y="0.0" width="118" height="119"/>
                                         <subviews>
-                                            <imageView tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sidePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="ahI-Kf-CaK">
-                                                <rect key="frame" x="0.0" y="0.0" width="119" height="119"/>
+                                            <imageView tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SideHeadshotPlaceholder " translatesAutoresizingMaskIntoConstraints="NO" id="ahI-Kf-CaK">
+                                                <rect key="frame" x="0.0" y="0.0" width="118" height="119"/>
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="VYb-i0-i65" appends="YES" id="KKS-ep-etU"/>
@@ -564,15 +928,11 @@ You can also edit your haircut here!</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jCK-x5-ovK">
-                                        <rect key="frame" x="248" y="0.0" width="119" height="119"/>
+                                        <rect key="frame" x="246.5" y="0.0" width="118.5" height="119"/>
                                         <subviews>
-                                            <imageView tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="QLg-vU-Ky1">
+                                            <imageView tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackHeadshotPlaceholder " translatesAutoresizingMaskIntoConstraints="NO" id="QLg-vU-Ky1">
                                                 <rect key="frame" x="0.0" y="0.0" width="119" height="119"/>
                                                 <gestureRecognizers/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="119" id="iSg-3g-mpM"/>
-                                                    <constraint firstAttribute="width" constant="119" id="zVQ-h9-t6N"/>
-                                                </constraints>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="zlN-HG-q0f" appends="YES" id="ndi-In-hxK"/>
                                                 </connections>
@@ -590,13 +950,13 @@ You can also edit your haircut here!</string>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please use the following pictures and description to recreate this haircut!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UvQ-df-ceN">
-                                <rect key="frame" x="16" y="79" width="345" height="50.5"/>
+                                <rect key="frame" x="16" y="79" width="343" height="50.5"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="21"/>
                                 <color key="textColor" red="1" green="0.48578459024429321" blue="0.22845035791397095" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HLt-09-5jT">
-                                <rect key="frame" x="32" y="394.5" width="329" height="128"/>
+                                <rect key="frame" x="32" y="394.5" width="327" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.0" green="0.47934520244598389" blue="0.99908632040023804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -786,70 +1146,70 @@ You can also edit your haircut here!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5c-Dh-z3t">
-                                <rect key="frame" x="39" y="398.5" width="47" height="30"/>
+                                <rect key="frame" x="39" y="400" width="47" height="30"/>
                                 <state key="normal" title="Retake"/>
                                 <connections>
                                     <action selector="retakePhoto:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Gje-jM-BwM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGv-NQ-60m">
-                                <rect key="frame" x="164" y="398.5" width="47" height="30"/>
+                                <rect key="frame" x="164" y="400" width="47" height="30"/>
                                 <state key="normal" title="Retake"/>
                                 <connections>
                                     <action selector="retakePhoto:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="ZaU-H9-XH6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAf-gD-lt6">
-                                <rect key="frame" x="289" y="398.5" width="47" height="30"/>
+                                <rect key="frame" x="289" y="400" width="47" height="30"/>
                                 <state key="normal" title="Retake"/>
                                 <connections>
                                     <action selector="retakePhoto:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="UGJ-bM-Xpi"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hair Stylist's Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uaa-OQ-Cmi">
-                                <rect key="frame" x="16" y="134.5" width="343" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hair Stylist's Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uaa-OQ-Cmi" customClass="SecondaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
+                                <rect key="frame" x="16" y="134.5" width="343" height="22"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take Headshots:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpa-QG-CxH">
-                                <rect key="frame" x="16" y="222.5" width="343" height="20.5"/>
+                                <rect key="frame" x="16" y="224" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Front" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tV-U3-xzL">
-                                <rect key="frame" x="44.5" y="250.5" width="36" height="18"/>
+                                <rect key="frame" x="44.5" y="252" width="36" height="18"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Side" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HP2-YA-NAs">
-                                <rect key="frame" x="172.5" y="250.5" width="30" height="18"/>
+                                <rect key="frame" x="172.5" y="252" width="30" height="18"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hB-xO-dLF">
-                                <rect key="frame" x="296" y="250.5" width="33.5" height="18"/>
+                                <rect key="frame" x="296" y="252" width="33.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="F4X-lt-a8j">
-                                <rect key="frame" x="10" y="278.5" width="355" height="105"/>
+                                <rect key="frame" x="10" y="280" width="355" height="105"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fzb-yD-qDW">
                                         <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                         <subviews>
-                                            <imageView tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frontPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="YL8-2X-FvG">
+                                            <imageView tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FrontHeadshotPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="YL8-2X-FvG">
                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="M8C-Oc-kXI" appends="YES" id="adm-uv-v1N"/>
                                                 </connections>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uploadIcon" translatesAutoresizingMaskIntoConstraints="NO" id="l38-US-vWg">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCameraUpload" translatesAutoresizingMaskIntoConstraints="NO" id="l38-US-vWg">
                                                 <rect key="frame" x="27" y="28" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="BxQ-Zz-jOK"/>
@@ -859,8 +1219,8 @@ You can also edit your haircut here!</string>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="YL8-2X-FvG" firstAttribute="leading" secondItem="Fzb-yD-qDW" secondAttribute="leading" id="F32-n8-hKs"/>
-                                            <constraint firstItem="l38-US-vWg" firstAttribute="centerX" secondItem="YL8-2X-FvG" secondAttribute="centerX" constant="-0.5" id="Qzr-I1-OF8"/>
-                                            <constraint firstItem="l38-US-vWg" firstAttribute="centerY" secondItem="YL8-2X-FvG" secondAttribute="centerY" constant="0.5" id="bRm-TK-jxK"/>
+                                            <constraint firstItem="l38-US-vWg" firstAttribute="centerX" secondItem="YL8-2X-FvG" secondAttribute="centerX" id="Qzr-I1-OF8"/>
+                                            <constraint firstItem="l38-US-vWg" firstAttribute="centerY" secondItem="YL8-2X-FvG" secondAttribute="centerY" id="bRm-TK-jxK"/>
                                             <constraint firstItem="YL8-2X-FvG" firstAttribute="centerX" secondItem="Fzb-yD-qDW" secondAttribute="centerX" id="qEj-zy-Tvm"/>
                                             <constraint firstItem="YL8-2X-FvG" firstAttribute="top" secondItem="Fzb-yD-qDW" secondAttribute="top" id="rQk-Tl-NOw"/>
                                             <constraint firstItem="YL8-2X-FvG" firstAttribute="centerX" secondItem="Fzb-yD-qDW" secondAttribute="centerX" id="tPd-Wf-kXA"/>
@@ -873,14 +1233,14 @@ You can also edit your haircut here!</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UB-Vh-b54">
                                         <rect key="frame" x="125" y="0.0" width="105" height="105"/>
                                         <subviews>
-                                            <imageView tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sidePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="U4q-1Q-Xx7">
+                                            <imageView tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SideHeadshotPlaceholder " translatesAutoresizingMaskIntoConstraints="NO" id="U4q-1Q-Xx7">
                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="kID-aa-yR5" appends="YES" id="jR7-4N-VqE"/>
                                                 </connections>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uploadIcon" translatesAutoresizingMaskIntoConstraints="NO" id="jJ2-2Q-Gsx">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCameraUpload" translatesAutoresizingMaskIntoConstraints="NO" id="jJ2-2Q-Gsx">
                                                 <rect key="frame" x="27" y="28" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="OcC-Xa-m6S"/>
@@ -902,14 +1262,14 @@ You can also edit your haircut here!</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="et8-xg-VJ4">
                                         <rect key="frame" x="250" y="0.0" width="105" height="105"/>
                                         <subviews>
-                                            <imageView tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="aDb-44-MJQ">
+                                            <imageView tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackHeadshotPlaceholder " translatesAutoresizingMaskIntoConstraints="NO" id="aDb-44-MJQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="LCP-BQ-bXT" appends="YES" id="e8t-Wk-RKC"/>
                                                 </connections>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uploadIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Bnn-n8-cKf">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCameraUpload" translatesAutoresizingMaskIntoConstraints="NO" id="Bnn-n8-cKf">
                                                 <rect key="frame" x="27" y="28" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="FMb-hV-o4K"/>
@@ -931,7 +1291,7 @@ You can also edit your haircut here!</string>
                                 </subviews>
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name your haircut here!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7FC-nY-4tu">
-                                <rect key="frame" x="16" y="162.5" width="343" height="30"/>
+                                <rect key="frame" x="16" y="164" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -943,7 +1303,7 @@ You can also edit your haircut here!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aia-tb-4xa">
-                                <rect key="frame" x="59" y="448.5" width="257" height="41"/>
+                                <rect key="frame" x="59" y="450" width="257" height="41"/>
                                 <string key="text">Stunning!
 Please give phone back to owner!</string>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
@@ -1246,7 +1606,7 @@ Read them the example below to give them an idea of what info you need. </string
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h65-Ec-fi3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4516" y="-1167"/>
+            <point key="canvasLocation" x="4446" y="-1167"/>
         </scene>
         <!--Create New Haircut-->
         <scene sceneID="Zas-nv-DjG">
@@ -1306,15 +1666,12 @@ Read them the example below to give them an idea of what info you need. </string
         </scene>
     </scenes>
     <resources>
+        <image name="BackHeadshotPlaceholder " width="210" height="210"/>
+        <image name="FrontHeadshotPlaceholder" width="210" height="210"/>
+        <image name="SideHeadshotPlaceholder " width="210" height="210"/>
         <image name="backIcon" width="25" height="25"/>
-        <image name="backPlaceholder" width="58" height="70"/>
         <image name="first" width="30" height="30"/>
-        <image name="frontPlaceholder" width="60" height="70"/>
+        <image name="iconCameraUpload" width="58" height="46"/>
         <image name="second" width="30" height="30"/>
-        <image name="sidePlaceholder" width="60" height="70"/>
-        <image name="uploadIcon" width="640" height="471"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="WCN-UJ-CMr"/>
-    </inferredMetricsTieBreakers>
 </document>

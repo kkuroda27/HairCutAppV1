@@ -56,13 +56,13 @@ class FullDetailsModeViewController: UIViewController {
         case "showEdit":
             print("STATUS: Preparing Segue to Edit Mode")
             
-            guard let editModeVC = segue.destination as? CreateHaircutPg1ViewController else {
+            guard let editModeVC = segue.destination as? EditHaircutViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
             editModeVC.modelController = modelController
-            editModeVC.previousVC = "FullDetailsModeViewController"
-            editModeVC.isCreating = false
+            //editModeVC.previousVC = "FullDetailsModeViewController"
+            //editModeVC.isCreating = false
 
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")

@@ -24,6 +24,8 @@
 		2ABE59562072C22C00B14478 /* PrimaryActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE59552072C22C00B14478 /* PrimaryActionButton.swift */; };
 		2ABE59582072F0EA00B14478 /* SecondaryActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE59572072F0EA00B14478 /* SecondaryActionButton.swift */; };
 		2ABE595A2072F2DC00B14478 /* InvertedSecondaryActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE59592072F2DC00B14478 /* InvertedSecondaryActionButton.swift */; };
+		2ABE595C20730F6700B14478 /* SecondaryTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE595B20730F6700B14478 /* SecondaryTextLabel.swift */; };
+		2ABE595E2073E17700B14478 /* EditHaircutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE595D2073E17700B14478 /* EditHaircutViewController.swift */; };
 		2AE7DAC8205842D4003B6E74 /* CreateHaircutPg2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7DAC7205842D4003B6E74 /* CreateHaircutPg2ViewController.swift */; };
 		53039AE91252E0C61E48FF93 /* Pods_HaircutV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6383AF18F72850466B693818 /* Pods_HaircutV1.framework */; };
 /* End PBXBuildFile section */
@@ -49,6 +51,8 @@
 		2ABE59552072C22C00B14478 /* PrimaryActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryActionButton.swift; sourceTree = "<group>"; };
 		2ABE59572072F0EA00B14478 /* SecondaryActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryActionButton.swift; sourceTree = "<group>"; };
 		2ABE59592072F2DC00B14478 /* InvertedSecondaryActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedSecondaryActionButton.swift; sourceTree = "<group>"; };
+		2ABE595B20730F6700B14478 /* SecondaryTextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryTextLabel.swift; sourceTree = "<group>"; };
+		2ABE595D2073E17700B14478 /* EditHaircutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHaircutViewController.swift; sourceTree = "<group>"; };
 		2AE7DAC7205842D4003B6E74 /* CreateHaircutPg2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHaircutPg2ViewController.swift; sourceTree = "<group>"; };
 		6383AF18F72850466B693818 /* Pods_HaircutV1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HaircutV1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2447A081F1F9901125F1E1B /* Pods-HaircutV1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HaircutV1.release.xcconfig"; path = "Pods/Target Support Files/Pods-HaircutV1/Pods-HaircutV1.release.xcconfig"; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 				2AE7DAC7205842D4003B6E74 /* CreateHaircutPg2ViewController.swift */,
 				2A52FE482058835C00235182 /* CreateHaircutPg3ViewController.swift */,
 				2A915A0E201FD2A0001295B0 /* Main.storyboard */,
+				2ABE595D2073E17700B14478 /* EditHaircutViewController.swift */,
+				2ABE595B20730F6700B14478 /* SecondaryTextLabel.swift */,
 				2A8B2F0D202278DE004F3162 /* MyHaircutsFeedTableViewCell.swift */,
 				2A915A11201FD2A0001295B0 /* Assets.xcassets */,
 				2ABE59552072C22C00B14478 /* PrimaryActionButton.swift */,
@@ -266,7 +272,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ABE595C20730F6700B14478 /* SecondaryTextLabel.swift in Sources */,
 				2A915A0D201FD2A0001295B0 /* CreateHaircutPg1ViewController.swift in Sources */,
+				2ABE595E2073E17700B14478 /* EditHaircutViewController.swift in Sources */,
 				2A8E9AAB203757E000766953 /* HelpViewController.swift in Sources */,
 				2ABE59582072F0EA00B14478 /* SecondaryActionButton.swift in Sources */,
 				2A5EC566206024C70011160C /* ViewOptionsViewController.swift in Sources */,

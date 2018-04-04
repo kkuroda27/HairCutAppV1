@@ -53,6 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIBarButtonItem.appearance().setTitleTextAttributes(barButtonItemTextAttributes, for: .normal)
         UINavigationBar.appearance().titleTextAttributes = navBarTextAttributes
 
+        // Set status bar to white, not black
+        UIApplication.shared.statusBarStyle = .lightContent
+
 
         // Enable keyboardmanager from cocoapods.
         IQKeyboardManager.sharedManager().enable = true

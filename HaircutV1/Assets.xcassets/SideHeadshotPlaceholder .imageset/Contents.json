@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "cameraIcon.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Side Headshot Placeholder [Full].png",
       "scale" : "2x"
     },
     {

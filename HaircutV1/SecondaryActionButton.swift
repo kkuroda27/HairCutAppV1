@@ -10,7 +10,20 @@ import UIKit
 
 @IBDesignable class SecondaryActionButton: UIButton {
 
-    @IBInspectable var cornerRadius : CGFloat = 30 {
+    @IBInspectable var fontName : String = "Avenir-Medium" {
+        didSet {
+            self.configureButton()
+        }
+    }
+    
+    @IBInspectable var fontSize : CGFloat = 24 {
+        didSet {
+            self.configureButton()
+        }
+    }
+
+    
+    @IBInspectable var cornerRadius : CGFloat = 0 {
         didSet {
             self.configureButton()
         }
@@ -21,7 +34,6 @@ import UIKit
         didSet {
             self.configureButton()
             // @IBInspectable var borderColor : UIColor = UIColor.red {
-            
         }
     }
     
@@ -45,8 +57,8 @@ import UIKit
     // button configuration function called by all init functions.
     func configureButton() {
         // Common logic goes here
-        
-        self.layer.cornerRadius = self.cornerRadius
+        self.clipsToBounds = true
+        self.layer.cornerRadius = self.layer.bounds.height / 2.0
         self.layer.backgroundColor = self.backgroundColorNEW.cgColor
         self.layer.applySketchShadow(
             color: hexStringToUIColor(hex: "#FF9B5A"),
@@ -56,10 +68,14 @@ import UIKit
             blur: 2,
             spread: 0)
         
-        self.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 24)
+        self.titleLabel?.font = UIFont(name: self.fontName, size: self.layer.bounds.height / 2.3)
         
+        //self.titleLabel?.font = UIFont(name: self.fontName, size: self.fontSize)
+
         self.setTitleColor(.white, for: .normal)
         
+        
+        self.layer.masksToBounds = true
         //self.layer.borderWidth = self.borderWidth
         
         
