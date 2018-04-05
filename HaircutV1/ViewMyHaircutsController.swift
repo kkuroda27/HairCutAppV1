@@ -106,10 +106,10 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
             dateStyle: .short,
             timeStyle: .short)
         
-        cell.haircutDescription.text = "\(dateLocalized)"
+        cell.haircutDate.text = "\(dateLocalized)"
         
         if let textDateSet = arrayHaircuts[indexPath.row]["dateSet"] as? String {
-            cell.haircutDescription.text = textDateSet
+            cell.haircutDate.text = textDateSet
         } else {
             
         }

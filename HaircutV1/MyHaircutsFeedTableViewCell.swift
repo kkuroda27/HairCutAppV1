@@ -12,7 +12,7 @@ class MyHaircutsFeedTableViewCell: UITableViewCell {
 
     @IBOutlet var haircutImage: UIImageView!
     @IBOutlet var haircutTitle: UILabel!
-    @IBOutlet var haircutDescription: UILabel!
+    @IBOutlet var haircutDate: UILabel!
     @IBOutlet var haircutSalonTitle: UILabel!
     
     override func awakeFromNib() {
