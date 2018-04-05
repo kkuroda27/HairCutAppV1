@@ -1,35 +1,35 @@
 //
-//  SecondaryTextLabel.swift
+//  PrimaryTextLabel.swift
 //  HaircutV1
 //
-//  Created by Kaito Kuroda on 4/2/18.
+//  Created by Kaito Kuroda on 4/4/18.
 //  Copyright © 2018 Kai Kuroda Company. All rights reserved.
 //
 
 import UIKit
 
-@IBDesignable class SecondaryTextLabel: UILabel {
+@IBDesignable class PrimaryTextLabel: UILabel {
 
-    @IBInspectable var fontName : String = "Avenir-Black" {
+
+    @IBInspectable var fontName : String = "Avenir-Medium" {
         didSet {
             self.configureLabel()
         }
     }
     
-    @IBInspectable var fontSize : CGFloat = 16 {
+    @IBInspectable var fontSize : CGFloat = 14 {
         didSet {
             self.configureLabel()
         }
     }
-
-
-    @IBInspectable var textColorNew : UIColor = hexStringToUIColor(hex: "#6F6F6F") {
+    
+    @IBInspectable var textColorNew : UIColor = hexStringToUIColor(hex: "#1F1F1F") {
         didSet {
             self.configureLabel()
             
         }
     }
-
+    
     // for programmatically created buttons
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,9 +51,9 @@ import UIKit
     func configureLabel() {
         // Common logic goes here
         
-        self.textColor = self.textColorNew //UIColor.gray 
+        self.textColor = self.textColorNew
         self.font = UIFont(name: self.fontName, size: self.fontSize)
         
     }
-
+    
 }
