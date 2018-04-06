@@ -240,9 +240,10 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     override func viewDidLayoutSubviews() {
+        // workaround to remove table view cell separator line
         table.separatorInset.left = UIScreen.main.bounds.width
-
     }
+    
     func updateTable() {
         print("FUNCTION START: updateTable")
         
