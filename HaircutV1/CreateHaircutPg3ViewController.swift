@@ -179,6 +179,17 @@ class CreateHaircutPg3ViewController: UIViewController {
         print("---NEW SCREEN--- FUNCTION START: viewDidLoad - CreateHaircutPg3ViewController.swift")
         //print("modelController.haircut = \(modelController.haircut)")
         
+        //
+        //self.title = "Your TiTle Text"
+        let tlabel = UILabel()
+        tlabel.text = "Create Haircut | 3 of 3"
+        tlabel.textColor = UIColor.white
+        tlabel.font = UIFont(name: "Avenir-Heavy", size: 18)
+        tlabel.backgroundColor = UIColor.clear
+        tlabel.adjustsFontSizeToFitWidth = true
+        tlabel.textAlignment = .center;
+        self.navigationItem.titleView = tlabel
+
         refreshView()
 
         // Let's modify page title in navigation bar if we're editing.
