@@ -18,7 +18,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
     var userUUID = ""
     var arrayHaircuts = [PFObject]()
     @IBOutlet var table: UITableView!
-    let btnRefresh = UIButton(frame: CGRect(x: 100, y: 200, width: 100, height: 50))
+    let btnRefresh = SecondaryActionButton(frame: CGRect(x: 100, y: 100, width: 250, height: 60))
 
     // MARK: - Table View Functions
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -170,12 +170,12 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
                 print("STATUS: Displaying 'no data available' label")
 
                 // Create modified text
-                let modifiedText = NSMutableAttributedString.init(string: "No haircuts here, yet! \n \n Create one using the + button above to the right!")
+                let modifiedText = NSMutableAttributedString.init(string: "No haircuts here, yet! \n Create one using the \"+\" button above to the right!")
                 
                 // set the custom font and color for a range in string
-                modifiedText.setAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 25),
-                                          NSAttributedStringKey.foregroundColor: UIColor.black],
-                                         range: NSMakeRange(0, 22))
+                modifiedText.setAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir-Book", size: 16)!, NSAttributedStringKey.foregroundColor: hexStringToUIColor(hex: "#6F6F6F")], range: NSMakeRange(0, modifiedText.length))
+                
+                modifiedText.setAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 26)!, NSAttributedStringKey.foregroundColor: hexStringToUIColor(hex: "#6F6F6F")], range: NSMakeRange(0, 22))
                 
                 // if you want, you can add more attributes for different ranges calling .setAttributes many times
 
@@ -183,7 +183,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
                 noDataLabel.attributedText = modifiedText     // set the attributed string to the UILabel object
                 noDataLabel.numberOfLines = 0
                 noDataLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
-                noDataLabel.textColor     = UIColor.black
+                //noDataLabel.textColor     = UIColor.black
                 noDataLabel.textAlignment = .center
                 
                 tableView.backgroundView  = noDataLabel
@@ -195,22 +195,43 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
                 // No Internet, so lets show refresh button and ask user to connect to internet.
                 // perhaps we should disable "Create" button in this case?
                 
+                // Create modified text
+                let modifiedText = NSMutableAttributedString.init(string: "No Internet! \n Please connect and try again!")
+                
+                // set the custom font and color for a range in string
+                modifiedText.setAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir-Book", size: 16)!, NSAttributedStringKey.foregroundColor: hexStringToUIColor(hex: "#6F6F6F")], range: NSMakeRange(0, modifiedText.length))
+
+                modifiedText.setAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 26)!, NSAttributedStringKey.foregroundColor: hexStringToUIColor(hex: "#6F6F6F")], range: NSMakeRange(0, 12))
+                
+                
                 // add label above button
                 let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-                noDataLabel.text          = "No Internet! Please connect and try again!" // "You have no haircuts, OR you may be offline!"
+                noDataLabel.attributedText = modifiedText
+                //noDataLabel.text          = "No Internet! Please connect and try again!" // "You have no haircuts, OR you may be offline!"
                 noDataLabel.numberOfLines = 0
                 noDataLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
-                noDataLabel.textColor     = UIColor.black
+                //noDataLabel.textColor     = UIColor.black
                 noDataLabel.textAlignment = .center
                 tableView.backgroundView  = noDataLabel
                 tableView.separatorStyle  = .none
                 
                 // Modify existing "refresh" button
-                btnRefresh.backgroundColor = UIColor.blue
                 btnRefresh.setTitle("Refresh!", for: .normal)
                 btnRefresh.addTarget(self, action: #selector(clickRefresh), for: .touchUpInside)
-                self.view.addSubview(btnRefresh)
                 
+                // This below adds button.
+                btnRefresh.translatesAutoresizingMaskIntoConstraints = false
+                tableView.backgroundView?.addSubview(btnRefresh)
+                //tableView.backgroundView?.insertSubview(btnRefresh, at: 0)
+
+                tableView.backgroundView?.isUserInteractionEnabled = true
+
+                // Set constraints / width / height for btnRefresh
+                btnRefresh.widthAnchor.constraint(equalToConstant: 250).isActive = true
+                btnRefresh.heightAnchor.constraint(equalToConstant: 60).isActive = true
+                btnRefresh.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+                btnRefresh.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
+                btnRefresh.topAnchor.constraint(equalTo: tableView.centerYAnchor, constant: 5).isActive = true
             }
         }
         return numOfSections
