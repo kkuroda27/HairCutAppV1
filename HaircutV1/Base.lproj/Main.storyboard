@@ -1168,8 +1168,8 @@ You can also edit your haircut here!</string>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2Xj-D8-M4S">
                                                             <rect key="frame" x="10" y="0.0" width="335" height="182.5"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="opH-1I-lQH">
-                                                                    <rect key="frame" x="0.0" y="16" width="134" height="151"/>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="FrontHeadshotPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="opH-1I-lQH">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="134" height="182.5"/>
                                                                 </imageView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0hX-QL-LZo">
                                                                     <rect key="frame" x="144" y="21.5" width="191" height="139.5"/>
