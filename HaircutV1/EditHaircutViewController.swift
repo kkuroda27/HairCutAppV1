@@ -39,6 +39,7 @@ class EditHaircutViewController: UIViewController {
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var salonCityTextField: UITextField!
    
+    @IBOutlet var scrollView: UIScrollView!
     // MARK: - Extra Global Variables
     var imagePicked = 1
 
@@ -347,7 +348,13 @@ class EditHaircutViewController: UIViewController {
     }
 
     // MARK: - viewDidLoad Functions
+   
+    override func viewDidAppear(_ animated: Bool) {
+        print("FUNCTION START: viewDidAppear - EditHaircutViewController.swift")
+        self.scrollView.flashScrollIndicators()
+    }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("---NEW SCREEN--- FUNCTION START: viewDidLoad - EditHaircutViewController.swift")

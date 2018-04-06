@@ -27,6 +27,7 @@ class FullDetailsModeViewController: UIViewController {
     @IBOutlet var haircutDateLabel: UILabel!
     @IBOutlet var salonCityLabel: UILabel!
     
+    @IBOutlet var scrollView: UIScrollView!
     // MARK: - Extra Global Variables
     var imagePicked = 1
     var images = [SKPhoto]()
@@ -75,9 +76,13 @@ class FullDetailsModeViewController: UIViewController {
 
     func refreshView() {
         print("FUNCTION START: refreshView()")
-        haircutNameLabel.text = modelController.haircut["haircutName"] as? String
-        stylistNameLabel.text = modelController.haircut["stylistName"] as? String
-        
+        if modelController.haircut["haircutName"] as? String != "" {
+            haircutNameLabel.text = modelController.haircut["haircutName"] as? String
+        } else {}
+
+        if modelController.haircut["stylistName"] as? String != "" {
+            stylistNameLabel.text = modelController.haircut["stylistName"] as? String
+        } else {}
         
         // initialize imageArray with placeholders first.
         self.images.append(SKPhoto.photoWithImage(imgFront.image!))
@@ -147,8 +152,14 @@ class FullDetailsModeViewController: UIViewController {
         }
         
         descriptionTextView.text = modelController.haircut["description"] as? String
+        
+        
+
         haircutDateLabel.text = modelController.haircut["dateSet"] as? String
-        salonCityLabel.text = modelController.haircut["salonCity"] as? String
+        
+        if modelController.haircut["salonCity"] as? String != "" {
+            salonCityLabel.text = modelController.haircut["salonCity"] as? String
+        } else {}
 
     }
     
@@ -157,6 +168,11 @@ class FullDetailsModeViewController: UIViewController {
         print("---NEW SCREEN--- FUNCTION START: viewWillAppear - FullDetailsModeViewController.swift")
         refreshView()
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("FUNCTION START: viewDidAppear - FullDetailsModeViewController.swift")
+        self.scrollView.flashScrollIndicators()
     }
 
     

@@ -244,11 +244,11 @@ You can also edit your haircut here!</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="750"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FId-5Q-QUG">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FId-5Q-QUG">
                                 <rect key="frame" x="0.0" y="64" width="375" height="686"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ON8-Iz-aMO" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="665.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Haircut:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n96-ls-obu" customClass="SecondaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="16" width="343" height="22"/>
@@ -256,32 +256,32 @@ You can also edit your haircut here!</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttZ-tc-ams" customClass="PrimaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="42" width="333" height="0.0"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttZ-tc-ams" customClass="PrimaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
+                                                <rect key="frame" x="26" y="42" width="333" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yM-7M-asm" customClass="PrimaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="488.5" width="0.0" height="0.0"/>
+                                                <rect key="frame" x="26" y="527.5" width="0.0" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RmM-cp-2ik" customClass="PrimaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="545.5" width="333" height="0.0"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RmM-cp-2ik" customClass="PrimaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
+                                                <rect key="frame" x="26" y="584.5" width="333" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Headshots:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuI-We-3Dl" customClass="SecondaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="73.5" width="343" height="22"/>
+                                                <rect key="frame" x="16" y="93" width="343" height="22"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xxK-dT-ceI">
-                                                <rect key="frame" x="16" y="99.5" width="343" height="101"/>
+                                                <rect key="frame" x="16" y="119" width="343" height="101"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8PR-VP-Lge">
                                                         <rect key="frame" x="0.0" y="0.0" width="101" height="101"/>
@@ -349,31 +349,31 @@ You can also edit your haircut here!</string>
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Front" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdt-Mc-e9d">
-                                                <rect key="frame" x="44.5" y="203.5" width="45" height="26"/>
+                                                <rect key="frame" x="44.5" y="223" width="45" height="26"/>
                                                 <fontDescription key="fontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="19"/>
                                                 <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Side" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8O-y5-chM">
-                                                <rect key="frame" x="169.5" y="203.5" width="37.5" height="26"/>
+                                                <rect key="frame" x="169.5" y="223" width="37.5" height="26"/>
                                                 <fontDescription key="fontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="19"/>
                                                 <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3f7-UR-8iF">
-                                                <rect key="frame" x="289" y="203.5" width="40.5" height="26"/>
+                                                <rect key="frame" x="289" y="223" width="40.5" height="26"/>
                                                 <fontDescription key="fontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="19"/>
                                                 <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haircut Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMo-w1-Xpq" customClass="SecondaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="254.5" width="343" height="22"/>
+                                                <rect key="frame" x="16" y="274" width="343" height="22"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tGv-6J-eZp">
-                                                <rect key="frame" x="16" y="280.5" width="343" height="100"/>
+                                                <rect key="frame" x="16" y="300" width="343" height="100"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" red="0.0" green="0.47934520244598389" blue="0.99908632040023804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -383,31 +383,31 @@ You can also edit your haircut here!</string>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salon Name + City: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6G-bv-J8D" customClass="SecondaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="519.5" width="343" height="22"/>
+                                                <rect key="frame" x="16" y="558.5" width="343" height="22"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Haircut: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lr5-fD-3kg" customClass="SecondaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="462.5" width="343" height="22"/>
+                                                <rect key="frame" x="16" y="501.5" width="343" height="22"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dcy-6I-rlr" customClass="PrimaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="431.5" width="0.0" height="0.0"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dcy-6I-rlr" customClass="PrimaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
+                                                <rect key="frame" x="26" y="451" width="26.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hair Stylist's Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ti7-Kw-yM4" customClass="SecondaryTextLabel" customModule="HaircutV1" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="405.5" width="343" height="22"/>
+                                                <rect key="frame" x="16" y="425" width="343" height="22"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqb-Fq-lGB">
-                                                <rect key="frame" x="16" y="47.5" width="343" height="0.5"/>
+                                                <rect key="frame" x="16" y="67" width="343" height="0.5"/>
                                                 <color key="backgroundColor" red="0.74509803921568629" green="0.78823529411764703" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.5"/>
                                                 <constraints>
@@ -415,7 +415,7 @@ You can also edit your haircut here!</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="muH-Yw-n1j">
-                                                <rect key="frame" x="16" y="436.5" width="343" height="0.5"/>
+                                                <rect key="frame" x="16" y="475.5" width="343" height="0.5"/>
                                                 <color key="backgroundColor" red="0.74509803919999995" green="0.78823529410000004" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.5"/>
                                                 <constraints>
@@ -423,7 +423,7 @@ You can also edit your haircut here!</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PbC-ad-Nmu">
-                                                <rect key="frame" x="16" y="493.5" width="343" height="0.5"/>
+                                                <rect key="frame" x="16" y="532.5" width="343" height="0.5"/>
                                                 <color key="backgroundColor" red="0.74509803919999995" green="0.78823529410000004" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.5"/>
                                                 <constraints>
@@ -431,7 +431,7 @@ You can also edit your haircut here!</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdq-aM-tfn">
-                                                <rect key="frame" x="16" y="550.5" width="343" height="0.5"/>
+                                                <rect key="frame" x="16" y="609" width="343" height="0.5"/>
                                                 <color key="backgroundColor" red="0.74509803919999995" green="0.78823529410000004" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.5"/>
                                                 <constraints>
@@ -535,6 +535,7 @@ You can also edit your haircut here!</string>
                         <outlet property="imgFront" destination="G3q-8a-hIN" id="dCz-gR-g29"/>
                         <outlet property="imgSide" destination="Dju-7a-ft4" id="mMp-Yq-c05"/>
                         <outlet property="salonCityLabel" destination="RmM-cp-2ik" id="uyp-wL-t7J"/>
+                        <outlet property="scrollView" destination="FId-5Q-QUG" id="ikL-ld-eO2"/>
                         <outlet property="stylistNameLabel" destination="Dcy-6I-rlr" id="Nub-CA-wEn"/>
                     </connections>
                 </viewController>
@@ -854,7 +855,6 @@ You can also edit your haircut here!</string>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.48578459019999998" blue="0.22845035790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="g94-W6-LiE" firstAttribute="top" secondItem="YLl-dY-rtm" secondAttribute="top" id="4Gp-B8-7L2"/>
                                     <constraint firstAttribute="trailing" secondItem="g94-W6-LiE" secondAttribute="trailing" id="CTt-Wy-TMd"/>
@@ -896,6 +896,7 @@ You can also edit your haircut here!</string>
                         <outlet property="imgFront" destination="gxs-CQ-eqd" id="2rt-Ss-7d6"/>
                         <outlet property="imgSide" destination="Thq-bD-Xwt" id="MRf-81-KVE"/>
                         <outlet property="salonCityTextField" destination="Etm-E4-TVS" id="Wyg-w5-HME"/>
+                        <outlet property="scrollView" destination="YLl-dY-rtm" id="wrI-ad-Yre"/>
                         <outlet property="stylistNameTextField" destination="ivS-ZU-72c" id="zXj-h9-iS6"/>
                     </connections>
                 </viewController>
@@ -1153,7 +1154,7 @@ You can also edit your haircut here!</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="203" id="49V-I4-Vbg" customClass="MyHaircutsFeedTableViewCell" customModule="HaircutV1" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="203" id="49V-I4-Vbg" customClass="MyHaircutsFeedTableViewCell" customModule="HaircutV1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="203"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="49V-I4-Vbg" id="OXd-LJ-pUm">
