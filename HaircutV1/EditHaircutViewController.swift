@@ -12,7 +12,7 @@ import CoreData
 import os.log
 import ALCameraViewController
 
-class EditHaircutViewController: UIViewController {
+class EditHaircutViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     // MARK: - Segue Preparation Variables
     var modelController: ModelController!
@@ -347,6 +347,40 @@ class EditHaircutViewController: UIViewController {
         }
     }
 
+    // MARK: - Keyboard / Touch Functions
+    
+    // this runs whenever the user touches the main area of the app (not the keyboard).
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("FUNCTION START: touchesBegan")
+        // ERROR: This doesn't work right now because this is a UIScrollView. I'll have to use a tapgesturerecognizer instead or something...
+        self.view.endEditing(true)
+    }
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        print("FUNCTION START: textViewDidBeginEditing - EditHaircutViewController.swift")
+        textView.layer.borderColor = UIColor(named: "SecondaryColor")?.cgColor
+        textView.layer.borderWidth = 1.0
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        print("FUNCTION START: textViewDidEndEditing - EditHaircutViewController.swift")
+        textView.layer.borderColor = hexStringToUIColor(hex: "#CDCDCD").cgColor
+
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("FUNCTION START: textFieldDidBeginEditing - EditHaircutViewController.swift")
+        textField.layer.borderColor = UIColor(named: "SecondaryColor")?.cgColor
+        textField.layer.borderWidth = 1.0
+
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("FUNCTION START: textFieldDidEndEditing - EditHaircutViewController.swift")
+        textField.layer.borderColor = hexStringToUIColor(hex: "#CDCDCD").cgColor
+        //textField.layer.borderWidth = 1.0
+    }
+    
     // MARK: - viewDidLoad Functions
    
     override func viewDidAppear(_ animated: Bool) {
@@ -360,6 +394,12 @@ class EditHaircutViewController: UIViewController {
         print("---NEW SCREEN--- FUNCTION START: viewDidLoad - EditHaircutViewController.swift")
         print("modelController.haircut = \(modelController.haircut)")
 
+        // set delegates so we can change border when editing.
+        haircutNameTextField.delegate = self
+        stylistNameTextField.delegate = self
+        salonCityTextField.delegate = self
+        descriptionTextField.delegate = self
+        
         // By default, we want "Retake" buttons to be hidden.
         btnFrontRetake.isHidden = true
         btnSideRetake.isHidden = true

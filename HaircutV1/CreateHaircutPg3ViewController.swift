@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import os.log
 
-class CreateHaircutPg3ViewController: UIViewController {
+class CreateHaircutPg3ViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Segue Preparation Variables
     var isCreating = true
@@ -146,6 +146,21 @@ class CreateHaircutPg3ViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("FUNCTION START: textFieldDidBeginEditing - EditHaircutViewController.swift")
+        textField.layer.borderColor = UIColor(named: "SecondaryColor")?.cgColor
+        textField.layer.borderWidth = 1.0
+        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("FUNCTION START: textFieldDidEndEditing - EditHaircutViewController.swift")
+        textField.layer.borderColor = hexStringToUIColor(hex: "#CDCDCD").cgColor
+        //textField.layer.borderWidth = 1.0
+        
+    }
+
+    
     // MARK: - willMove + viewDidLoad Functions
     
     // Called just before the VC is added or removed from a container view controller.
@@ -179,7 +194,9 @@ class CreateHaircutPg3ViewController: UIViewController {
         print("---NEW SCREEN--- FUNCTION START: viewDidLoad - CreateHaircutPg3ViewController.swift")
         //print("modelController.haircut = \(modelController.haircut)")
         
-        //
+        salonCityTextField.delegate = self
+        haircutNameTextField.delegate = self
+
         //self.title = "Your TiTle Text"
         let tlabel = UILabel()
         tlabel.text = "Create Haircut | 3 of 3"

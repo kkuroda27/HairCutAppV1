@@ -58,11 +58,16 @@ class CreateHaircutPg2ViewController: UIViewController, UITextViewDelegate {
     // Start Editing The Text Field
     func textViewDidBeginEditing(_ textView: UITextView) {
         print("FUNCTION START: textViewDidBeginEditing")
+        textView.layer.borderColor = UIColor(named: "SecondaryColor")?.cgColor
+        textView.layer.borderWidth = 1.0
+
     }
     
     // Finish Editing The Text Field
     func textViewDidEndEditing(_ textView: UITextView) {
         print("FUNCTION START: textViewDidEndEditing")
+        textView.layer.borderColor = hexStringToUIColor(hex: "#CDCDCD").cgColor
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -210,6 +210,21 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
         self.view.endEditing(true)
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("FUNCTION START: textFieldDidBeginEditing")
+        textField.layer.borderColor = UIColor(named: "SecondaryColor")?.cgColor
+        textField.layer.borderWidth = 1.0
+        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("FUNCTION START: textFieldDidEndEditing")
+        textField.layer.borderColor = hexStringToUIColor(hex: "#CDCDCD").cgColor
+        //textField.layer.borderWidth = 1.0
+        
+    }
+
+    
     // MARK: - Image Functions
 
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
@@ -373,6 +388,8 @@ class CreateHaircutPg1ViewController: UIViewController, UINavigationControllerDe
         super.viewDidLoad()
         print("---NEW SCREEN--- FUNCTION START: viewDidLoad - CreateHaircutPg1ViewController.swift")
         //print("modelController.haircut = \(modelController.haircut)")
+        
+        stylistNameTextField.delegate = self
         
         // By default, we want "Retake" buttons to be hidden.
         btnFrontRetake.isHidden = true

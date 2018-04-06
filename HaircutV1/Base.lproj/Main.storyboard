@@ -601,6 +601,7 @@ You can also edit your haircut here!</string>
                                                         <subviews>
                                                             <imageView tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FrontHeadshotPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="gxs-CQ-eqd">
                                                                 <rect key="frame" x="0.0" y="0.0" width="101" height="101"/>
+                                                                <color key="backgroundColor" red="0.96460121870040894" green="0.96476620435714722" blue="0.96459084749221802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <gestureRecognizers/>
                                                                 <connections>
                                                                     <outletCollection property="gestureRecognizers" destination="LPZ-iW-LMj" appends="YES" id="4hL-Ja-SUu"/>
