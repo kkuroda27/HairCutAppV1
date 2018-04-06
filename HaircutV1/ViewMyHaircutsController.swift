@@ -139,7 +139,9 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
         } else {
             //print("STATUS: Image on row \(indexPath.row) has no image!")
         }
-        
+        cell.contentView.bounds = cell.bounds
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
         return cell
     }
 
@@ -213,6 +215,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
         }
         return numOfSections
 
+        
     }
     
     // MARK: -  User Functions

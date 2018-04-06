@@ -10,6 +10,13 @@ import UIKit
 
 @IBDesignable class BGCardView: UIView {
 
+    // this lets us update the bounds for when the table view cell loads. Before this, the shadow would be applied too early and would show an overspill of shadow to the right of the cell.
+    override var bounds: CGRect {
+        didSet {
+            configureView()
+        }
+    }
+
     // for programmatically created views
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,16 +37,18 @@ import UIKit
     // button configuration function called by all init functions.
     func configureView() {
         // Common logic goes here
-        let scale = true
+        //let scale = true
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.5
         self.layer.shadowOffset = CGSize(width: -1, height: 1)
         self.layer.shadowRadius = 1.52
-        
-        self.layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+        self.layer.cornerRadius = 8
+
+        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 8, height: 8)).cgPath
         self.layer.shouldRasterize = true
-        self.layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+        //self.layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+        self.layer.rasterizationScale = UIScreen.main.scale
 
         /*
         self.layer.applySketchShadow(
