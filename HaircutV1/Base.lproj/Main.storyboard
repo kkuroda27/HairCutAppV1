@@ -876,6 +876,11 @@ You can also edit your haircut here!</string>
                         <viewLayoutGuide key="safeArea" id="4VB-Ui-NnT"/>
                     </view>
                     <navigationItem key="navigationItem" title="Editing Haircut" id="fk8-PC-CWG">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="POU-Ie-HEm">
+                            <connections>
+                                <action selector="cancel:" destination="BDg-pP-fqY" id="LYz-DB-ovn"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="8js-bw-mde">
                             <connections>
                                 <action selector="saveBtn:" destination="BDg-pP-fqY" id="4QW-oZ-Khn"/>

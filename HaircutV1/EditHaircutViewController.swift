@@ -48,8 +48,37 @@ class EditHaircutViewController: UIViewController, UITextFieldDelegate, UITextVi
     var imgBackSet = false
 
     
-    // MARK: - Save Function
+    // MARK: - Cance / Save Functions
 
+    
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        print("FUNCTION START: cancel")
+        
+        let alert = UIAlertController(title: "Are you sure?", message: "You'll lose all your unsaved changes!", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in            
+            
+            if let owningNavigationController = self.navigationController {
+                owningNavigationController.popViewController(animated: true)
+            } else {
+                fatalError("The owningNavigationController is not inside a navigation controller.")
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            print("STATUS: Cancel Button Pressed!")
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+
+        
+        
+    }
+    
+    
     @IBAction func saveBtn(_ sender: UIBarButtonItem) {
         print("FUNCTION START: saveBtn")
 
@@ -148,8 +177,6 @@ class EditHaircutViewController: UIViewController, UITextFieldDelegate, UITextVi
         }
 
         modelController.haircut["salonCity"] = salonCityTextField.text
-
-        print("STATUS: Editing Existing PFObject!")
 
         print("STATUS: Editing Existing PFObject!")
         if let haircutObjectId = modelController.haircut.objectId {
