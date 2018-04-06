@@ -230,6 +230,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: -  Table Helper Functions
     func loadHaircutViews(_ haircuts: [PFObject]) {
         print("FUNCTION START: loadHaircutViews")
+
         self.arrayHaircuts.removeAll()
         for haircut in haircuts {
             arrayHaircuts.append(haircut)
@@ -238,6 +239,10 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
         print("STATUS: Table reloaded!")
     }
     
+    override func viewDidLayoutSubviews() {
+        table.separatorInset.left = UIScreen.main.bounds.width
+
+    }
     func updateTable() {
         print("FUNCTION START: updateTable")
         
