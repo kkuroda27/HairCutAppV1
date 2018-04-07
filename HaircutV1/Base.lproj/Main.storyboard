@@ -20,21 +20,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQV-yl-0Te">
-                                <rect key="frame" x="20" y="132" width="335" height="404.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQV-yl-0Te" customClass="BGCardView" customModule="HaircutV1" customModuleProvider="target">
+                                <rect key="frame" x="20" y="105" width="335" height="457"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FCG-Sg-UDv">
-                                        <rect key="frame" x="20" y="10" width="295" height="384.5"/>
+                                        <rect key="frame" x="20" y="10" width="295" height="437"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qgj-QV-GV3">
-                                                <rect key="frame" x="0.0" y="0.0" width="295" height="326.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="295" height="385"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
                                                         <string key="content">Welcome to FreshCut! 
 </string>
                                                         <attributes>
-                                                            <font key="NSFont" size="17" name="ArialMT"/>
+                                                            <font key="NSFont" size="17" name="Avenir-Heavy"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
@@ -43,45 +43,45 @@
 Cg
 </string>
                                                         <attributes>
-                                                            <font key="NSFont" size="11" name="ArialMT"/>
+                                                            <font key="NSFont" size="11" name="Avenir-Book"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="Using the FreshCut App is really simple.  ">
                                                         <attributes>
-                                                            <font key="NSFont" size="11" name="ArialMT"/>
+                                                            <font key="NSFont" size="11" name="Avenir-Book"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
-                                                    <fragment content="&quot;How can this app help me?&quot; ">
+                                                    <fragment content="&quot;How can this app help me?&quot;">
                                                         <attributes>
-                                                            <font key="NSFont" size="11" name="Arial-BoldMT"/>
+                                                            <font key="NSFont" size="11" name="Avenir-Heavy"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
-                                                    <fragment content="If you've ever been frustrated trying to communicate the haircut you want to your barber, then this app will help you!   ">
+                                                    <fragment content=" If you've ever been frustrated trying to communicate the haircut you want to your barber, then this app will help you!   ">
                                                         <attributes>
-                                                            <font key="NSFont" size="11" name="ArialMT"/>
+                                                            <font key="NSFont" size="11" name="Avenir-Book"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="&quot;How do I use this?&quot;">
                                                         <attributes>
-                                                            <font key="NSFont" size="11" name="Arial-BoldMT"/>
+                                                            <font key="NSFont" size="11" name="Avenir-Heavy"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
-                                                        <string key="content"> Simple! Next time you get a haircut, use the + button in the top-right corner to create a haircut! FreshCut will guide you through the easy process to record details of your fresh cut!  Make sure to do it right after your haircut while you're still sitting in the barber seat, since the barber will have to take 3 quick pictures for you (Don't worry, they'll be more than happy to help!). The lighting in a barber shop is extremely ideal for taking pictures.  Next time you want to get the same great haircut, show the barber your haircut profile and you'll have your Fresh Cut just the way you want it!</string>
+                                                        <mutableString key="content"> Simple! Next time you get a haircut, use the + button in the top-right corner to create a haircut! FreshCut will guide you through the easy process to record details of your fresh cut!  Make sure to do it right after your haircut while you're still sitting in the barber seat, since the barber will have to take 3 quick pictures for you (Don't worry, they'll be more than happy to help!). The lighting in a barber shop is extremely ideal for taking pictures.  Next time you want to get the same great haircut, show the barber your haircut profile and you'll have your Fresh Cut just the way you want it!</mutableString>
                                                         <attributes>
-                                                            <font key="NSFont" size="11" name="ArialMT"/>
+                                                            <font key="NSFont" size="11" name="Avenir-Book"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                 </attributedString>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B56-j2-AhA">
-                                                <rect key="frame" x="0.0" y="346.5" width="295" height="38"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B56-j2-AhA" customClass="SecondaryActionButton" customModule="HaircutV1" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="405" width="295" height="32"/>
                                                 <color key="backgroundColor" red="0.91848979724819912" green="0.92982917746113991" blue="0.92982917746113991" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <state key="normal" title="Dismiss"/>
@@ -92,7 +92,7 @@ Cg
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.14375942417265081" green="0.4864860889755554" blue="0.69802461139896366" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="FCG-Sg-UDv" secondAttribute="trailing" constant="20" id="TTR-pn-yb8"/>
                                     <constraint firstItem="FCG-Sg-UDv" firstAttribute="leading" secondItem="aQV-yl-0Te" secondAttribute="leading" constant="20" id="cJi-wQ-bZ9"/>
