@@ -153,24 +153,45 @@ Cg
                                                     <segue destination="l3p-Qg-2CI" kind="show" identifier="showPresentMode" id="jyd-5A-mdT"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmD-Ib-wfW">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmD-Ib-wfW">
                                                 <rect key="frame" x="16" y="251" width="343" height="49.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="bR9-On-ZDn"/>
                                                 </constraints>
-                                                <string key="text">*Use this to view all details!
-You can also edit your haircut here!</string>
-                                                <fontDescription key="fontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="18"/>
-                                                <color key="textColor" red="0.43529411764705883" green="0.43529411764705883" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment>
+                                                        <string key="content">*Use this to view all details!
+</string>
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.43529411764705883" green="0.43529411764705883" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="18" name="Avenir-BookOblique"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="You can also edit your haircut here!">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.43529411764705883" green="0.43529411764705883" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="18" name="Avenir-BookOblique"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineHeightMultiple="0.80000000000000004" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Use this if you're showing your stylist! Shows only relevant info needed for your haircut!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kb-gE-iKj">
-                                                <rect key="frame" x="16" y="83" width="343" height="50"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kb-gE-iKj">
+                                                <rect key="frame" x="16" y="83" width="343" height="60"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="IZS-tg-Bla"/>
+                                                    <constraint firstAttribute="height" constant="60" id="IZS-tg-Bla"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="18"/>
-                                                <color key="textColor" red="0.43529411764705883" green="0.43529411764705883" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="*Use this if you're showing your stylist! Shows only relevant info needed for your haircut!">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.43529411764705883" green="0.43529411764705883" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="18" name="Avenir-BookOblique"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.80000000000000004" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqP-2m-SWm" customClass="InvertedSecondaryActionButton" customModule="HaircutV1" customModuleProvider="target">
@@ -196,7 +217,7 @@ You can also edit your haircut here!</string>
                                             <constraint firstAttribute="trailing" secondItem="UmD-Ib-wfW" secondAttribute="trailing" constant="16" id="RyD-i7-lzu"/>
                                             <constraint firstAttribute="height" constant="316" id="Tso-At-8FI"/>
                                             <constraint firstItem="3kb-gE-iKj" firstAttribute="leading" secondItem="PcR-UE-gw6" secondAttribute="leading" constant="16" id="UDU-Jw-spa"/>
-                                            <constraint firstItem="hqP-2m-SWm" firstAttribute="top" secondItem="3kb-gE-iKj" secondAttribute="bottom" constant="50" id="VUH-Do-oFO"/>
+                                            <constraint firstItem="hqP-2m-SWm" firstAttribute="top" secondItem="3kb-gE-iKj" secondAttribute="bottom" constant="40" id="VUH-Do-oFO"/>
                                             <constraint firstItem="458-04-J9m" firstAttribute="centerX" secondItem="PcR-UE-gw6" secondAttribute="centerX" id="YVz-fM-j78"/>
                                             <constraint firstAttribute="trailing" secondItem="3kb-gE-iKj" secondAttribute="trailing" constant="16" id="shQ-3T-DUX"/>
                                         </constraints>
@@ -372,7 +393,7 @@ You can also edit your haircut here!</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tGv-6J-eZp">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tGv-6J-eZp">
                                                 <rect key="frame" x="16" y="300" width="343" height="100"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" red="0.0" green="0.47934520244598389" blue="0.99908632040023804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1066,7 +1087,7 @@ You can also edit your haircut here!</string>
                                         <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HLt-09-5jT">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" bounces="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HLt-09-5jT">
                                         <rect key="frame" x="16" y="223.5" width="343" height="100"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" red="0.0" green="0.47934520244598389" blue="0.99908632040023804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1636,7 +1657,7 @@ Please give phone back to owner!</string>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">Let's fill out your haircut description! 
-This'll make sure your next cut is exactly what you want!
+This will make sure your next cut is exactly what you want!
 
 Ask your Stylist to describe your haircut.
 Read them the example below to give them an idea of what info you need. </string>

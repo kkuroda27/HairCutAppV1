@@ -163,6 +163,12 @@ class FullDetailsModeViewController: UIViewController {
 
     }
     
+    // This makes sure that the textview content starts at the top of the content.
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
+    }
+
     // MARK: - viewDidAppear / viewDidLoad Functions
     override func viewWillAppear(_ animated: Bool) {
         print("---NEW SCREEN--- FUNCTION START: viewWillAppear - FullDetailsModeViewController.swift")

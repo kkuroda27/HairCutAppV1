@@ -29,12 +29,19 @@ class PresentModeViewController: UIViewController, UITextViewDelegate {
     var images = [SKPhoto]()
 
 
+    // This makes sure that the textview content starts at the top of the content.
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
+    }
+
     // MARK: - viewDidLoad Function
 
     override func viewDidLoad() {
         super.viewDidLoad()
         print("---NEW SCREEN--- FUNCTION START: viewDidLoad - PresentModeViewController.swift")
         print("modelController.haircut = \(modelController.haircut)")
+
 
         // modify textView for description field.
         //descriptionTextView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
