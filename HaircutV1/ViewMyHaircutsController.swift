@@ -394,6 +394,7 @@ class ViewMyHaircutsController: UIViewController, UITableViewDelegate, UITableVi
                 let uuid = UUID().uuidString
                 newUser.setValue(uuid, forKey: "userID")
                 userUUID = uuid
+                //userUUID = "0697D8EB-6DCA-4713-96E3-2AD1007A08D5" // uncomment this for my ipod device.
                 
                 // generate current date
                 let date = NSDate()
