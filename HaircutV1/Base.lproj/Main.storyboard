@@ -153,6 +153,7 @@ FreshCut will guide you through a quick process to record important details of y
                         <viewLayoutGuide key="safeArea" id="L6b-9x-ByV"/>
                     </view>
                     <connections>
+                        <outlet property="helpTextView" destination="Qgj-QV-GV3" id="khI-kb-HEr"/>
                         <outlet property="popupView" destination="aQV-yl-0Te" id="mYO-5O-WTP"/>
                     </connections>
                 </viewController>
