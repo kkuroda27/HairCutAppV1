@@ -21,13 +21,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQV-yl-0Te" customClass="BGCardView" customModule="HaircutV1" customModuleProvider="target">
-                                <rect key="frame" x="20" y="105" width="335" height="457"/>
+                                <rect key="frame" x="20" y="20.5" width="335" height="626"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FCG-Sg-UDv">
-                                        <rect key="frame" x="20" y="10" width="295" height="437"/>
+                                        <rect key="frame" x="20" y="10" width="295" height="606"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qgj-QV-GV3">
-                                                <rect key="frame" x="0.0" y="0.0" width="295" height="385"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qgj-QV-GV3">
+                                                <rect key="frame" x="0.0" y="0.0" width="295" height="526"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
@@ -39,26 +39,9 @@
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
-                                                        <string key="content" base64-UTF8="YES">
-Cg
-</string>
-                                                        <attributes>
-                                                            <font key="NSFont" size="11" name="Avenir-Book"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                    <fragment content="Using the FreshCut App is really simple.  ">
-                                                        <attributes>
-                                                            <font key="NSFont" size="11" name="Avenir-Book"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                    <fragment content="&quot;How can this app help me?&quot;">
-                                                        <attributes>
-                                                            <font key="NSFont" size="11" name="Avenir-Heavy"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                    <fragment content=" If you've ever been frustrated trying to communicate the haircut you want to your barber, then this app will help you!   ">
+                                                        <string key="content">
+With FreshCut, you can save and show your favorite past haircuts to any hairstylist for the perfect re-creation. Every time.
+ If you've ever been frustrated trying to communicate a haircut you've had before to a stylist, I hope this app helps!  </string>
                                                         <attributes>
                                                             <font key="NSFont" size="11" name="Avenir-Book"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -71,18 +54,76 @@ Cg
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
-                                                        <string key="content"> Simple! Next time you get a haircut, use the + button in the top-right corner to create a haircut! FreshCut will guide you through the easy process to record details of your fresh cut!  Make sure to do it right after your haircut while you're still sitting in the barber seat, since the barber will have to take 3 quick pictures for you (Don't worry, they'll be more than happy to help!). The lighting in a barber shop is extremely ideal for taking pictures.  Next time you want to get the same great haircut, show the barber your haircut profile and you'll have your Fresh Cut just the way you want it!</string>
+                                                        <mutableString key="content"> Simple! Immediately after you get a haircut, while you're still sitting in the chair, use FreshCut to create a "haircut profile". 
+
+FreshCut will guide you through a quick process to record important details of your haircut so you can show this to any stylist in the future.  Your stylist will take 3 quick pictures for you (don't worry, they'll be more than happy to help!), and you'll fill out a quick haircut description. The lighting in a barber shop is extremely ideal for taking pictures, so make sure you do it there!  Try creating a haircut profile yourself by hitting the "+" button in the top right corner!  </mutableString>
                                                         <attributes>
                                                             <font key="NSFont" size="11" name="Avenir-Book"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content">Feedback?
+</string>
+                                                        <attributes>
+                                                            <font key="NSFont" size="11" name="Avenir-Heavy"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="This app is still new, so I'd appreciate any feedback you have at kai@kaikuroda.com. Thanks!">
+                                                        <attributes>
+                                                            <font key="NSFont" size="11" name="Avenir-Book"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                                <tabStops>
+                                                                    <textTab alignment="left" location="28">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="56">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="84">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="112">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="140">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="168">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="196">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="224">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="252">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="280">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="308">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="336">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                </tabStops>
+                                                            </paragraphStyle>
                                                         </attributes>
                                                     </fragment>
                                                 </attributedString>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B56-j2-AhA" customClass="SecondaryActionButton" customModule="HaircutV1" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="405" width="295" height="32"/>
+                                                <rect key="frame" x="0.0" y="546" width="295" height="60"/>
                                                 <color key="backgroundColor" red="0.91848979724819912" green="0.92982917746113991" blue="0.92982917746113991" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="0Vi-1x-Mn0"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <state key="normal" title="Dismiss"/>
                                                 <connections>
@@ -105,6 +146,7 @@ Cg
                         <constraints>
                             <constraint firstItem="aQV-yl-0Te" firstAttribute="leading" secondItem="VQe-5K-Dfh" secondAttribute="leading" constant="20" id="7SG-OP-mhV"/>
                             <constraint firstItem="aQV-yl-0Te" firstAttribute="centerX" secondItem="VQe-5K-Dfh" secondAttribute="centerX" id="8ig-bZ-ezN"/>
+                            <constraint firstItem="L6b-9x-ByV" firstAttribute="bottom" secondItem="aQV-yl-0Te" secondAttribute="bottom" constant="20" id="AaO-uc-TNv"/>
                             <constraint firstAttribute="trailing" secondItem="aQV-yl-0Te" secondAttribute="trailing" constant="20" id="LFQ-Pg-Ojg"/>
                             <constraint firstItem="aQV-yl-0Te" firstAttribute="centerY" secondItem="VQe-5K-Dfh" secondAttribute="centerY" id="lmr-EG-b1X"/>
                         </constraints>

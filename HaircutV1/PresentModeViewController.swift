@@ -32,7 +32,7 @@ class PresentModeViewController: UIViewController, UITextViewDelegate {
     // This makes sure that the textview content starts at the top of the content.
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
+        self.descriptionTextView.scrollRangeToVisible(NSMakeRange(0, 0))
     }
 
     // MARK: - viewDidLoad Function
@@ -124,6 +124,12 @@ class PresentModeViewController: UIViewController, UITextViewDelegate {
         
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("FUNCTION START: viewDidAppear")
+        self.descriptionTextView.flashScrollIndicators()
+    }
+
     
     @IBAction func imgTapped(_ sender: UITapGestureRecognizer) {
         print("FUNCTION START: imgTapped")

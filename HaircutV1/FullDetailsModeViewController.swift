@@ -152,9 +152,6 @@ class FullDetailsModeViewController: UIViewController {
         }
         
         descriptionTextView.text = modelController.haircut["description"] as? String
-        
-        
-
         haircutDateLabel.text = modelController.haircut["dateSet"] as? String
         
         if modelController.haircut["salonCity"] as? String != "" {
@@ -165,8 +162,9 @@ class FullDetailsModeViewController: UIViewController {
     
     // This makes sure that the textview content starts at the top of the content.
     override func viewDidLayoutSubviews() {
+        print("FUNCTION START: viewDidLayoutSubviews")
         super.viewDidLayoutSubviews()
-        self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
+        self.descriptionTextView.scrollRangeToVisible(NSMakeRange(0, 0))
     }
 
     // MARK: - viewDidAppear / viewDidLoad Functions
@@ -179,6 +177,7 @@ class FullDetailsModeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         print("FUNCTION START: viewDidAppear - FullDetailsModeViewController.swift")
         self.scrollView.flashScrollIndicators()
+        self.descriptionTextView.flashScrollIndicators()
     }
 
     
